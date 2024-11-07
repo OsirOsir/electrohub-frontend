@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #0D1B2A;
+  color: white;
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.auth-buttons, .navbar-icons {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.navbar-icons span {
+  font-weight: bold;
+}
