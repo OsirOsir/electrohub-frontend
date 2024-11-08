@@ -1,4 +1,5 @@
 .navbar {
+  
   display: flex;
   align-items: center;
   background-color: #0D1B2A;
@@ -80,7 +81,29 @@
   cursor: pointer;
   padding: 0.5rem;
 }
+.auth-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.auth-button .user-icon {
+  width: 34px; /* Adjust as needed */
+  height: 34px; /* Adjust as needed */
+  margin-right: 0.5rem; /* Space between icon and text */
+  vertical-align: middle; /* Aligns the icon with the text */
+}
 
 .navbar-icons span {
   font-weight: bold;
+}
+.cart-icon {
+  width: 34px; /* Adjust size as needed */
+  height: 34px; /* Adjust size as needed */
+  margin-right: 0.5rem; /* Space between icon and item count */
+  vertical-align: middle; /* Aligns the icon with the text */
 }

@@ -17,6 +17,24 @@
       "username": "Osir ",
       "email": "philip.otieno1@student.moringaschool.com",
       "password": "1234"
+    },
+    {
+      "id": "ad42",
+      "username": "Joseph Kennedy",
+      "email": "jk@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "19e1",
+      "username": "ann",
+      "email": "anneWairimu@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "732e",
+      "username": "Patrick Otieno",
+      "email": "otieno@gmail.com",
+      "password": "1234"
     }
   ]
 }

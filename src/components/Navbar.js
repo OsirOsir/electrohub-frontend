@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import AuthModal from './AuthModal'; 
+import AuthModal from './AuthModal';
 
 const NavBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
@@ -14,6 +14,9 @@ const NavBar = () => {
     event.preventDefault();
     const searchTerm = event.target.search.value;
     console.log("Searching for:", searchTerm);
+
+    // After submitting the search, hide the input and show the icon again
+    setShowSearch(false);
   };
 
   // Function to toggle the Auth Modal
@@ -40,7 +43,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      {/* Logo */}
+      {/* Site Logo or Name */}
       <div className="navbar-logo">ELECTROHUB</div>
 
       {/* Categories */}
@@ -69,15 +72,19 @@ const NavBar = () => {
       {/* Auth Buttons */}
       <div className="auth-buttons">
         {isAuthenticated ? (
-          <button onClick={handleSignOut}>Sign Out</button>
+          <button onClick={handleSignOut} className="auth-button">
+            <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> Sign Out
+          </button>
         ) : (
-          <button onClick={() => toggleAuthModal("signIn")}>Sign In / Sign Up</button>
+          <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
+            <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
+          </button>
         )}
       </div>
 
       {/* Cart Icon with Checkout and Payment */}
       <div className="navbar-icons" onClick={handleCart}>
-        🛒 <span>{cartItems}</span>
+        <img src="/Icons/bag.png" alt="Cart Icon" className="cart-icon" /> <span>{cartItems}</span>
       </div>
 
       {/* Show Auth Modal */}
