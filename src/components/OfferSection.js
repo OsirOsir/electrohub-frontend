@@ -11,10 +11,19 @@ function OfferSection(){
         <div className="items-on-offer-container">
             <h1>Items On Offer</h1>
             <div className="offer-items">
-                <DailyDeals />
-                <BestSellers />
-                <HotNewOffers />
-                <SeasonOffers />
+                <div className="offers-links">
+                    <h5>Daily Deals</h5>
+                    <h5>Best Sellers</h5>
+                    <h5>Hot & New</h5>
+                    <h5>Season Offers</h5>
+                </div>
+                <div className="offers-display">
+                    <DailyDeals />
+                    <BestSellers />
+                    <HotNewOffers />
+                    <SeasonOffers />
+                </div>
+                
             </div>
         </div>
     )

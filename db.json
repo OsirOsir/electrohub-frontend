@@ -1,4 +1,17 @@
 {
+    "users": [
+        {
+            "id": 1,
+            "username": "User 1",
+            "user_role": "Admin"
+        },
+        {
+            "id": 2,
+            "username": "User 2",
+            "user_role": "Regular"
+        }
+    ],
+    
     "items": [
         {
             "id": 1,
