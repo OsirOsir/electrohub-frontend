@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
+      <Navbar /> 
       <div>
         <Routes>
           <Route path="/terms" element={<TermsAndConditions />} />
@@ -28,9 +29,9 @@ function App() {
         <Footer />
       </div>
     </Router>
-    <div className="App">
-      <Navbar /> 
-    </div>
+    
+      
+    
   );
 }
 
