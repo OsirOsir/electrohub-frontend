@@ -1,0 +1,60 @@
+.about-us-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.about-us-title, .achievements-title, .follow-us-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #0F144C; 
+}
+
+
+.about-us-description {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+
+.achievements-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.achievements-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.achievements-list li strong {
+  min-width: 150px; 
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 1.8rem;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #0F144C; 
+}
