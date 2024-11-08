@@ -1,0 +1,103 @@
+/* Ensure body and html take up full height */
+html, body {
+  height: 100%;    /* Full height */
+  margin: 0;       /* Remove default margin */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the main content take available space */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between; /* Ensures footer stays at the bottom */
+}
+
+/* Main content should take available space */
+.main-content {
+  flex: 1;  /* Makes the content take all available space */
+}
+
+/* Footer styles */
+.footer {
+  background-color: #000000; /* Black background */
+  color: white;               /* White text color */
+  text-align: center;         /* Center the text */
+  padding: 40px 0;            /* Add more padding for spacing */
+  width: 100%;
+  position: relative;         /* Ensures it's in its place */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;             /* Center the content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo {
+  margin-bottom: 20px;        /* Space between logo and other elements */
+}
+
+.footer-logo .logo {
+  width: 150px;               /* Adjust logo size */
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.social-media a {
+  margin: 0 15px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  color: white;
+}
+
+.quick-links a {
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+/* Add hover effect to icons */
+.social-media a:hover {
+  color: #fff; /* Change icon color on hover */
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 768px) {
+  .footer-links {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    margin: 0 15px;
+  }
+
+  .social-media a {
+    margin: 0 15px;
+  }
+}
