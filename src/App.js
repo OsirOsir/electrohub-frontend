@@ -1,14 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar'; 
-import AuthModal from './components/AuthModal';
-
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <AuthModal />
+      <Navbar /> {/* Navbar will handle showing the AuthModal */}
     </div>
   );
 }

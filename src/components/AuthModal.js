@@ -3,28 +3,57 @@ import './AuthModal.css';
 
 const AuthModal = ({ mode, onClose, onAuthChange }) => {
   const [authMode, setAuthMode] = useState(mode);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
 
   // Handle form input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Sign Up function
+  const signUp = async (userData) => {
+    try {
+      const response = await fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+      const data = await response.json();
+      console.log("User signed up:", data);
+      onAuthChange(true); // Set as authenticated
+      onClose(); // Close the modal
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  };
+
+  // Sign In function
+  const signIn = async (email, password) => {
+    try {
+      const response = await fetch(`http://localhost:5000/users?email=${email}&password=${password}`);
+      const data = await response.json();
+      if (data.length > 0) {
+        console.log("User signed in:", data[0]);
+        onAuthChange(true); // Set as authenticated
+        onClose(); // Close the modal
+      } else {
+        console.log("Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`${authMode} with`, formData);
-
-    // Simulate authentication
     if (authMode === "signIn") {
-      // Perform sign-in logic
-      onAuthChange(true); // Set as authenticated
+      signIn(formData.email, formData.password);
     } else {
-      // Perform sign-up logic
-      console.log("Sign-up successful");
-      onAuthChange(true); // Set as authenticated after sign-up
+      signUp(formData);
     }
-    onClose(); // Close modal after authentication
   };
 
   // Toggle between Sign In and Sign Up modes
@@ -37,6 +66,17 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
       <div className="modal-content">
         <h2>{authMode === "signIn" ? "Sign In" : "Sign Up"}</h2>
         <form onSubmit={handleSubmit}>
+          {/* Show username field only in Sign Up mode */}
+          {authMode === "signUp" && (
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          )}
           <input
             type="email"
             name="email"
