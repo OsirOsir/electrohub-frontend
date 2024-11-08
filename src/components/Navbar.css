@@ -1,12 +1,17 @@
 .navbar {
-  
   display: flex;
   align-items: center;
   background-color: #0D1B2A;
   color: white;
   padding: 1rem 2rem;
   font-family: Arial, sans-serif;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.navbar-actions {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: space-between; /* Space out the items evenly */
+  gap: 10px; /* Optional: adds space between each item */
 }
 
 .navbar-logo {
@@ -24,16 +29,22 @@
   position: relative;
   padding: 0.5rem 1rem;
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.1); /* Light background */
-  backdrop-filter: blur(10px); /* Glass effect */
-  border: none; /* Subtle border */
-  transition: all 0.3s ease-in-out; /* Smooth transition for hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Light background */
+  backdrop-filter: blur(10px);
+  /* Glass effect */
+  border: none;
+  /* Subtle border */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition for hover */
   cursor: pointer;
 }
 
 .navbar-links li:hover {
-  background-color: rgba(255, 255, 255, 0.3); /* Slightly darker on hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Slightly darker on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow on hover */
 }
 
 .search-bar-container {
@@ -49,23 +60,30 @@
 .search-icon {
   background: none;
   border: none;
-  font-size: 1.5rem;
-  color: white;
   cursor: pointer;
+  
+}
+.search-icon-img {
+  width: 34px; /* Adjust size */
+  height: 34px; /* Adjust size */
+  object-fit: contain; /* Ensures the image scales correctly */
 }
 
 .search-bar {
   display: flex;
   align-items: center;
-  margin-left: 10px; /* Space between icon and input */
+  margin-left: 10px;
+  /* Space between icon and input */
 }
 
 .search-bar input {
   padding: 0.5rem;
   border-radius: 4px;
   border: none;
-  width: 200px; /* Adjust the width as desired */
-  transition: width 0.3s ease; /* Smooth transition for width change */
+  width: 200px;
+  /* Adjust the width as desired */
+  transition: width 0.3s ease;
+  /* Smooth transition for width change */
 }
 
 .search-bar button {
@@ -77,10 +95,12 @@
   margin-left: 5px;
 }
 
-.auth-buttons, .navbar-icons {
+.auth-buttons,
+.navbar-icons {
   cursor: pointer;
   padding: 0.5rem;
 }
+
 .auth-button {
   background: none;
   border: none;
@@ -92,18 +112,24 @@
 }
 
 .auth-button .user-icon {
-  width: 34px; /* Adjust as needed */
-  height: 34px; /* Adjust as needed */
-  margin-right: 0.5rem; /* Space between icon and text */
-  vertical-align: middle; /* Aligns the icon with the text */
+  width: 34px;
+  /* Adjust as needed */
+  height: 34px;
+  /* Adjust as needed */
+  margin-right: 0.5rem;
+  /* Space between icon and text */
+  vertical-align: middle;
+  /* Aligns the icon with the text */
 }
 
 .navbar-icons span {
   font-weight: bold;
 }
+
 .cart-icon {
-  width: 34px; /* Adjust size as needed */
-  height: 34px; /* Adjust size as needed */
-  margin-right: 0.5rem; /* Space between icon and item count */
-  vertical-align: middle; /* Aligns the icon with the text */
+  width: 42px;
+  height: 42px;
+  margin-top: 0;
+  margin-right: -10px;
+  vertical-align: middle;
 }

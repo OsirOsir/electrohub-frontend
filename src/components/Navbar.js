@@ -56,36 +56,43 @@ const NavBar = () => {
         <li>Audio</li>
       </ul>
 
-      {/* Search Bar with Icon */}
-      <div className="search-bar-container">
-        {!showSearch && (
-          <button className="search-icon" onClick={toggleSearch}>🔍</button>
-        )}
-        {showSearch && (
-          <form className="search-bar" onSubmit={handleSearch}>
-            <input type="text" name="search" placeholder="Search Items..." />
-            <button type="submit">🔍</button>
-          </form>
-        )}
+      <div className="navbar-actions">
+        {/* Search Bar */}
+        <div className="search-bar-container">
+          {!showSearch && (
+            <button className="search-icon" onClick={toggleSearch}>
+              <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
+            </button>
+          )}
+          {showSearch && (
+            <form className="search-bar" onSubmit={handleSearch}>
+              <input type="text" name="search" placeholder="Search Items..." />
+              <button type="submit">
+                <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="auth-buttons">
+          {isAuthenticated ? (
+            <button onClick={handleSignOut} className="auth-button">
+              <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> Sign Out
+            </button>
+          ) : (
+            <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
+              <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
+            </button>
+          )}
+        </div>
+
+        {/* Cart Icon with Checkout and Payment */}
+        <div className="navbar-icons" onClick={handleCart}>
+          <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" /> <span>{cartItems}</span>
+        </div>
       </div>
 
-      {/* Auth Buttons */}
-      <div className="auth-buttons">
-        {isAuthenticated ? (
-          <button onClick={handleSignOut} className="auth-button">
-            <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> Sign Out
-          </button>
-        ) : (
-          <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
-            <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
-          </button>
-        )}
-      </div>
-
-      {/* Cart Icon with Checkout and Payment */}
-      <div className="navbar-icons" onClick={handleCart}>
-        <img src="/Icons/bag.png" alt="Cart Icon" className="cart-icon" /> <span>{cartItems}</span>
-      </div>
 
       {/* Show Auth Modal */}
       {showAuthModal && (
