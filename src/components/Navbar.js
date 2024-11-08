@@ -7,6 +7,7 @@ const NavBar = () => {
   const [cartItems, setCartItems] = useState(0); // Cart item count
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
+  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
 
   // Placeholder function for handling search
   const handleSearch = (event) => {
@@ -32,6 +33,11 @@ const NavBar = () => {
     console.log("Navigating to cart and checkout");
   };
 
+  // Toggle the visibility of the search input
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
   return (
     <nav className="navbar">
       {/* Logo */}
@@ -47,11 +53,18 @@ const NavBar = () => {
         <li>Audio</li>
       </ul>
 
-      {/* Search Bar */}
-      <form className="search-bar" onSubmit={handleSearch}>
-        <input type="text" name="search" placeholder="Search products..." />
-        <button type="submit">🔍</button>
-      </form>
+      {/* Search Bar with Icon */}
+      <div className="search-bar-container">
+        {!showSearch && (
+          <button className="search-icon" onClick={toggleSearch}>🔍</button>
+        )}
+        {showSearch && (
+          <form className="search-bar" onSubmit={handleSearch}>
+            <input type="text" name="search" placeholder="Search Items..." />
+            <button type="submit">🔍</button>
+          </form>
+        )}
+      </div>
 
       {/* Auth Buttons */}
       <div className="auth-buttons">

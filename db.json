@@ -11,6 +11,12 @@
       "username": "Alice Atieno",
       "email": "alice@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "83ec",
+      "username": "Osir ",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "1234"
     }
   ]
 }
