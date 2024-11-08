@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
-import './Footer.css'; 
+import { Link } from 'react-router-dom'; // Import Link for routing
+import './Footer.css'; // Import CSS for footer styling
 
 function Footer() {
   return (
@@ -14,7 +14,10 @@ function Footer() {
               <i className="fab fa-facebook-f" style={{ fontSize: '30px' }}></i> {/* Facebook icon */}
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter" style={{ fontSize: '30px' }}></i> {/* Twitter icon */}
+              {/* Updated Twitter X logo using SVG */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="twitter-x-icon">
+                <path d="M3 6l18 18M21 6l-18 18"></path>
+              </svg> {/* Twitter X icon */}
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram" style={{ fontSize: '30px' }}></i> {/* Instagram icon */}
