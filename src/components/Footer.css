@@ -1,46 +1,45 @@
-/* Ensure body and html take up full height */
 html, body {
-  height: 100%;    /* Full height */
-  margin: 0;       /* Remove default margin */
+  height: 100%;    
+  margin: 0;       
   display: flex;
   flex-direction: column;
 }
 
-/* Make the main content take available space */
+
 .App {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-/* Main content should take available space */
+
 .main-content {
-  flex: 1;  /* Makes the content take all available space */
+  flex: 1;  
 }
 
-/* Footer styles */
+
 .footer {
-  background-color: #000000; /* Black background */
-  color: white;               /* White text color */
-  text-align: center;         /* Center the text */
-  padding: 40px 0;            /* Add more padding for spacing */
+  background-color: #000000; 
+  color: white;               
+  text-align: center;         
+  padding: 40px 0;            
   width: 100%;
 }
 
 .footer-content {
   max-width: 1200px;
-  margin: 0 auto;             /* Center the content */
+  margin: 0 auto;            
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .footer-logo {
-  margin-bottom: 20px;        /* Space between logo and other elements */
+  margin-bottom: 20px;        
 }
 
 .footer-logo .logo {
-  width: 150px;               /* Adjust logo size */
+  width: 150px;               
 }
 
 .footer-links {
@@ -79,12 +78,12 @@ html, body {
   font-size: 14px;
 }
 
-/* Add hover effect to icons */
+
 .social-media a:hover {
-  color: #fff; /* Change icon color on hover */
+  color: #fff; 
 }
 
-/* Media queries for responsiveness */
+
 @media (min-width: 768px) {
   .footer-links {
     flex-direction: row;
