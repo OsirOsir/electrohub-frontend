@@ -1,38 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Footer from './components/Footer';
-import TermsAndConditions from './components/pages/TermsAndConditions';
-import PrivacyPolicy from './components/pages/ PrivacyPolicy';
-import Contact from './components/pages/Contact';
-import AboutUs from './components/pages/AboutUs';
-// import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import FAQsPage from "./components/FAQsPage";
+import FeedbackPage from "./components/FeedbackPage";
 import './App.css';
-import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <Navbar /> 
-      <div>
-        <Routes>
-          <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<AboutUs />} />
-          
-          {/* Catch-all route to redirect to Home */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        
+      <div className="support-container">
+        <h1>Customer Support</h1>
+        <div className="support-links">
+          {/* FAQs Link */}
+          <Link to="/FAQs" className="support-item">
+            <div className="CustomerSupport-icon"> ❓ </div>
+            <h2>FAQs</h2>
+          </Link>
 
+      {/* Customer Feedback Link */}
+      <Link to="/Customer-Feedback" className="support-item">
+        <div className="CustomerSupport-icon">🗳</div>
+        <h2>Customer-Feedback</h2>
+      </Link>
+    </div>
 
-        <Footer />
-      </div>
-    </Router>
-    
-      
-    
+    {/* Define Routes */}
+    <Routes>
+      <Route path="/FAQs" element={<FAQsPage />} />
+      <Route path="/Customer-Feedback" element={<FeedbackPage />} />
+    </Routes>
+  </div>
+</Router>
   );
-}
+};
 
 export default App;
+
