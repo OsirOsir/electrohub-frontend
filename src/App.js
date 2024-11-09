@@ -5,10 +5,14 @@ import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/ PrivacyPolicy';
 import Contact from './components/pages/Contact';
 import AboutUs from './components/pages/AboutUs';
+// import logo from './logo.svg';
+import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
+      <Navbar /> 
       <div>
         <Routes>
           <Route path="/terms" element={<TermsAndConditions />} />
@@ -25,7 +29,11 @@ function App() {
         <Footer />
       </div>
     </Router>
+    
+      
+    
   );
+  return <div className='App'></div>;
 }
 
 export default App;

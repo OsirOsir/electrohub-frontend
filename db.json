@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "Philip",
+      "email": "philip@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "15b2",
+      "username": "Alice Atieno",
+      "email": "alice@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "83ec",
+      "username": "Osir ",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "1234"
+    },
+    {
+      "id": "ad42",
+      "username": "Joseph Kennedy",
+      "email": "jk@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "19e1",
+      "username": "ann",
+      "email": "anneWairimu@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "732e",
+      "username": "Patrick Otieno",
+      "email": "otieno@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "1080",
+      "username": "Kennedy",
+      "email": "kennedy@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "c35c",
+      "username": "",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
+    },
+    {
+      "id": "7ad2",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "0000"
+    }
+  ]
+}
