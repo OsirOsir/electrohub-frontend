@@ -11,29 +11,22 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <Router>
-      <Navbar /> 
-      <div>
-        <Routes>
-          <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<AboutUs />} />
-          
-          
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        
-
-
+    <div className="App">
+      <Router>
+        <Navbar />
+        <div className="main-content">
+          <Routes>
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
         <Footer />
-      </div>
-    </Router>
-    
-      
-    
+      </Router>
+    </div>
   );
-  return <div className='App'></div>;
 }
 
 export default App;
