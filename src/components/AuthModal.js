@@ -42,7 +42,7 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
   // Sign In function
   const signIn = async (email, password) => {
     try {
-      const response = await fetch(`http://localhost:5000/users?email=${email}`);
+      const response = await fetch(`http://localhost:8001/users?email=${email}`);
       const data = await response.json();
 
       if (data.length > 0) {

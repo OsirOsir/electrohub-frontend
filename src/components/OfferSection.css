@@ -1,0 +1,95 @@
+.items-on-offer-container{
+    background-color: #E0E6F6;
+    margin: 20px 50px 20px 50px;
+    border-radius: 20px;
+}
+
+.offers-links{
+    text-align: left;
+    margin: 30px;
+    border-right: 1px rgb(65, 117, 137) solid;
+    padding-right: 40px;
+    display: column;
+}
+
+.offers-links ul {
+    list-style-type: none;
+}
+
+.offers-links ul li{
+    padding-bottom: 30px;
+}
+
+.offers-links li a{
+    display: block; 
+    width: 100%; 
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    border-left: 5px solid; 
+    position: relative; 
+    z-index: 2;
+    text-decoration: none;
+    color: #444;
+    box-sizing: border-box;  
+    -moz-box-sizing: border-box;  
+    -webkit-box-sizing: border-box; 
+}
+    
+.offers-links li a:hover{ border-bottom: 0px; color: #fff;}
+.offers-links li:first-child a{ border-left: 10px solid #3498db; }
+.offers-links li:nth-child(2) a{ border-left: 10px solid #ffd071; }
+.offers-links li:nth-child(3) a{ border-left: 10px solid #f0776c; }
+.offers-links li:last-child a{ border-left: 10px solid #1abc9c; }
+  
+.offers-links li a:after { 
+    content: "";
+    height: 100%; 
+    left: 0; 
+    top: 0; 
+    width: 0px;  
+    position: absolute; 
+    transition: all 0.3s ease 0s; 
+    -webkit-transition: all 0.3s ease 0s; 
+    z-index: -1;
+}
+  
+.offers-links li a:hover:after{ width: 100%; }
+.offers-links li:first-child a:after{ background: #3498db; }
+.offers-links li:nth-child(2) a:after{ background: #ffd071; }
+.offers-links li:nth-child(3) a:after{ background: #f0776c; }
+.offers-links li:last-child a:after{ background: #1abc9c; }
+  
+  
+  
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato Hairline'), local('Lato-Hairline'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+}
+
+.offer-items{
+    display: flex;
+}
