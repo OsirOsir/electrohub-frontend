@@ -44,7 +44,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       {/* Site Logo or Name */}
-      <div className="navbar-logo">ELECTROHUB</div>
+      <div className="navbar-logo">ElectroHub</div>
 
       {/* Categories */}
       <ul className="navbar-links">
