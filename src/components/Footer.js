@@ -1,30 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing
-import './Footer.css'; // Import CSS for footer styling
+import { Link } from 'react-router-dom'; 
+import './Footer.css'; 
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-    
-        {/* Social Media Links */}
+      
+
+        
         <div className="footer-links">
           <div className="social-media">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook-f" style={{ fontSize: '30px' }}></i> {/* Facebook icon */}
+              <i className="fab fa-facebook-f" style={{ fontSize: '30px' }}></i> 
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              {/* Updated Twitter X logo using SVG */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="twitter-x-icon">
-                <path d="M3 6l18 18M21 6l-18 18"></path>
-              </svg> {/* Twitter X icon */}
+              <i className="fab fa-twitter" style={{ fontSize: '30px' }}></i> 
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram" style={{ fontSize: '30px' }}></i> {/* Instagram icon */}
+              <i className="fab fa-instagram" style={{ fontSize: '30px' }}></i> 
             </a>
           </div>
 
-          {/* Quick Links Section */}
+          
           <div className="quick-links">
             <Link to="/terms">Terms and Conditions</Link>
             <Link to="/privacy-policy">Privacy Policy</Link>
@@ -33,7 +31,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom with company name */}
+        
         <div className="footer-bottom">
           <p>&copy; 2024 ElectroHub. All rights reserved.</p>
         </div>
