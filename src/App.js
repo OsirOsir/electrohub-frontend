@@ -20,7 +20,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />
           
-          {/* Catch-all route to redirect to Home */}
+          
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         
