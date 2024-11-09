@@ -35,6 +35,23 @@
       "username": "Patrick Otieno",
       "email": "otieno@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "1080",
+      "username": "Kennedy",
+      "email": "kennedy@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "c35c",
+      "username": "",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
+    },
+    {
+      "id": "7ad2",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "0000"
     }
   ]
 }

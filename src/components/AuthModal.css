@@ -11,33 +11,57 @@
 }
 
 .modal-content {
-  background: white;
+  background: rgba(173, 216, 230, 0.15); /* Light blue, semi-transparent */
+  backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
   padding: 2rem;
-  border-radius: 8px;
-  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 320px;
   text-align: center;
+  color: #fff; /* White text for better contrast on a light blue background */
 }
 
 .modal-content h2 {
-  margin-bottom: 1rem;
+  color: #e0f7fa; /* Light blue color for the heading */
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .modal-content form input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.6rem;
   margin: 0.5rem 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2); /* Lightly tinted input background */
+  color: #fff;
+}
+
+.modal-content form input::placeholder {
+  color: #d0e7f4; /* Light placeholder color */
 }
 
 .modal-content button {
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding: 0.7rem;
   width: 100%;
+  border: none;
+  border-radius: 6px;
+  background-color: #87ceeb; /* Light blue button background */
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-content button:hover {
+  background-color: #6fbcd4; /* Slightly darker blue on hover */
 }
 
 .close-button {
   background: transparent;
   border: none;
-  color: #555;
+  color: #d0e7f4;
   cursor: pointer;
   margin-top: 1rem;
+  font-size: 0.9rem;
 }
