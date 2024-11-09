@@ -4,7 +4,9 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
+  background-color: #f9f9f6; 
+  border-radius: 8px; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .terms-title {
@@ -19,11 +21,9 @@
   margin-bottom: 30px;
 }
 
-
 .section {
   margin-bottom: 30px;
 }
-
 
 .section-title {
   font-size: 24px;
@@ -31,7 +31,6 @@
   margin-bottom: 10px;
   color: #0F144C; 
 }
-
 
 ul {
   list-style-type: disc;
