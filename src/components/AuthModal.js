@@ -105,3 +105,4 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
 };
 
 export default AuthModal;
+
