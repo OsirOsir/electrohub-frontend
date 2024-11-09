@@ -4,10 +4,13 @@ import './AuthModal.css';
 const AuthModal = ({ mode, onClose, onAuthChange }) => {
   const [authMode, setAuthMode] = useState(mode);
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState(""); // Error message state
+  const [successMessage, setSuccessMessage] = useState(""); // Success message state
 
   // Handle form input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMessage(""); // Clear error message on input change
   };
 
   // Sign Up function
@@ -20,35 +23,53 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         },
         body: JSON.stringify(userData)
       });
-      const data = await response.json();
-      console.log("User signed up:", data);
-      onAuthChange(true); // Set as authenticated
-      onClose(); // Close the modal
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User signed up:", data);
+        setSuccessMessage("Successfully signed up");
+        onAuthChange(true); // Set as authenticated
+        onClose(); // Close the modal
+      } else {
+        setErrorMessage("Failed to sign up. User may already exist.");
+      }
     } catch (error) {
       console.error("Error signing up:", error);
+      setErrorMessage("An error occurred while signing up. Please try again.");
     }
   };
 
   // Sign In function
   const signIn = async (email, password) => {
     try {
-      const response = await fetch(`http://localhost:5000/users?email=${email}&password=${password}`);
+      const response = await fetch(`http://localhost:5000/users?email=${email}`);
       const data = await response.json();
+
       if (data.length > 0) {
-        console.log("User signed in:", data[0]);
-        onAuthChange(true); // Set as authenticated
-        onClose(); // Close the modal
+        const user = data[0];
+        if (user.password === password) {
+          console.log("User signed in:", user);
+          setSuccessMessage("Successfully logged in");
+          onAuthChange(true); // Set as authenticated
+          onClose(); // Close the modal
+        } else {
+          setErrorMessage("Incorrect password. Please try again.");
+        }
       } else {
-        console.log("Invalid credentials");
+        setErrorMessage("User does not exist.");
       }
     } catch (error) {
       console.error("Error signing in:", error);
+      setErrorMessage("An error occurred while signing in. Please try again.");
     }
   };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Clear error message on submit
+    setSuccessMessage(""); // Clear success message on submit
+
     if (authMode === "signIn") {
       signIn(formData.email, formData.password);
     } else {
@@ -59,6 +80,8 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
   // Toggle between Sign In and Sign Up modes
   const toggleMode = () => {
     setAuthMode(authMode === "signIn" ? "signUp" : "signIn");
+    setErrorMessage(""); // Clear any messages when switching modes
+    setSuccessMessage("");
   };
 
   return (
@@ -95,6 +118,10 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
           />
           <button type="submit">{authMode === "signIn" ? "Sign In" : "Sign Up"}</button>
         </form>
+        {/* Display success or error messages */}
+        {successMessage && <p className="success-message">{successMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        
         <button onClick={toggleMode}>
           {authMode === "signIn" ? "Need an account? Sign Up" : "Already have an account? Sign In"}
         </button>
