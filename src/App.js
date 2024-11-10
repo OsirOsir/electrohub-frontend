@@ -12,28 +12,36 @@ import AboutUs from './components/pages/AboutUs';
 
 function App() {
   const [items, setItems] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  // Fetch items data from API on component mount
+  
   useEffect(() => {
     fetch("http://localhost:8001/items")
       .then(response => response.json())
       .then(data => setItems(data));
   }, []);
 
+  const addToCart = (item) => {
+    setCart(prevCart => [...prevCart, item]);
+  };
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar addToCart={addToCart} cartItems={cart} /> {/* Passing cart and addToCart to Navbar */}
         <div className="main-content">
           <Routes>
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/" element={<div>
-              <OfferSection items={items} />
-              <ItemsAll items={items} />
-            </div>} />
+            <Route path="/" element={
+              <div>
+                <OfferSection items={items} />
+                <ItemsAll items={items} addToCart={addToCart} />
+              </div>
+            } />
+            {/* Default route */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
