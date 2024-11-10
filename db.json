@@ -81,6 +81,12 @@
       "email": "calebk@gmail.com",
       "password": "12345",
       "role": "admin"
+    },
+    {
+      "id": "23a4",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
     }
   ],
   "items": [
