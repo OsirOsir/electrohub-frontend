@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom'; // No need to import Router
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -26,26 +26,24 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Navbar addToCart={addToCart} cartItems={cart.length} /> {/* Pass cart item count to Navbar */}
-        <div className="main-content">
-          <Routes>
-            <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/" element={
-              <div>
-                <OfferSection items={items} />
-                <ItemsAll items={items} addToCart={addToCart} />
-              </div>
-            } />
-            {/* Default route */}
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
+      <Navbar addToCart={addToCart} cartItems={cart.length} /> {/* Pass cart item count to Navbar */}
+      <div className="main-content">
+        <Routes>
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/" element={
+            <div>
+              <OfferSection items={items} />
+              <ItemsAll items={items} addToCart={addToCart} />
+            </div>
+          } />
+          {/* Default route */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }

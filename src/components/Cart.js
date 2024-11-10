@@ -3,17 +3,15 @@ import Checkout from './Checkout';
 import './Cart.css';
 
 const Cart = ({ cartItems, onClose, onCheckout, username }) => {
-  const [cart, setCart] = useState(cartItems);
+  const [cart, setCart] = useState(cartItems || []); // Ensure cart is initialized as an empty array
   const [isCheckout, setIsCheckout] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [isCartEmpty, setIsCartEmpty] = useState(false);
 
-  
   useEffect(() => {
     setIsCartEmpty(cart.length === 0);
   }, [cart]);
 
-  
   const handleQuantityChange = (index, event) => {
     const newQuantity = parseInt(event.target.value, 10);
     if (newQuantity >= 1) {
@@ -23,24 +21,20 @@ const Cart = ({ cartItems, onClose, onCheckout, username }) => {
     }
   };
 
-  
   const handleRemoveItem = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
     setCart(updatedCart);
   };
 
-  
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
-  
   const handleProceedToCheckout = () => {
     if (cart.length === 0) return;
     setIsCheckout(true); 
   };
 
-  
   const handleConfirmPurchase = (orderDetails) => {
     setSuccessMessage("Your order has been successfully placed!");
     const orderSummary = { cartItems: cart, ...orderDetails }; 
@@ -62,7 +56,7 @@ const Cart = ({ cartItems, onClose, onCheckout, username }) => {
         ) : (
           <>
             <ul className="cart-items">
-              {cart.map((item, index) => (
+              {Array.isArray(cart) && cart.map((item, index) => (
                 <li key={index} className="cart-item">
                   <div>{item.name}</div>
                   <div>${item.price}</div>
@@ -95,7 +89,6 @@ const Cart = ({ cartItems, onClose, onCheckout, username }) => {
 
         {successMessage && <p className="success-message">{successMessage}</p>}
 
-    
         {isCheckout && (
           <Checkout
             onConfirmPurchase={handleConfirmPurchase}
