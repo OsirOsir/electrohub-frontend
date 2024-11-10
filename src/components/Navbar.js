@@ -9,6 +9,7 @@ const NavBar = () => {
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
   const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
+  const [role, setRole] = useState(""); // Store logged-in user's role
 
   // Placeholder function for handling search
   const handleSearch = (event) => {
@@ -30,7 +31,14 @@ const NavBar = () => {
   const handleSignOut = () => {
     setIsAuthenticated(false); // Reset authentication status
     setUsername(""); // Reset username
+    setRole(""); // Clear role
     console.log("User signed out");
+  };
+  // Function to handle successful authentication (sign-in or sign-up)
+  const handleAuthChange = (status, username, role) => {
+    setIsAuthenticated(status);
+    setUsername(username);
+    setRole(role);
   };
 
   // Placeholder for handling cart actions
@@ -80,7 +88,7 @@ const NavBar = () => {
         <div className="auth-buttons">
           {isAuthenticated ? (
             <>
-              <span className="welcome-message">{username}</span>
+              <span className="welcome-message">{role === "admin" ? "Admin" : username}</span>
               <button onClick={handleSignOut} className="auth-button">
                 {/* <img src="/Icons/user.png" alt="User Icon" className="user-icon" />  */}
                 Sign Out
@@ -105,10 +113,7 @@ const NavBar = () => {
         <AuthModal
           mode={authMode}
           onClose={() => setShowAuthModal(false)}
-          onAuthChange={(status, username) => {
-            setIsAuthenticated(status);
-            setUsername(username); // Update username
-          }}
+          onAuthChange={handleAuthChange}
         />
       )}
     </nav>

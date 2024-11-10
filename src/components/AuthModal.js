@@ -29,7 +29,7 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         const data = await response.json();
         console.log("User signed up:", data);
         setSuccessMessage(`Successfully signed up ${userData.username}`);
-        onAuthChange(true, userData.username); // Set as authenticated
+        onAuthChange(true, userData.username, userData.role); // Set as authenticated (// Assuming the user is a normal user)
         setTimeout(() => {
           onClose(); // Close the modal
         }, 2000); // 2-second delay 
@@ -53,7 +53,7 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         if (user.password === password) {
           console.log("User signed in:", user);
           setSuccessMessage(`Successfully logged in ${user.username}`);
-          onAuthChange(true, user.username); // Set as authenticated
+          onAuthChange(true, user.username, user.role); // Set as authenticated, // Return the role with username
 
           setTimeout(() => {
             onClose(); // Close the modal
@@ -122,6 +122,13 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
             onChange={handleChange}
             required
           />
+          {authMode === "signUp" && (
+            <select name="role" value={formData.role} onChange={handleChange} required>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          )}
+          
           <button type="submit">{authMode === "signIn" ? "Sign In" : "Sign Up"}</button>
         </form>
         {/* Display success or error messages */}
