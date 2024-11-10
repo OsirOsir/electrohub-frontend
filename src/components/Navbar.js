@@ -1,49 +1,34 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import AuthModal from './AuthModal';
-import Cart from './Cart'; 
-import Checkout from './Checkout'; 
-
-const NavBar = ({ addToCart, cartItems }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState("signIn");
-  const [username, setUsername] = useState("");
-  const [showSearch, setShowSearch] = useState(false);
-  const [showCart, setShowCart] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [orderDetails, setOrderDetails] = useState(null);
-
-  const handleSearch = (event) => {
+import Cart from './Cart';
+import Checkout from './Checkout';
 import SearchResults from './SearchResults';
 
-const NavBar = () => {
+const NavBar = ({ addToCart, cartItems }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  const [cartItems, setCartItems] = useState(0); // Cart item count
+  const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
-  const [username, setUsername] = useState(""); // Store logged-in user's name
-  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [role, setRole] = useState(""); // Store logged-in user's role
+  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [searchResults, setSearchResults] = useState([]); // State for search results
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false); // Toggle visibility of search results
+  const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
+  const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
+  const [orderDetails, setOrderDetails] = useState(null); // Store order details
 
-  // Placeholder function for handling search
+  // Handle Search
   const handleSearch = async (event) => {
     event.preventDefault();
-    const searchTerm = event.target.search.value;
-    console.log("Searching for:", searchTerm);
-    setShowSearch(false);
     const searchTerm = event.target.search.value.trim(); // Get and trim the search term
-  
-    // If the search term is empty, do not make the fetch request
+    
     if (!searchTerm) {
       console.log("Please enter a search term");
-      return; // Prevent fetching data if search term is empty
+      return;
     }
-  
+
     try {
-      // Fetch items from db.json with the search term
       const response = await fetch(
         `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
       );
@@ -53,7 +38,7 @@ const NavBar = () => {
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
-  
+
     setShowSearch(false); // Hide the search input after submit
   };
 
@@ -62,40 +47,42 @@ const NavBar = () => {
     setSearchResults([]); // Clear search results when closing
   };
 
+  // Function to toggle the Auth Modal
   const toggleAuthModal = (mode) => {
     setAuthMode(mode);
     setShowAuthModal(true);
   };
 
+  // Function to handle Sign Out
   const handleSignOut = () => {
     setIsAuthenticated(false);
     setUsername("");
-    setIsAuthenticated(false); // Reset authentication status
-    setUsername(""); // Reset username
-    setRole(""); // Clear role
+    setRole("");
     console.log("User signed out");
   };
-  // Function to handle successful authentication (sign-in or sign-up)
+
+  // Function to handle successful authentication
   const handleAuthChange = (status, username, role) => {
     setIsAuthenticated(status);
     setUsername(username);
     setRole(role);
   };
 
-  const handleCart = () => {
-    setShowCart(!showCart);
-  };
-
+  // Toggle visibility of search bar
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
 
+  // Handle Cart and Checkout
+  const handleCart = () => {
+    setShowCart(!showCart);
+  };
+
   const handleCheckout = (billingInfo) => {
-    
     const paymentInfo = {
       ...billingInfo,
       paymentStatus: 'Success',
-      transactionId: Math.random().toString(36).substring(7),  
+      transactionId: Math.random().toString(36).substring(7), 
       totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), 
     };
 
@@ -106,14 +93,17 @@ const NavBar = () => {
       billingInfo,
     };
 
-    setOrderDetails(invoice);  
-    setShowCheckout(false);    
+    setOrderDetails(invoice);
+    setShowCheckout(false);  
     alert(`Payment Successful! Order ID: ${paymentInfo.transactionId}`);
   };
 
   return (
     <nav className="navbar">
+      {/* Site Logo or Name */}
       <div className="navbar-logo">ElectroHub</div>
+
+      {/* Categories */}
       <ul className="navbar-links">
         <li>Smartphones</li>
         <li>PCs</li>
@@ -124,9 +114,10 @@ const NavBar = () => {
       </ul>
 
       <div className="navbar-actions">
+        {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={() => setShowSearch(true)}>
+            <button className="search-icon" onClick={toggleSearch}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}
@@ -140,10 +131,10 @@ const NavBar = () => {
           )}
         </div>
 
+        {/* Auth Buttons */}
         <div className="auth-buttons">
           {isAuthenticated ? (
             <>
-              <span className="welcome-message">Welcome, {username}</span>
               <span className="welcome-message">{role === "admin" ? "Admin" : username}</span>
               <button onClick={handleSignOut} className="auth-button">
                 Sign Out
@@ -156,24 +147,28 @@ const NavBar = () => {
           )}
         </div>
 
+        {/* Cart Icon with Checkout and Payment */}
         <div className="navbar-icons" onClick={handleCart}>
           <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" />
           <span>{cartItems.length}</span>
         </div>
       </div>
 
+      {/* Show Auth Modal */}
       {showAuthModal && (
         <AuthModal
           mode={authMode}
           onClose={() => setShowAuthModal(false)}
-          onAuthChange={(status, username) => {
-            setIsAuthenticated(status);
-            setUsername(username);
-          }}
           onAuthChange={handleAuthChange}
         />
       )}
 
+      {/* Display Search Results */}
+      {showResults && (
+        <SearchResults results={searchResults} onClose={closeSearchResults} />
+      )}
+
+      {/* Show Cart */}
       {showCart && (
         <Cart
           cartItems={cartItems}
@@ -183,6 +178,7 @@ const NavBar = () => {
         />
       )}
 
+      {/* Show Checkout */}
       {showCheckout && (
         <Checkout
           cartItems={cartItems}
@@ -191,6 +187,7 @@ const NavBar = () => {
         />
       )}
 
+      {/* Show Order Invoice */}
       {orderDetails && (
         <div className="invoice">
           <h2>Invoice</h2>
@@ -203,10 +200,6 @@ const NavBar = () => {
           <p>Total: ${orderDetails.totalAmount}</p>
           <p>Billing Address: {orderDetails.billingInfo.address}, {orderDetails.billingInfo.city}, {orderDetails.billingInfo.country}</p>
         </div>
-      )}
-      {/* Display Search Results */}
-      {showResults && (
-        <SearchResults results={searchResults} onClose={closeSearchResults} />
       )}
     </nav>
   );
