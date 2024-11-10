@@ -7,11 +7,11 @@ const Support = () => {
     <div className="support-container">
       <h1>Customer Support</h1>
       <div className="support-links">
+
+
         <Link to="/warranty" className="support-item">
           <div className="support-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-              <path fill="black" d="M12 0L2 4v16l10 4 10-4V4l-10-4zM12 18l-8-3v-6l8 3 8-3v6l-8 3z"/>
-            </svg>
+          <img src="/Icons/warranty.png" alt="warranty Icon" className="warranty-icon-img" />
           </div>
           <h2>Warranty</h2>
           <p>Check local warranty policy protection</p>
@@ -19,25 +19,23 @@ const Support = () => {
 
         <Link to="/order-support" className="support-item">
           <div className="support-icon">
-            <img 
-              src="https://cdn-icons-png.flaticon.com/512/3000/3000345.png" 
-              alt="Order Tracking"
-              width="40"
-              height="40"
-            />
+          <img src="/Icons/support.png" alt="support Icon" className="support-icon-img" />
           </div>
           <h2>Order Support</h2>
           <p>Check order progress</p>
         </Link>
 
         <Link to="/FAQs" className="support-item">
-          <div className="support-icon">✉ </div>
+
+          <div className="support-icon"></div>
+          <img src="/Icons/faq.png" alt="FAQ Icon" className="faq-icon-img" />
           <h2>FAQs</h2>
           <p>Get help from frequently asked questions</p>
         </Link>
 
         <Link to="/Customer-Feedback" className="support-item">
-          <div className="support-icon">👩‍🔬 </div>
+        <img src="/Icons/feedback.png" alt="Customer Feedback Icon" className="feedback-icon-img" />
+          <div className="support-icon"></div>
           <h2>Customer Feedback</h2>
           <p>Help Us Serve You Better!</p>
         </Link>

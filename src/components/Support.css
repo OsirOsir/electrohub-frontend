@@ -1,31 +1,50 @@
-/* Support.css */
-
+/* Base Styles */
 body {
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   font-family: Arial, sans-serif;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
-.support-container, .warranty-container, .ordersupport-container, .faq-container, .feedback-form {
-  max-width: 800px;
+/* Containers */
+.support-container {
+  max-width: 1850px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.support-container h1, .warranty-container h1, .faq-container h1, .feedback-form h1 {
-  font-size: 2rem;
   color: #333;
-  text-align: center;
-  margin-bottom: 10px;
-  display: flexbox;
-  
 }
 
+/* Unified Form Container Styling */
+.feedback-form,
+.warranty-container,
+.ordersupport-container,
+.faq-container {
+  max-width: 950px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Form Heading Styling */
+.support-container h1,
+.feedback-form h1,
+.warranty-container h1,
+.ordersupport-container h1,
+.faq-container h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Support Links */
 .support-links {
   display: flex;
   flex-wrap: wrap;
@@ -33,6 +52,7 @@ body {
   justify-content: space-around;
 }
 
+/* Support Item Styles */
 .support-item {
   text-align: center;
   padding: 20px;
@@ -44,40 +64,31 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.support-item:hover h2 {
+.support-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.support-item h2:hover {
   color: red;
-  /* transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); */
 }
 
-.support-icon {
-  font-size: 2rem;
+/* Icon Styles */
+.support-icon,
+.faq-icon-img {
+  width: 34px;
+  height: 34px;
   margin-bottom: 10px;
+  object-fit: contain;
 }
 
-.warranty-container h2, .faq-container h2, .feedback-form h2 {
-  font-size: 1.5rem;
-  margin-top: 20px;
+.faq-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.warranty-table {
-  width: 100%;
-  margin: 20px 0;
-  border-collapse: collapse;
-  background-color: #f9f9f9;
-}
-
-.warranty-table th, .warranty-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-
-.warranty-table th {
-  background-color: #333;
-  color: white;
-}
-
+/* FAQ and Form Styling */
 .faq-list {
   margin-top: 20px;
 }
@@ -99,7 +110,10 @@ body {
   margin-top: 5px;
 }
 
-.toggle-faqs-btn {
+.toggle-faqs-btn,
+.feedback-form button,
+.warranty-container button,
+.ordersupport-container button {
   padding: 10px 15px;
   font-size: 1rem;
   color: #fff;
@@ -110,18 +124,31 @@ body {
   transition: background-color 0.3s;
 }
 
-.toggle-faqs-btn:hover {
+.toggle-faqs-btn:hover,
+.feedback-form button:hover,
+.warranty-container button:hover,
+.ordersupport-container button:hover {
   background-color: #555;
 }
 
-.feedback-form label {
+/* Label and Input Styling for Forms */
+.feedback-form label,
+.warranty-container label,
+.ordersupport-container label,
+.faq-container label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  
 }
 
-.feedback-form input, .feedback-form textarea {
+.feedback-form input,
+.feedback-form textarea,
+.warranty-container input,
+.warranty-container textarea,
+.ordersupport-container input,
+.ordersupport-container textarea,
+.faq-container input,
+.faq-container textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -130,96 +157,95 @@ body {
   font-size: 1rem;
 }
 
-.feedback-form button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #333;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.feedback-form button:hover {
-  background-color: #555;
-}
-
-/* OrderTracking.css */
-
-body {
-  background-color: #ffffff;
-}
-
-.ordersupport-container {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #ffffff;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.ordersupport-container h1 {
-  font-size: 2em;
-  color: black;
-  margin-bottom: 0.5em;
-  text-align: center;
-}
-
-.ordersupport-container h2 {
-  font-size: 1.5em;
-  color: black;
-  margin-top: 1.5em;
-}
-
-.ordersupport-container p {
-  margin-bottom: 1em;
-  color: #666;
-}
-
-.ordersupport-container ul {
-  list-style: disc;
-  margin-left: 20px;
-  margin-bottom: 1.5em;
-  color: #444;
-}
-
-.ordersupport-container li {
-  margin-bottom: 0.5em;
-}
-
-.ordersupport-container a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.ordersupport-container a:hover {
-  text-decoration: underline;
-}
-
-.ordersupport-container strong {
-  color: #333;
-}
 
 
-
-body {
+.warranty-table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
   background-color: #f9f9f9;
 }
 
-.support-container {
-  font-family: Arial, sans-serif;
-  color: #333;
-  padding: 40px;
-  max-width: 1850px;
-  margin: 0 auto;
-  text-align: center;
+.warranty-table th, .warranty-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
 }
 
-.support-container h1 {
-  font-size: 2.5em;
-  color: #0073e6;
-  margin-bottom: 1em;
-  text-align: center;
+.warranty-table th {
+  background-color: #333;
+  color: white;
+}
+
+
+
+/* Icon Styles */
+.support-icon,
+.support-icon-img,
+.faq-icon-img {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px auto;
+  display: block;
+}
+
+/* SVG Icons */
+.support-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: #333;
+}
+
+/* FAQ and Text-based Icons */
+.faq-icon,
+.support-icon {
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.faq-icon-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Headings and Descriptions */
+.support-item h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.support-item p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.warranty-icon-img,
+.feedback-icon-img,
+.faq-icon-img,
+.support-icon-img {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* SVG Icons */
+.support-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: #333;
+}
+
+/* Headings and Descriptions */
+.support-item h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.support-item p {
+  font-size: 0.9rem;
+  color: #666;
 }
