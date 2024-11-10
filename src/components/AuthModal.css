@@ -44,12 +44,18 @@
   border: none;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.2); /* Lightly tinted input background */
-  color: #fff;
+  color: #0000FF; /* Default blue color for text */
+}
+.modal-content form select {
+  appearance: none; /* Remove default dropdown styling for custom appearance */
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .modal-content form input::placeholder,
 .modal-content form select option {
-  color: #d0e7f4; /* Light placeholder color */
+  color: #aed3e9; /* Light placeholder color */
+  font-weight: bolder;
 }
 
 .modal-content form select {
