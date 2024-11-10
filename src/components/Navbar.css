@@ -100,11 +100,17 @@
   cursor: pointer;
   padding: 0.5rem;
 }
+.welcome-message {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1f6ed4; /* Optional: Change to match the brand color */
+}
 
 .auth-button {
   background: none;
   border: none;
-  color: white;
+  padding-left: 40px;
+  color: #1f6ed4;
   font-size: 1rem;
   display: flex;
   align-items: center;

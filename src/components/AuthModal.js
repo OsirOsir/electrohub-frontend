@@ -29,10 +29,10 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         const data = await response.json();
         console.log("User signed up:", data);
         setSuccessMessage(`Successfully signed up ${userData.username}`);
-        onAuthChange(true); // Set as authenticated
+        onAuthChange(true, userData.username); // Set as authenticated
         setTimeout(() => {
           onClose(); // Close the modal
-        }, 2000); // 2-second delay (adjust as needed)
+        }, 2000); // 2-second delay 
       } else {
         setErrorMessage("Failed to sign up. User may already exist.");
       }
@@ -53,11 +53,11 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         if (user.password === password) {
           console.log("User signed in:", user);
           setSuccessMessage(`Successfully logged in ${user.username}`);
-          onAuthChange(true); // Set as authenticated
+          onAuthChange(true, user.username); // Set as authenticated
 
           setTimeout(() => {
             onClose(); // Close the modal
-          }, 2000); // 2-second delay (adjust as needed)
+          }, 2000); // 2-second delay 
         } else {
           setErrorMessage("Incorrect password. Please try again.");
         }
