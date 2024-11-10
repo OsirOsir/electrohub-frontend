@@ -1,6 +1,3 @@
-import React, { useState, useEffect} from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
@@ -8,7 +5,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OfferSection from './components/OfferSection';
 import ItemsAll from './components/ItemsAll';
-// import ItemDetails from './components/ItemDetails';
 import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Contact from './components/pages/Contact';
@@ -18,7 +14,6 @@ function App() {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
 
-  
   useEffect(() => {
     fetch("http://localhost:8001/items")
       .then(response => response.json())
@@ -31,17 +26,8 @@ function App() {
 
   return (
     <div className="App">
-      <OfferSection items={items}/>
-      <ItemsAll items={items}/>
-      {/* <Router>
-        <Routes>
-          <Route path="/item-details/:id" element={items.map((item) => (
-                    <ItemDetails key={item.id} item={item} />
-                ))}/>
-        </Routes>
-      </Router> */}
       <Router>
-        <Navbar addToCart={addToCart} cartItems={cart} /> {/* Passing cart and addToCart to Navbar */}
+        <Navbar addToCart={addToCart} cartItems={cart.length} /> {/* Pass cart item count to Navbar */}
         <div className="main-content">
           <Routes>
             <Route path="/terms" element={<TermsAndConditions />} />
