@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./OrderSupport";  // Import the CSS file
+import React from "react";
+import "./OrderSupport";
 
 const faqData = [
   { question: "How can I place an order?", answer: "Placing an order is easy! Simply browse our website, select the products you want, add them to your cart, and proceed to checkout." },
@@ -11,25 +11,13 @@ const faqData = [
 ];
 
 function FAQsPage() {
-  const [showFAQs, setShowFAQs] = useState(false);
-
-  const toggleFAQs = () => {
-    setShowFAQs(prevShowFAQs => !prevShowFAQs);
-  };
-
   return (
     <div className="faq-container">
-      <h1>Frequently Asked Questions</h1>
-      <button onClick={toggleFAQs} className="toggle-faqs-btn">
-        {showFAQs ? "Hide FAQs" : "Show FAQs"}
-      </button>
-      {showFAQs && (
-        <div className="faq-list">
-          {faqData.map((faq, index) => (
-            <FAQ key={index} question={faq.question} answer={faq.answer} />
-          ))}
-        </div>
-      )}
+      <div className="faq-list">
+        {faqData.map((faq, index) => (
+          <FAQ key={index} question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Support.css";  // Import the CSS file 
+import "./Support.css";
 
 
 function FeedbackPage() {
