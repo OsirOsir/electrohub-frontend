@@ -81,6 +81,12 @@
       "email": "calebk@gmail.com",
       "password": "12345",
       "role": "admin"
+    },
+    {
+      "id": "1fd1",
+      "username": "Osir ",
+      "email": "anneWairimu@gmail.com",
+      "password": "12345"
     }
   ],
   "items": [
