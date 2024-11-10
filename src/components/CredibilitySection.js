@@ -4,15 +4,15 @@ import './CredibilitySection.css';
 const CredibilitySection = () => {
   const features = [
     {
-      icon: '🚚', 
+      icon: '/Icons/fast-delivery.png', 
       text: 'Fast delivery time',
     },
     {
-      icon: '⭐', 
+      icon: '/Icons/token.png', 
       text: 'Reward points on item purchase',
     },
     {
-      icon: '🛡️', 
+      icon: '/Icons/shield.png', 
       text: 'No fuss warranty',
     },
   ];
@@ -21,7 +21,9 @@ const CredibilitySection = () => {
     <div className="credibility-section">
       {features.map((feature, index) => (
         <div key={index} className="feature">
-          <div className="icon">{feature.icon}</div>
+          <div className="icon">
+            <img src={feature.icon} alt={feature.text} className="feature-icon" />
+          </div>
           <p>{feature.text}</p>
         </div>
       ))}
