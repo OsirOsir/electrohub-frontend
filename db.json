@@ -47,6 +47,12 @@
       "username": "Fidel",
       "email": "fidel@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "8ca6",
+      "username": "Robert",
+      "email": "robert@gmail.com",
+      "password": "12345"
     }
   ],
   "items": [
