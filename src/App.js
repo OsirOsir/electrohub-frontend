@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom'; // Import only necessary components
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -11,7 +11,7 @@ import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Contact from './components/pages/Contact';
 import AboutUs from './components/pages/AboutUs';
-import Support from './components/Support';
+import Support from './components/Support'; // import Support as the customer support card
 import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
@@ -34,7 +34,7 @@ const App = () => {
     <div className="App">
       <Navbar addToCart={addToCart} cartItems={cart.length} />
       <CredibilitySection />
-      
+
       {/* Main content */}
       <main className="main-content">
         <Routes>
@@ -46,12 +46,12 @@ const App = () => {
             </div>
           } />
 
-          {/* Customer Support Routes */}
+          {/* Customer Support Pages */}
           <Route path="/FAQs" element={<FAQsPage />} />
           <Route path="/Customer-Feedback" element={<FeedbackPage />} />
+          <Route path="/support" element={<Support />} /> {/* keep this route for standalone access */}
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/order-support" element={<OrderSupport />} />
-          <Route path="/support" element={<Support />} />
 
           {/* Other Pages */}
           <Route path="/terms" element={<TermsAndConditions />} />
@@ -62,6 +62,9 @@ const App = () => {
           {/* Default Route */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+
+        {/* Customer Support Card */}
+        <Support />
       </main>
 
       <Footer />
