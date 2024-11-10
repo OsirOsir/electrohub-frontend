@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./FAQsPage.css";  // Import the CSS file
 
 const faqData = [
   { question: "How can I place an order?", answer: "Placing an order is easy! Simply browse our website, select the products you want, add them to your cart, and proceed to checkout." },
@@ -13,17 +14,17 @@ function FAQsPage() {
   const [showFAQs, setShowFAQs] = useState(false);
 
   const toggleFAQs = () => {
-    setShowFAQs(!showFAQs);
+    setShowFAQs(prevShowFAQs => !prevShowFAQs);
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <button onClick={toggleFAQs} style={{ padding: "10px 20px", cursor: "pointer" }}>
-        {showFAQs ? "Hide FAQs" : "Get help from frequently asked questions"}
+    <div className="faq-container">
+      <h1>Frequently Asked Questions</h1>
+      <button onClick={toggleFAQs} className="toggle-faqs-btn">
+        {showFAQs ? "Hide FAQs" : "Show FAQs"}
       </button>
-      
       {showFAQs && (
-        <div className="faq-list" style={{ marginTop: "20px", textAlign: "left", maxWidth: "600px", margin: "20px auto" }}>
+        <div className="faq-list">
           {faqData.map((faq, index) => (
             <FAQ key={index} question={faq.question} answer={faq.answer} />
           ))}
@@ -35,9 +36,9 @@ function FAQsPage() {
 
 function FAQ({ question, answer }) {
   return (
-    <div style={{ borderBottom: "1px solid #ddd", paddingBottom: "10px", marginBottom: "10px" }}>
-      <div style={{ fontWeight: "bold", marginBottom: "5px" }}>{question}</div>
-      <div>{answer}</div>
+    <div className="faq-item">
+      <div className="question">{question}</div>
+      <div className="answer">{answer}</div>
     </div>
   );
 }

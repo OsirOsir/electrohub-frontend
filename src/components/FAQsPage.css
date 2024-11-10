@@ -1,0 +1,110 @@
+/* FAQsPage.css */
+
+/* General styling for the FAQ container */
+.faq-container {
+    background-color: #f9f9f9; /* Light background for the FAQ section */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+  }
+  
+  /* Title Styling */
+  .faq-container h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+    
+  }
+  
+  /* Styling for the toggle button */
+  .toggle-faqs-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+  
+  .toggle-faqs-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* FAQ List styling */
+  .faq-list {
+    margin-top: 20px;
+  }
+  
+  /* Individual FAQ item styling */
+  .faq-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item .question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .faq-item .answer {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Styling for the Customer Support section */
+  .support-container {
+    padding: 30px;
+    background-color: #f2f2f2;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .support-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Styling for the support links */
+  .support-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .support-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .support-item h2 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .support-item .CustomerSupport-icon {
+    font-size: 40px;
+    color: #007bff;
+  }
+  
+  .support-item:hover {
+    background-color: #f0f0f0;
+  }
+  

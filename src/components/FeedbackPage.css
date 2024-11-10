@@ -1,0 +1,74 @@
+/* Main container for the feedback button and form */
+.feedback-container {
+    position: absolute;
+    bottom: 100px; /* Position above the footer */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+/* Style for the feedback button */
+.customer-feedback-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.customer-feedback-button:hover {
+    background-color: #0056b3;
+}
+  
+/* Style for the feedback form */
+.feedback-form {
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px; /* Space above the button */
+}
+
+/* Form field styling */
+.feedback-form div {
+    margin-bottom: 15px;
+}
+
+.feedback-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.feedback-form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-form button[type="submit"]:hover {
+    background-color: #218838;
+}
