@@ -80,7 +80,7 @@ const NavBar = () => {
         <div className="auth-buttons">
           {isAuthenticated ? (
             <>
-              <span className="welcome-message">Welcome, {username}</span>
+              <span className="welcome-message">{username}</span>
               <button onClick={handleSignOut} className="auth-button">
                 {/* <img src="/Icons/user.png" alt="User Icon" className="user-icon" />  */}
                 Sign Out
