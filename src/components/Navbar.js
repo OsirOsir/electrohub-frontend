@@ -7,6 +7,7 @@ const NavBar = () => {
   const [cartItems, setCartItems] = useState(0); // Cart item count
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
+  const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
 
   // Placeholder function for handling search
@@ -28,6 +29,7 @@ const NavBar = () => {
   // Function to handle Sign Out
   const handleSignOut = () => {
     setIsAuthenticated(false); // Reset authentication status
+    setUsername(""); // Reset username
     console.log("User signed out");
   };
 
@@ -77,9 +79,13 @@ const NavBar = () => {
         {/* Auth Buttons */}
         <div className="auth-buttons">
           {isAuthenticated ? (
-            <button onClick={handleSignOut} className="auth-button">
-              <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> Sign Out
-            </button>
+            <>
+              <span className="welcome-message">{username}</span>
+              <button onClick={handleSignOut} className="auth-button">
+                {/* <img src="/Icons/user.png" alt="User Icon" className="user-icon" />  */}
+                Sign Out
+              </button>
+            </>
           ) : (
             <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
               <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
@@ -99,7 +105,10 @@ const NavBar = () => {
         <AuthModal
           mode={authMode}
           onClose={() => setShowAuthModal(false)}
-          onAuthChange={(status) => setIsAuthenticated(status)}
+          onAuthChange={(status, username) => {
+            setIsAuthenticated(status);
+            setUsername(username); // Update username
+          }}
         />
       )}
     </nav>

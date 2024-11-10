@@ -38,6 +38,8 @@
   transition: all 0.3s ease-in-out;
   /* Smooth transition for hover */
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 
 .navbar-links li:hover {
@@ -94,17 +96,26 @@
   color: white;
   margin-left: 5px;
 }
+.auth-buttons {
+ color: rgba(0, 0, 0, 0.4);
+}
 
 .auth-buttons,
 .navbar-icons {
   cursor: pointer;
   padding: 0.5rem;
 }
+.welcome-message {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1f6ed4; /* Optional: Change to match the brand color */
+}
 
 .auth-button {
   background: none;
   border: none;
-  color: white;
+  padding-left: 10px;
+  color: #1f6ed4;
   font-size: 1rem;
   display: flex;
   align-items: center;

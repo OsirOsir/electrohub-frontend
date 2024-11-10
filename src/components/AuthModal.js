@@ -11,6 +11,7 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrorMessage(""); // Clear error message on input change
+    setSuccessMessage(""); // Clear success message on input change
   };
 
   // Sign Up function
@@ -27,9 +28,11 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("User signed up:", data);
-        setSuccessMessage("Successfully signed up");
-        onAuthChange(true); // Set as authenticated
-        onClose(); // Close the modal
+        setSuccessMessage(`Successfully signed up ${userData.username}`);
+        onAuthChange(true, userData.username); // Set as authenticated
+        setTimeout(() => {
+          onClose(); // Close the modal
+        }, 2000); // 2-second delay 
       } else {
         setErrorMessage("Failed to sign up. User may already exist.");
       }
@@ -49,9 +52,12 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         const user = data[0];
         if (user.password === password) {
           console.log("User signed in:", user);
-          setSuccessMessage("Successfully logged in");
-          onAuthChange(true); // Set as authenticated
-          onClose(); // Close the modal
+          setSuccessMessage(`Successfully logged in ${user.username}`);
+          onAuthChange(true, user.username); // Set as authenticated
+
+          setTimeout(() => {
+            onClose(); // Close the modal
+          }, 2000); // 2-second delay 
         } else {
           setErrorMessage("Incorrect password. Please try again.");
         }
@@ -121,7 +127,7 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         {/* Display success or error messages */}
         {successMessage && <p className="success-message">{successMessage}</p>}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        
+
         <button onClick={toggleMode}>
           {authMode === "signIn" ? "Need an account? Sign Up" : "Already have an account? Sign In"}
         </button>

@@ -1,20 +1,58 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "User 1",
-      "user_role": "Admin"
+      "id": "277c",
+      "username": "Philip Osir",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
     },
     {
-      "id": "2",
-      "username": "User 2",
-      "user_role": "Regular"
+      "id": "8d55",
+      "username": "Alice Atieno",
+      "email": "alice@gmail.com",
+      "password": "1234"
     },
     {
-      "id": "02a6",
-      "username": "messi",
-      "email": "messi@gmail.com",
-      "password": "messi123"
+      "id": "bdc5",
+      "username": "Osir ",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
+    },
+    {
+      "id": "c761",
+      "username": "Benard",
+      "email": "benard@gmail.com",
+      "password": "1111"
+    },
+    {
+      "id": "5b63",
+      "username": "Joshua",
+      "email": "joshua@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "8841",
+      "username": "Onger",
+      "email": "onger@gmail.com",
+      "password": "philipotieno"
+    },
+    {
+      "id": "69b7",
+      "username": "Caleb",
+      "email": "caleb@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "e9e7",
+      "username": "Fidel",
+      "email": "fidel@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "8ca6",
+      "username": "Robert",
+      "email": "robert@gmail.com",
+      "password": "12345"
     }
   ],
   "items": [
