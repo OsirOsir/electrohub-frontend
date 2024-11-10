@@ -1,54 +1,69 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import AuthModal from './AuthModal';
+import Cart from './Cart'; 
+import Checkout from './Checkout'; 
 
-const NavBar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  const [cartItems, setCartItems] = useState(0); // Cart item count
-  const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
-  const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
-  const [username, setUsername] = useState(""); // Store logged-in user's name
-  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
+const NavBar = ({ addToCart, cartItems }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState("signIn");
+  const [username, setUsername] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);
 
-  // Placeholder function for handling search
   const handleSearch = (event) => {
     event.preventDefault();
     const searchTerm = event.target.search.value;
     console.log("Searching for:", searchTerm);
-
-    // After submitting the search, hide the input and show the icon again
     setShowSearch(false);
   };
 
-  // Function to toggle the Auth Modal
   const toggleAuthModal = (mode) => {
     setAuthMode(mode);
     setShowAuthModal(true);
   };
 
-  // Function to handle Sign Out
   const handleSignOut = () => {
-    setIsAuthenticated(false); // Reset authentication status
-    setUsername(""); // Reset username
+    setIsAuthenticated(false);
+    setUsername("");
     console.log("User signed out");
   };
 
-  // Placeholder for handling cart actions
   const handleCart = () => {
-    console.log("Navigating to cart and checkout");
+    setShowCart(!showCart);
   };
 
-  // Toggle the visibility of the search input
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
 
+  const handleCheckout = (billingInfo) => {
+    
+    const paymentInfo = {
+      ...billingInfo,
+      paymentStatus: 'Success',
+      transactionId: Math.random().toString(36).substring(7),  
+      totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), 
+    };
+
+    const invoice = {
+      transactionId: paymentInfo.transactionId,
+      items: cartItems,
+      totalAmount: paymentInfo.totalAmount,
+      billingInfo,
+    };
+
+    setOrderDetails(invoice);  
+    setShowCheckout(false);    
+    alert(`Payment Successful! Order ID: ${paymentInfo.transactionId}`);
+  };
+
   return (
     <nav className="navbar">
-      {/* Site Logo or Name */}
       <div className="navbar-logo">ElectroHub</div>
-
-      {/* Categories */}
       <ul className="navbar-links">
         <li>Smartphones</li>
         <li>PCs</li>
@@ -59,7 +74,6 @@ const NavBar = () => {
       </ul>
 
       <div className="navbar-actions">
-        {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
             <button className="search-icon" onClick={toggleSearch}>
@@ -76,40 +90,67 @@ const NavBar = () => {
           )}
         </div>
 
-        {/* Auth Buttons */}
         <div className="auth-buttons">
           {isAuthenticated ? (
             <>
-              <span className="welcome-message">{username}</span>
+              <span className="welcome-message">Welcome, {username}</span>
               <button onClick={handleSignOut} className="auth-button">
-                {/* <img src="/Icons/user.png" alt="User Icon" className="user-icon" />  */}
                 Sign Out
               </button>
             </>
           ) : (
             <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
-              <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
+              <img src="/Icons/user.png" alt="User Icon" className="user-icon" />
             </button>
           )}
         </div>
 
-        {/* Cart Icon with Checkout and Payment */}
         <div className="navbar-icons" onClick={handleCart}>
-          <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" /> <span>{cartItems}</span>
+          <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" />
+          <span>{cartItems.length}</span>
         </div>
       </div>
 
-
-      {/* Show Auth Modal */}
       {showAuthModal && (
         <AuthModal
           mode={authMode}
           onClose={() => setShowAuthModal(false)}
           onAuthChange={(status, username) => {
             setIsAuthenticated(status);
-            setUsername(username); // Update username
+            setUsername(username);
           }}
         />
+      )}
+
+      {showCart && (
+        <Cart
+          cartItems={cartItems}
+          username={username}
+          onClose={() => setShowCart(false)}
+          onCheckout={() => setShowCheckout(true)}
+        />
+      )}
+
+      {showCheckout && (
+        <Checkout
+          cartItems={cartItems}
+          username={username}
+          handleCheckout={handleCheckout}
+        />
+      )}
+
+      {orderDetails && (
+        <div className="invoice">
+          <h2>Invoice</h2>
+          <p>Order ID: {orderDetails.transactionId}</p>
+          <ul>
+            {orderDetails.items.map((item, index) => (
+              <li key={index}>{item.name} - ${item.price}</li>
+            ))}
+          </ul>
+          <p>Total: ${orderDetails.totalAmount}</p>
+          <p>Billing Address: {orderDetails.billingInfo.address}, {orderDetails.billingInfo.city}, {orderDetails.billingInfo.country}</p>
+        </div>
       )}
     </nav>
   );

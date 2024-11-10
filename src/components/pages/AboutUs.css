@@ -2,7 +2,7 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #f9f9f6; 
+  background-color: #f5f5dc;  /* Cream white background */
   border-radius: 8px; 
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 2rem;
   margin-bottom: 15px;
-  color: #0F144C;
+  color: #0F144C;  /* Dark text for contrast */
 }
 
 .about-us-description {
@@ -19,6 +19,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 30px;
+  color: #0F144C;  /* Dark text for readability */
 }
 
 .achievements-list {
@@ -26,6 +27,7 @@
   padding-left: 0;
   margin: 0;
   font-size: 1.1rem;
+  color: #0F144C;  /* Dark text for readability */
 }
 
 .achievements-list li {
@@ -50,10 +52,10 @@
 
 .social-icon {
   font-size: 1.8rem;
-  color: #000;
+  color: #0F144C;  /* Dark icons for contrast */
   transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #0F144C;
+  color: #000;  /* Darker color on hover for contrast */
 }

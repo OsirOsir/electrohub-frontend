@@ -53,6 +53,18 @@
       "username": "Robert",
       "email": "robert@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "03c4",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
+    },
+    {
+      "id": "3d96",
+      "username": "JM",
+      "email": "jm@gmail.com",
+      "password": "jm123"
     }
   ],
   "items": [
