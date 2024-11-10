@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./FeedbackPage.css";  // Import the CSS file 
+
 
 function FeedbackPage() {
   const [formData, setFormData] = useState({
