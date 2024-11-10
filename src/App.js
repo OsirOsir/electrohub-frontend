@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import OfferSection from './components/OfferSection';
 import ItemsAll from './components/ItemsAll';
+// import ItemDetails from './components/ItemDetails';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -17,6 +19,13 @@ function App() {
     <div className="App">
       <OfferSection items={items}/>
       <ItemsAll items={items}/>
+      {/* <Router>
+        <Routes>
+          <Route path="/item-details/:id" element={items.map((item) => (
+                    <ItemDetails key={item.id} item={item} />
+                ))}/>
+        </Routes>
+      </Router> */}
     </div>
   );
 }

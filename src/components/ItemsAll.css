@@ -3,3 +3,12 @@
     margin: 20px 50px 20px 50px;
     border-radius: 20px;
 }
+
+.all-items h1{
+    padding-top: 20px;
+}
+
+.items-display{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}

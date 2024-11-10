@@ -1,6 +1,11 @@
+.item-card{
+    margin: 10px;
+}
+
 .item-card-info{
     background-color: white;
     width: 300px;
+    height: 480px;
     border-radius: 10px;
     text-align: left;
     padding: 10px;
@@ -11,8 +16,18 @@
     max-height: 250px;
 }
 
+.item-features{
+    color: rgb(94, 94, 94);
+    font-size: 14px;
+}
+
+.item-features p{
+    margin-bottom: -10px;
+}
+
 .item-price{
     display: flex;
+    margin-top: 10px;
 }
 
 .item-price span{
