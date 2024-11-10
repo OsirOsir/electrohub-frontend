@@ -4,55 +4,83 @@
       "id": "277c",
       "username": "Philip Osir",
       "email": "philip.otieno1@student.moringaschool.com",
-      "password": "12345"
+      "password": "12345",
+      "role": "admin"
     },
     {
       "id": "8d55",
       "username": "Alice Atieno",
       "email": "alice@gmail.com",
-      "password": "1234"
+      "password": "1234",
+      "role": "user"
     },
     {
       "id": "bdc5",
       "username": "Osir ",
       "email": "philip.otieno1@student.moringaschool.com",
-      "password": "12345"
+      "password": "12345",
+      "role": "user"
     },
     {
       "id": "c761",
       "username": "Benard",
       "email": "benard@gmail.com",
-      "password": "1111"
+      "password": "1111",
+      "role": "user"
     },
     {
       "id": "5b63",
       "username": "Joshua",
       "email": "joshua@gmail.com",
-      "password": "12345"
+      "password": "12345",
+      "role": "user"
     },
     {
       "id": "8841",
       "username": "Onger",
       "email": "onger@gmail.com",
-      "password": "philipotieno"
+      "password": "philipotieno",
+      "role": "user"
     },
     {
       "id": "69b7",
       "username": "Caleb",
       "email": "caleb@gmail.com",
-      "password": "1234"
+      "password": "1234",
+      "role": "user"
     },
     {
       "id": "e9e7",
       "username": "Fidel",
       "email": "fidel@gmail.com",
+      "password": "12345",
+      "role": "admin"
+    },
+    {
+      "id": "8a96",
+      "username": "Shalyn Chep",
+      "email": "shalyn@gmail.com",
       "password": "12345"
     },
     {
-      "id": "8ca6",
-      "username": "Robert",
-      "email": "robert@gmail.com",
+      "id": "5acc",
+      "username": "Madrid Real",
+      "email": "madrid@gmail.com",
+      "password": "12345",
+      "role": "admin"
+    },
+    {
+      "id": "a46d",
+      "username": "osir",
+      "email": "osir@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "4263",
+      "username": "calebK",
+      "email": "calebk@gmail.com",
+      "password": "12345",
+      "role": "admin"
     }
   ],
   "items": [

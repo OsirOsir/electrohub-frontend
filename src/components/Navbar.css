@@ -38,7 +38,7 @@
   transition: all 0.3s ease-in-out;
   /* Smooth transition for hover */
   cursor: pointer;
-  display: grid;
+  display: grid;   
   place-items: center;
 }
 
