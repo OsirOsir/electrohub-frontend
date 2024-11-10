@@ -74,6 +74,13 @@
       "username": "osir",
       "email": "osir@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "4263",
+      "username": "calebK",
+      "email": "calebk@gmail.com",
+      "password": "12345",
+      "role": "admin"
     }
   ],
   "items": [

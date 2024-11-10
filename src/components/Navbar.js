@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import AuthModal from './AuthModal';
+import SearchResults from './SearchResults';
 
 const NavBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
@@ -10,15 +11,38 @@ const NavBar = () => {
   const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [role, setRole] = useState(""); // Store logged-in user's role
+  const [searchResults, setSearchResults] = useState([]); // State for search results
+  const [showResults, setShowResults] = useState(false);
 
   // Placeholder function for handling search
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
-    const searchTerm = event.target.search.value;
-    console.log("Searching for:", searchTerm);
+    const searchTerm = event.target.search.value.trim(); // Get and trim the search term
+  
+    // If the search term is empty, do not make the fetch request
+    if (!searchTerm) {
+      console.log("Please enter a search term");
+      return; // Prevent fetching data if search term is empty
+    }
+  
+    try {
+      // Fetch items from db.json with the search term
+      const response = await fetch(
+        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
+      );
+      const data = await response.json();
+      setSearchResults(data); // Store search results
+      setShowResults(true); // Show search results
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  
+    setShowSearch(false); // Hide the search input after submit
+  };
 
-    // After submitting the search, hide the input and show the icon again
-    setShowSearch(false);
+  const closeSearchResults = () => {
+    setShowResults(false);
+    setSearchResults([]); // Clear search results when closing
   };
 
   // Function to toggle the Auth Modal
@@ -70,7 +94,7 @@ const NavBar = () => {
         {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={toggleSearch}>
+            <button className="search-icon" onClick={() => setShowSearch(true)}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}
@@ -115,6 +139,10 @@ const NavBar = () => {
           onClose={() => setShowAuthModal(false)}
           onAuthChange={handleAuthChange}
         />
+      )}
+      {/* Display Search Results */}
+      {showResults && (
+        <SearchResults results={searchResults} onClose={closeSearchResults} />
       )}
     </nav>
   );
