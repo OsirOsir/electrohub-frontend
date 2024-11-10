@@ -1,0 +1,22 @@
+.credibility-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e6f0f3; 
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .feature {
+    text-align: center;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #333;
+  }
