@@ -17,7 +17,6 @@ const Support = () => {
           <p>Check local warranty policy protection</p>
         </Link>
 
-    
         <Link to="/order-support" className="support-item">
           <div className="support-icon">
             <img 
@@ -30,9 +29,20 @@ const Support = () => {
           <h2>Order Support</h2>
           <p>Check order progress</p>
         </Link>
+
+        <Link to="/FAQs" className="support-item">
+          <div className="support-icon">✉ </div>
+          <h2>FAQs</h2>
+          <p>Get help from frequently asked questions</p>
+        </Link>
+
+        <Link to="/Customer-Feedback" className="support-item">
+          <div className="support-icon">👩‍🔬 </div>
+          <h2>Customer Feedback</h2>
+          <p>Help Us Serve You Better!</p>
+        </Link>
       </div>
 
-      
       <p>
         Icons created by <a href="https://www.flaticon.com/authors/kp-arts" title="KP Arts">KP Arts</a> (Warranty) and 
         <a href="https://www.flaticon.com/authors/creatype" title="Creatype"> Creatype</a> (Order Tracking) - Flaticon

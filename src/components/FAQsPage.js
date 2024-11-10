@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FAQsPage.css";  // Import the CSS file
+import "./OrderSupport";  // Import the CSS file
 
 const faqData = [
   { question: "How can I place an order?", answer: "Placing an order is easy! Simply browse our website, select the products you want, add them to your cart, and proceed to checkout." },
