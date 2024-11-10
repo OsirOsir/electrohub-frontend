@@ -1,0 +1,110 @@
+.support-container {
+    background-color: #E7F2F5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .support-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .support-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .support-item h2 {
+    margin: 10px 0;
+    transition: color 0.3s;
+  }
+  
+  .support-item:hover h2 {
+    color: #007BFF;
+  }
+  
+  p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .table-container {
+    margin: 0 auto; 
+    padding: 20px; 
+    max-width: 800px; 
+  }
+  
+  .warranty-table {
+    width: 100%; 
+    border-collapse: collapse;
+  }
+  
+  .warranty-table th, .warranty-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .warranty-table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .warranty-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .warranty-table tr:hover {
+    background-color: #e2f1f8;
+  }
+  
+  .warranty-container {
+    margin: 0 auto;
+    padding: 20px; 
+    max-width: 1300px; 
+    line-height: 1.9; 
+  }
+  
+  .warranty-container h1, .warranty-container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px; 
+  }
+  .warranty-container ul {
+    padding-left: 20px; 
+  }
+  
+  .table-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+  }
+  
+  .-container {
+    margin: 0 auto;
+    padding: 20px; 
+    max-width: 1300px; 
+    line-height: 1.9; 
+  }
+  
+  .ordersupport-container h1, .ordersupport-container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px; 
+  }
+  .ordersupport-container ul {
+    padding-left: 20px; 
+  }
+  

@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import FAQsPage from './components/FAQsPage';
 import FeedbackPage from './components/FeedbackPage';
 import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Contact from './components/pages/Contact';
 import AboutUs from './components/pages/AboutUs';
+import Support from './components/Support';
+import Warranty from './components/Warranty';
+import OrderSupport from './components/OrderSupport';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -20,6 +23,11 @@ const App = () => {
             {/* Customer Support Routes */}
             <Route path="/FAQs" element={<FAQsPage />} />
             <Route path="/Customer-Feedback" element={<FeedbackPage />} />
+
+
+            <Route path="/" element={<Support />} />
+            <Route path="/warranty" element={<Warranty />} />
+            <Route path="/order-support" element={<OrderSupport />} />
 
             {/* Other Pages */}
             <Route path="/terms" element={<TermsAndConditions />} />
