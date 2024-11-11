@@ -27,7 +27,6 @@ function ItemCard({ item }){
                 <button className="learn-more-btn" onClick={handleLearnMoreClick}>Learn More</button>
                 <button className="add-to-cart-btn">Add to Cart</button>
             </div>
-            {/* <ItemDetails item={item}/> */}
         </div>
     )
 }

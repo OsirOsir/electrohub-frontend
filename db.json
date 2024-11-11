@@ -21,7 +21,7 @@
                 "feature2": "Google Tensor G2 processor",
                 "feature3": "120Hz display"
             },
-            "item_price": 999,
+            "item_price": 99900,
             "item_prev_price": 1,
             "item_image_url": "images/Pixel 8 Pro.jpeg",
             "item_category": "Smartphone",
@@ -35,7 +35,7 @@
                 "feature2": "Liquid Retina XDR display",
                 "feature3": "MagSafe charging"
             },
-            "item_price": 1999,
+            "item_price": 199900,
             "item_prev_price": 1,
             "item_image_url": "images/MacBook Pro 14-inch.jpg",
             "item_category": "Laptop",
@@ -49,7 +49,7 @@
                 "feature2": "1080p FaceTime HD camera",
                 "feature3": "studio-quality mics"
             },
-            "item_price": 1799,
+            "item_price": 179900,
             "item_prev_price": 1,
             "item_image_url": "images/Apple iMac 27-inch.jpg",
             "item_category": "Desktop",
@@ -63,7 +63,7 @@
                 "feature2": "Speak-to-Chat",
                 "feature3": "HD Noise Cancelling Processor QN1"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/Sony WH-1000XM5.jpg",
             "item_category": "Headphones",
@@ -77,7 +77,7 @@
                 "feature2": "Personalized Spatial Audio",
                 "feature3": "MagSafe Charging Case"
             },
-            "item_price": 249,
+            "item_price": 24900,
             "item_prev_price": 1,
             "item_image_url": "images/Apple AirPods Pro (2nd Generation).jpeg",
             "item_category": "Earbuds",
@@ -91,7 +91,7 @@
                 "feature2": "α9 Gen6 Processor 4K",
                 "feature3": "4K, Dolby Vision IQ"
             },
-            "item_price": 1499,
+            "item_price": 149900,
             "item_prev_price": 1,
             "item_image_url": "images/LG C3 Series OLED TV.jpg",
             "item_category": "TV",
@@ -105,7 +105,7 @@
                 "feature2": "Bose Voice Assistant",
                 "feature3": "Wi-Fi and Bluetooth Connectivity"
             },
-            "item_price": 799,
+            "item_price": 79900,
             "item_prev_price": 1,
             "item_image_url": "images/Bose Soundbar 700.jpeg",
             "item_category": "Sound system",
@@ -119,7 +119,7 @@
                 "feature2": "Concentric Driver",
                 "feature3": "Titanium Dome Tweeter"
             },
-            "item_price": 2999,
+            "item_price": 299900,
             "item_prev_price": 1,
             "item_image_url": "images/KEF LS50 Meta.jpg_30ac01",
             "item_category": "Speakers",
@@ -133,7 +133,7 @@
                 "feature2": "Advanced Heart Rate Tracking",
                 "feature3": "Crash Detection"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/Apple Watch Series 9.jpg",
             "item_category": "Smartwatch",
@@ -147,7 +147,7 @@
                 "feature2": "M2 Chip",
                 "feature3": "LiDAR Scanner"
             },
-            "item_price": 1099,
+            "item_price": 109900,
             "item_prev_price": 1,
             "item_image_url": "images/Apple iPad Pro (12.9-inch).jpeg",
             "item_category": "Tablet",
@@ -161,7 +161,7 @@
                 "feature2": "Dynamic Island, ProMotion display",
                 "feature3": "triple-camera system"
             },
-            "item_price": 1099,
+            "item_price": 109900,
             "item_prev_price": 1,
             "item_image_url": "images/iPhone 15 Pro Max.jpg",
             "item_category": "Smartphone",
@@ -175,7 +175,7 @@
                 "feature2": "OLED display",
                 "feature3": "capacitive touch function keys"
             },
-            "item_price": 1499,
+            "item_price": 149900,
             "item_prev_price": 1,
             "item_image_url": "images/Dell XPS 13 Plus.jpg",
             "item_category": "Laptop",
@@ -189,7 +189,7 @@
                 "feature2": "NVIDIA GeForce RTX 40 series graphics",
                 "feature3": "liquid cooling"
             },
-            "item_price": 1299,
+            "item_price": 129900,
             "item_prev_price": 1,
             "item_image_url": "images/Dell XPS Desktop.jpg",
             "item_category": "Desktop",
@@ -203,7 +203,7 @@
                 "feature2": "TriPort Acoustic Headphone Structure",
                 "feature3": "Aware Mode"
             },
-            "item_price": 329,
+            "item_price": 32900,
             "item_prev_price": 1,
             "item_image_url": "images/Bose QuietComfort 45.jpg",
             "item_category": "Headphones",
@@ -217,7 +217,7 @@
                 "feature2": "Dynamic Driver X",
                 "feature3": "Adaptive Sound Control"
             },
-            "item_price": 299,
+            "item_price": 29900,
             "item_prev_price": 1,
             "item_image_url": "images/Sony WF-1000XM5.jpg",
             "item_category": "Earbuds",
@@ -231,7 +231,7 @@
                 "feature2": "Quantum Matrix Technology",
                 "feature3": "Real Depth Enhancer"
             },
-            "item_price": 2999,
+            "item_price": 299900,
             "item_prev_price": 1,
             "item_image_url": "images/Samsung Neo QLED 8K TV.jpeg",
             "item_category": "TV",
@@ -245,7 +245,7 @@
                 "feature2": "Tractrix Horn Technology",
                 "feature3": "Wireless Subwoofer"
             },
-            "item_price": 1299,
+            "item_price": 129900,
             "item_prev_price": 1,
             "item_image_url": "images/Klipsch Cinema 600.jpg",
             "item_category": "Sound system",
@@ -259,7 +259,7 @@
                 "feature2": "Flax Cone Midrange Driver",
                 "feature3": "Slatefiber Cone Bass Driver"
             },
-            "item_price": 12999,
+            "item_price": 1299900,
             "item_prev_price": 1,
             "item_image_url": "images/Focal Kanta No.2",
             "item_category": "Speakers",
@@ -273,7 +273,7 @@
                 "feature2": "Advanced Sleep Tracking",
                 "feature3": "Blood Pressure Monitoring"
             },
-            "item_price": 349,
+            "item_price": 34900,
             "item_prev_price": 1,
             "item_image_url": "images/Samsung Galaxy Watch 6 Classic.jpg",
             "item_category": "Smartwatch",
@@ -287,7 +287,7 @@
                 "feature2": "Snapdragon 8 Gen 2",
                 "feature3": "S Pen"
             },
-            "item_price": 1199,
+            "item_price": 119900,
             "item_prev_price": 1,
             "item_image_url": "images/Samsung Galaxy Tab S9 Ultra.jpg",
             "item_category": "Tablet",
@@ -301,7 +301,7 @@
                 "feature2": "108MP ultrawide camera",
                 "feature3": "Snapdragon 8 Gen 3 processor, 120Hz display"
             },
-            "item_price": 1199,
+            "item_price": 119900,
             "item_prev_price": 1,
             "item_image_url": "images/Samsung Galaxy S24 Ultra.jpg",
             "item_category": "Smartphone",
@@ -315,7 +315,7 @@
                 "feature2": "OLED display",
                 "feature3": "360-degree hinge"
             },
-            "item_price": 1399,
+            "item_price": 139900,
             "item_prev_price": 1,
             "item_image_url": "images/HP Spectre x360.png",
             "item_category": "Laptop",
@@ -329,7 +329,7 @@
                 "feature2": "NVIDIA GeForce RTX 40 series graphics",
                 "feature3": "7.1 channel surround sound"
             },
-            "item_price": 1999,
+            "item_price": 199900,
             "item_prev_price": 1,
             "item_image_url": "images/Lenovo Legion Tower 7i.jpg",
             "item_category": "Desktop",
@@ -343,7 +343,7 @@
                 "feature2": "Spatial Audio with Dynamic Head Tracking",
                 "feature3": "Active Noise Cancellation"
             },
-            "item_price": 549,
+            "item_price": 54900,
             "item_prev_price": 1,
             "item_image_url": "images/Apple AirPods Max.jpg",
             "item_category": "Headphones",
@@ -357,7 +357,7 @@
                 "feature2": "Active Noise Cancellation",
                 "feature3": "Aware Mode"
             },
-            "item_price": 299,
+            "item_price": 29900,
             "item_prev_price": 1,
             "item_image_url": "images/Bose QuietComfort Earbuds II.jpg",
             "item_category": "Earbuds",
@@ -371,7 +371,7 @@
                 "feature2": "Perfect Contrast Booster",
                 "feature3": "Acoustic Surface Audio+"
             },
-            "item_price": 2499,
+            "item_price": 249900,
             "item_prev_price": 1,
             "item_image_url": "images/Sony BRAVIA XR A95K OLED TV.jpg",
             "item_category": "TV",
@@ -385,7 +385,7 @@
                 "feature2": "Up-Firing Speakers",
                 "feature3": "Dolby Atmos"
             },
-            "item_price": 2499,
+            "item_price": 249900,
             "item_prev_price": 1,
             "item_image_url": "images/Sennheiser AMBEO Soundbar.jpg",
             "item_category": "Sound system",
@@ -399,7 +399,7 @@
                 "feature2": "Cerametallic Woofer",
                 "feature3": "Powerful Bass Response"
             },
-            "item_price": 1999,
+            "item_price": 199900,
             "item_prev_price": 1,
             "item_image_url": "images/Klipsch RP-8000F1.jpeg",
             "item_category": "Speakers",
@@ -413,7 +413,7 @@
                 "feature2": "Skin Temperature Sensor",
                 "feature3": "Stress Management Score"
             },
-            "item_price": 299,
+            "item_price": 29900,
             "item_prev_price": 1,
             "item_image_url": "images/Fitbit Sense 2.jpg",
             "item_category": "Smartwatch",
@@ -427,7 +427,7 @@
                 "feature2": "12th Gen Intel Core Processor",
                 "feature3": "Slim Pen 2"
             },
-            "item_price": 999,
+            "item_price": 99900,
             "item_prev_price": 1,
             "item_image_url": "images/Microsoft Surface Pro 9.jpg",
             "item_category": "Tablet",
@@ -441,7 +441,7 @@
                 "feature2": "120Hz display",
                 "feature3": "Hasselblad camera system"
             },
-            "item_price": 799,
+            "item_price": 79900,
             "item_prev_price": 1,
             "item_image_url": "images/OnePlus 12.jpg",
             "item_category": "Smartphone",
@@ -455,7 +455,7 @@
                 "feature2": "OLED display",
                 "feature3": "long battery life"
             },
-            "item_price": 999,
+            "item_price": 99900,
             "item_prev_price": 1,
             "item_image_url": "images/Acer Swift X.jpg",
             "item_category": "Laptop",
@@ -469,7 +469,7 @@
                 "feature2": "NVIDIA GeForce RTX 40 series graphics",
                 "feature3": "OMEN Lighting Sync"
             },
-            "item_price": 1699,
+            "item_price": 169900,
             "item_prev_price": 1,
             "item_image_url": "images/HP Omen 45L.jpg",
             "item_category": "Desktop",
@@ -483,7 +483,7 @@
                 "feature2": "Quantum Dot Color",
                 "feature3": "Dolby Vision HDR"
             },
-            "item_price": 799,
+            "item_price": 79900,
             "item_prev_price": 1,
             "item_image_url": "images/Hisense U8H ULED TV.jpg",
             "item_category": "TV",
@@ -497,7 +497,7 @@
                 "feature2": "Transparent Hearing",
                 "feature3": "Sound Personalization"
             },
-            "item_price": 349,
+            "item_price": 34900,
             "item_prev_price": 1,
             "item_image_url": "images/Sennheiser Momentum 4 Wireless.jpg",
             "item_category": "Headphones",
@@ -511,7 +511,7 @@
                 "feature2": "Transparent Hearing",
                 "feature3": "Adaptive Sound"
             },
-            "item_price": 299,
+            "item_price": 29900,
             "item_prev_price": 1,
             "item_image_url": "images/Sennheiser Momentum True Wireless 3.jpg",
             "item_category": "Earbuds",
@@ -525,7 +525,7 @@
                 "feature2": "Meridian Audio",
                 "feature3": "Wireless Rear Speakers"
             },
-            "item_price": 1999,
+            "item_price": 199900,
             "item_prev_price": 1,
             "item_image_url": "images/LG SN11RG.jpg",
             "item_category": "Sound system",
@@ -539,7 +539,7 @@
                 "feature2": "Cerametallic Woofer",
                 "feature3": "Powerful Bass Response"
             },
-            "item_price": 1999,
+            "item_price": 199900,
             "item_prev_price": 1,
             "item_image_url": "images/Klipsch RP-8000F1.jpeg",
             "item_category": "Speakers",
@@ -553,7 +553,7 @@
                 "feature2": "Advanced Workout Tracking",
                 "feature3": "Health Snapshot"
             },
-            "item_price": 449,
+            "item_price": 44900,
             "item_prev_price": 1,
             "item_image_url": "images/Garmin Venu 2 Plus.jpeg",
             "item_category": "Smartwatch",
@@ -567,7 +567,7 @@
                 "feature2": "Octa-Core Processor",
                 "feature3": "Alexa Built-In"
             },
-            "item_price": 199,
+            "item_price": 19900,
             "item_prev_price": 1,
             "item_image_url": "images/Amazon Fire HD 10 Plus.jpg",
             "item_category": "Tablet",
@@ -581,7 +581,7 @@
                 "feature2": "120Hz display",
                 "feature3": "Leica camera system"
             },
-            "item_price": 899,
+            "item_price": 89900,
             "item_prev_price": 1,
             "item_image_url": "images/Xiaomi 14 Pro.jpeg",
             "item_category": "Smartphone",
@@ -595,7 +595,7 @@
                 "feature2": "OLED display",
                 "feature3": "ASUS NumberPad 2.0"
             },
-            "item_price": 1299,
+            "item_price": 129900,
             "item_prev_price": 1,
             "item_image_url": "images/Asus Zenbook 14X OLED.png",
             "item_category": "Laptop",
@@ -609,7 +609,7 @@
                 "feature2": "NVIDIA GeForce RTX 40 series graphics",
                 "feature3": "Aura Sync RGB lighting"
             },
-            "item_price": 1699,
+            "item_price": 169900,
             "item_prev_price": 1,
             "item_image_url": "images/ASUS ROG Strix G35CX.jpg",
             "item_category": "Desktop",
@@ -623,7 +623,7 @@
                 "feature2": "3D Audio",
                 "feature3": "Long Battery Life"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/AKG N900NC M2.jpg",
             "item_category": "Headphones",
@@ -637,7 +637,7 @@
                 "feature2": "Multi-Point Connection",
                 "feature3": "HearThrough"
             },
-            "item_price": 229,
+            "item_price": 22900,
             "item_prev_price": 1,
             "item_image_url": "images/Jabra Elite 85t.jpg",
             "item_category": "Earbuds",
@@ -651,7 +651,7 @@
                 "feature2": "HCX Processor Pro",
                 "feature3": "Dolby Atmos"
             },
-            "item_price": 3499,
+            "item_price": 349900,
             "item_prev_price": 1,
             "item_image_url": "images/Panasonic JZ2000 OLED TV.jpeg",
             "item_category": "TV",
@@ -665,7 +665,7 @@
                 "feature2": "JBL Bass Boost",
                 "feature3": "Wi-Fi and Bluetooth Connectivity"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/JBL Bar 500.jpg",
             "item_category": "Sound system",
@@ -679,7 +679,7 @@
                 "feature2": "Aluminum-Cone Woofer",
                 "feature3": "Bass Reflex Design"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/Elac Debut 2.0 F5.2",
             "item_category": "Speakers",
@@ -693,7 +693,7 @@
                 "feature2": "ECG and Blood Oxygen Monitoring",
                 "feature3": "Temperature Sensing"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/Huawei Watch GT 3 Pro.jpg",
             "item_category": "Smartwatch",
@@ -707,7 +707,7 @@
                 "feature2": "MediaTek Kompanio 1300T",
                 "feature3": "Dolby Atmos"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/Lenovo Tab P11 Pro (Gen 2).jpeg",
             "item_category": "Tablet",
@@ -721,7 +721,7 @@
                 "feature2": "120Hz display",
                 "feature3": "foldable design"
             },
-            "item_price": 1799,
+            "item_price": 179900,
             "item_prev_price": 1,
             "item_image_url": "images/Google Pixel Fold.jpeg",
             "item_category": "Smartphone",
@@ -735,7 +735,7 @@
                 "feature2": "PixelSense Flow display",
                 "feature3": "Dolby Atmos sound system"
             },
-            "item_price": 1199,
+            "item_price": 119900,
             "item_prev_price": 1,
             "item_image_url": "images/Microsoft Surface Laptop 5.png",
             "item_category": "Laptop",
@@ -749,7 +749,7 @@
                 "feature2": "NVIDIA GeForce RTX 40 series graphics",
                 "feature3": "VR-ready"
             },
-            "item_price": 1899,
+            "item_price": 189900,
             "item_prev_price": 1,
             "item_image_url": "images/CyberPowerPC Gamer Xtreme VR.jpg",
             "item_category": "Desktop",
@@ -763,7 +763,7 @@
                 "feature2": "Closed-Back Design",
                 "feature3": "High Sensitivity"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/Shure SRH1540.jpg",
             "item_category": "Headphones",
@@ -777,7 +777,7 @@
                 "feature2": "40mm Drivers",
                 "feature3": "Long Battery Life"
             },
-            "item_price": 169,
+            "item_price": 16900,
             "item_prev_price": 1,
             "item_image_url": "images/AKG N400BT.jpg",
             "item_category": "Earbuds",
@@ -791,7 +791,7 @@
                 "feature2": "P5 Perfect Picture Processor",
                 "feature3": "Ambilight"
             },
-            "item_price": 2899,
+            "item_price": 289900,
             "item_prev_price": 1,
             "item_image_url": "images/Philips OLED+937 TV.jpeg",
             "item_category": "TV",
@@ -805,7 +805,7 @@
                 "feature2": "Open-Back Design",
                 "feature3": "High-Resolution Audio"
             },
-            "item_price": 599,
+            "item_price": 59900,
             "item_prev_price": 1,
             "item_image_url": "images/Beyerdynamic DT 1990 Pro.jpg",
             "item_category": "Speakers",
@@ -819,7 +819,7 @@
                 "feature2": "Heart Rate and Blood Oxygen Monitoring",
                 "feature3": "GPS"
             },
-            "item_price": 249,
+            "item_price": 24900,
             "item_prev_price": 1,
             "item_image_url": "images/Xiaomi Watch S2 Pro.jpg",
             "item_category": "Smartwatch",
@@ -833,7 +833,7 @@
                 "feature2": "Snapdragon 888",
                 "feature3": "HarmonyOS"
             },
-            "item_price": 799,
+            "item_price": 79900,
             "item_prev_price": 1,
             "item_image_url": "images/Huawei MatePad Pro 12.6.jpg",
             "item_category": "Tablet",
@@ -847,7 +847,7 @@
                 "feature2": "165Hz display",
                 "feature3": "200MP main camera"
             },
-            "item_price": 699,
+            "item_price": 69900,
             "item_prev_price": 1,
             "item_image_url": "images/Motorola Edge 40 Pro.jpg",
             "item_category": "Smartphone",
@@ -861,7 +861,7 @@
                 "feature2": "RTX 4070 Laptop GPU",
                 "feature3": "165Hz display"
             },
-            "item_price": 2499,
+            "item_price": 249900,
             "item_prev_price": 1,
             "item_image_url": "images/Lenovo Legion Slim 7.jpg",
             "item_category": "Laptop",
@@ -875,7 +875,7 @@
                 "feature2": "NVIDIA GeForce RTX 30 series graphics",
                 "feature3": "RGB lighting"
             },
-            "item_price": 999,
+            "item_price": 99900,
             "item_prev_price": 1,
             "item_image_url": "images/iBUYPOWER Slate MR.jpg",
             "item_category": "Desktop",
@@ -889,7 +889,7 @@
                 "feature2": "Open-Back Design",
                 "feature3": "High-Resolution Audio"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/Philips Fidelio X2HR.jpg",
             "item_category": "Headphones",
@@ -903,7 +903,7 @@
                 "feature2": "Transparent Hearing",
                 "feature3": "Customizable EQ"
             },
-            "item_price": 249,
+            "item_price": 24900,
             "item_prev_price": 1,
             "item_image_url": "images/Beyerdynamic Lagoon ANC.jpg",
             "item_category": "Earbuds",
@@ -917,7 +917,7 @@
                 "feature2": "Quantum Dot Color",
                 "feature3": "α7 Gen5 AI Processor 4K"
             },
-            "item_price": 1299,
+            "item_price": 129900,
             "item_prev_price": 1,
             "item_image_url": "images/LG QNED Mini LED TV.jpg",
             "item_category": "TV",
@@ -931,7 +931,7 @@
                 "feature2": "Blood Oxygen Monitoring",
                 "feature3": "Stress Monitoring"
             },
-            "item_price": 189,
+            "item_price": 18900,
             "item_prev_price": 1,
             "item_image_url": "images/Amazfit GTR 4.jpg",
             "item_category": "Smartwatch",
@@ -945,7 +945,7 @@
                 "feature2": "Snapdragon 870",
                 "feature3": "Dolby Atmos"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/Xiaomi Pad 6.jpg",
             "item_category": "Tablet",
@@ -959,7 +959,7 @@
                 "feature2": "Zeiss optics",
                 "feature3": "Snapdragon 8 Gen 2 processor"
             },
-            "item_price": 999,
+            "item_price": 99900,
             "item_prev_price": 1,
             "item_image_url": "images/Vivo X90 Pro+.jpg",
             "item_category": "Smartphone",
@@ -973,7 +973,7 @@
                 "feature2": "Heart Rate and Power Tracking",
                 "feature3": "Recovery Insights"
             },
-            "item_price": 499,
+            "item_price": 49900,
             "item_prev_price": 1,
             "item_image_url": "images/Polar Vantage V2.jpg",
             "item_category": "Smartwatch",
@@ -987,7 +987,7 @@
                 "feature2": "M1 Chip",
                 "feature3": "Center Stage"
             },
-            "item_price": 599,
+            "item_price": 59900,
             "item_prev_price": 1,
             "item_image_url": "images/iPad Air (5th generation).jpg",
             "item_category": "Tablet",
@@ -1001,7 +1001,7 @@
                 "feature2": "50MP ultrawide camera",
                 "feature3": "Snapdragon 8 Gen 2 processor"
             },
-            "item_price": 1099,
+            "item_price": 109900,
             "item_prev_price": 1,
             "item_image_url": "images/OPPO Find X6 Pro.jpg",
             "item_category": "Smartphone",
@@ -1015,7 +1015,7 @@
                 "feature2": "Barometer",
                 "feature3": "Altimeter"
             },
-            "item_price": 549,
+            "item_price": 54900,
             "item_prev_price": 1,
             "item_image_url": "images/Suunto 9 Peak Pro.jpeg",
             "item_category": "Smartwatch",
@@ -1029,7 +1029,7 @@
                 "feature2": "Snapdragon 8 Gen 1",
                 "feature3": "S Pen"
             },
-            "item_price": 799,
+            "item_price": 79900,
             "item_prev_price": 1,
             "item_image_url": "images/Samsung Galaxy Tab S8.jpg",
             "item_category": "Tablet",
@@ -1043,7 +1043,7 @@
                 "feature2": "108MP main camera",
                 "feature3": "fast charging"
             },
-            "item_price": 399,
+            "item_price": 39900,
             "item_prev_price": 1,
             "item_image_url": "images/Redmi Note 13 Pro Plus.jpg",
             "item_category": "Smartphone",
@@ -1057,7 +1057,7 @@
                 "feature2": "ECG and PPG Sensors",
                 "feature3": "Sleep Tracking"
             },
-            "item_price": 289,
+            "item_price": 28900,
             "item_prev_price": 1,
             "item_image_url": "images/Withings ScanWatch.jpg",
             "item_category": "Smartwatch",
@@ -1071,7 +1071,7 @@
                 "feature2": "Snapdragon 870",
                 "feature3": "JBL Speakers"
             },
-            "item_price":679,
+            "item_price":67900,
             "item_prev_price": 1,
             "item_image_url": "images/Lenovo Yoga Tab 13.jpeg",
             "item_category": "Tablet",
@@ -1624,3 +1624,5 @@
     ]
     
 }
+
+

@@ -14,7 +14,8 @@ function DailyDeals(){
 
     return(
         <div className="items-offers-deals">
-            <h3>Daily Deals</h3>
+            <h2>Daily Deals</h2>
+            
             <div className="offer-items-cards">
                 {dailyDeals.map((item) => (
                     <ItemCard key={item.id} item={item}/>

@@ -13,7 +13,8 @@ function HotNewOffers(){
 
     return(
         <div className="items-offers-deals">
-            <h3>Hot & New</h3>
+            <h2>Hot & New</h2>
+            
             <div className="offer-items-cards">
                 {hotNew.map((item) => (
                     <ItemCard key={item.id} item={item}/>

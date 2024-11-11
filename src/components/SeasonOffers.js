@@ -13,7 +13,7 @@ function SeasonOffers(){
 
     return(
         <div className="items-offers-deals">
-            <h3>Season Offers</h3>
+            <h2>Season Offers</h2>
             <div className="offer-items-cards">
                 {seasonOffers.map((item) => (
                     <ItemCard key={item.id} item={item}/>
