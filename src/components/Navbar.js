@@ -101,7 +101,9 @@ const NavBar = ({ addToCart, cartItems }) => {
   return (
     <nav className="navbar">
       {/* Site Logo or Name */}
-      <div className="navbar-logo">ElectroHub</div>
+      <div className="navbar-logo">
+        <a href="/" className="logo-link">ElectroHub</a> {/* Navigates to the root path */}
+      </div>
 
       {/* Categories */}
       <ul className="navbar-links">

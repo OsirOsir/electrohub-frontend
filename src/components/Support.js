@@ -40,11 +40,6 @@ const Support = () => {
           <p>Help Us Serve You Better!</p>
         </Link>
       </div>
-
-      <p>
-        Icons created by <a href="https://www.flaticon.com/authors/kp-arts" title="KP Arts">KP Arts</a> (Warranty) and 
-        <a href="https://www.flaticon.com/authors/creatype" title="Creatype"> Creatype</a> (Order Tracking) - Flaticon
-      </p>
     </div>
   );
 };
