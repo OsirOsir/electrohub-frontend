@@ -15,24 +15,57 @@ import Support from './components/Support'; // import Support as the customer su
 import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
+import SearchResults from './components/SearchResults'; // Import the SearchResults component
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); // To track the search term
+  const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
+  const [showSearchResults, setShowSearchResults] = useState(false); // To toggle between search results and default items
+
 
   useEffect(() => {
     fetch("http://localhost:8001/items")
       .then(response => response.json())
-      .then(data => setItems(data));
+      .then(data => {
+        setItems(data);
+        setFilteredItems(data); // Initially, show all items
+      });
   }, []);
 
   const addToCart = (item) => {
     setCart(prevCart => [...prevCart, item]);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    const filtered = items.filter(item =>
+      item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredItems(filtered);
+    setShowSearchResults(true); // Show search results when search is performed
+  };
+
+  const handleSearchClose = () => {
+    setShowSearchResults(false); // Hide search results
+    setSearchTerm(''); // Clear the search term
+    setFilteredItems(items); // Reset to show all items
+  };
+
   return (
     <div className="App">
-      <Navbar addToCart={addToCart} cartItems={cart.length} />
+      <Navbar
+        addToCart={addToCart}
+        cartItems={cart.length}
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+        onSearchSubmit={handleSearchSubmit}
+      />
       <CredibilitySection />
 
       {/* Main content */}
@@ -42,7 +75,11 @@ const App = () => {
           <Route path="/" element={
             <div>
               <OfferSection items={items} />
-              <ItemsAll items={items} addToCart={addToCart} />
+              {!showSearchResults ? (
+                <ItemsAll items={filteredItems} addToCart={addToCart} />
+              ) : (
+                <SearchResults results={filteredItems} onClose={handleSearchClose} />
+              )}
             </div>
           } />
 
