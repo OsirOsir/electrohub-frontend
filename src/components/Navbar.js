@@ -5,29 +5,29 @@ import Cart from './Cart';
 import Checkout from './Checkout';
 import SearchResults from './SearchResults';
 
-const NavBar = ({ addToCart, cartItems }) => {
+const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
   const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
   const [role, setRole] = useState(""); // Store logged-in user's role
   const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
+  const [searchTerm, setSearchTerm] = useState(''); // Controlled search term state
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [showResults, setShowResults] = useState(false); // Toggle visibility of search results
   const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
   const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
   const [orderDetails, setOrderDetails] = useState(null); // Store order details
 
-  // Handle Search
   const handleSearch = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission behavior
     const searchTerm = event.target.search.value.trim(); // Get and trim the search term
     
     if (!searchTerm) {
       console.log("Please enter a search term");
       return;
     }
-
+  
     try {
       const response = await fetch(
         `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
@@ -38,8 +38,16 @@ const NavBar = ({ addToCart, cartItems }) => {
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
-
+  
     setShowSearch(false); // Hide the search input after submit
+    if (onSearchSubmit) onSearchSubmit(searchTerm); // Trigger onSearchSubmit prop if passed
+  };
+  
+
+  // Update search term state on input change
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
   };
 
   const closeSearchResults = () => {
@@ -125,7 +133,13 @@ const NavBar = ({ addToCart, cartItems }) => {
           )}
           {showSearch && (
             <form className="search-bar" onSubmit={handleSearch}>
-              <input type="text" name="search" placeholder="Search Items..." />
+              <input
+                type="text"
+                name="search"
+                placeholder="Search Items..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
               <button type="submit">
                 <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
               </button>
