@@ -1,0 +1,29 @@
+.credibility-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #e6f0f3; 
+    padding: 55px 0px ;
+    border-radius: 8px;
+    width:60%; /* Reduced width */
+    margin-top: 150px !important;
+    margin-bottom : 50px !important;
+    margin: 0 auto; 
+  }
+  
+  .feature {
+    text-align: center;
+    margin: 0 10px; /* Reduce space between features */
+  }
+  
+  .feature-icon {
+    width: 70px; /* Smaller width */
+    height: 70px; /* Smaller height */
+    margin-bottom: 0px; /* Slightly reduced spacing below icon */
+  }
+  
+  p {
+    font-size: 20px;
+    color: #333;
+    /* margin: 0; */
+  }

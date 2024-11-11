@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import AuthModal from './AuthModal';
+import Cart from './Cart';
+import Checkout from './Checkout';
 import SearchResults from './SearchResults';
 
-const NavBar = () => {
+const NavBar = ({ addToCart, cartItems }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  const [cartItems, setCartItems] = useState(0); // Cart item count
+  const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
   const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
-  const [username, setUsername] = useState(""); // Store logged-in user's name
-  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [role, setRole] = useState(""); // Store logged-in user's role
+  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [searchResults, setSearchResults] = useState([]); // State for search results
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false); // Toggle visibility of search results
+  const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
+  const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
+  const [orderDetails, setOrderDetails] = useState(null); // Store order details
 
-  // Placeholder function for handling search
+  // Handle Search
   const handleSearch = async (event) => {
     event.preventDefault();
     const searchTerm = event.target.search.value.trim(); // Get and trim the search term
-  
-    // If the search term is empty, do not make the fetch request
+    
     if (!searchTerm) {
       console.log("Please enter a search term");
-      return; // Prevent fetching data if search term is empty
+      return;
     }
-  
+
     try {
-      // Fetch items from db.json with the search term
       const response = await fetch(
         `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
       );
@@ -36,7 +38,7 @@ const NavBar = () => {
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
-  
+
     setShowSearch(false); // Hide the search input after submit
   };
 
@@ -53,32 +55,55 @@ const NavBar = () => {
 
   // Function to handle Sign Out
   const handleSignOut = () => {
-    setIsAuthenticated(false); // Reset authentication status
-    setUsername(""); // Reset username
-    setRole(""); // Clear role
+    setIsAuthenticated(false);
+    setUsername("");
+    setRole("");
     console.log("User signed out");
   };
-  // Function to handle successful authentication (sign-in or sign-up)
+
+  // Function to handle successful authentication
   const handleAuthChange = (status, username, role) => {
     setIsAuthenticated(status);
     setUsername(username);
     setRole(role);
   };
 
-  // Placeholder for handling cart actions
-  const handleCart = () => {
-    console.log("Navigating to cart and checkout");
-  };
-
-  // Toggle the visibility of the search input
+  // Toggle visibility of search bar
   const toggleSearch = () => {
     setShowSearch(!showSearch);
+  };
+
+  // Handle Cart and Checkout
+  const handleCart = () => {
+    setShowCart(!showCart);
+  };
+
+  const handleCheckout = (billingInfo) => {
+    const paymentInfo = {
+      ...billingInfo,
+      paymentStatus: 'Success',
+      transactionId: Math.random().toString(36).substring(7), 
+      totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), 
+    };
+
+    const invoice = {
+      transactionId: paymentInfo.transactionId,
+      items: cartItems,
+      totalAmount: paymentInfo.totalAmount,
+      billingInfo,
+    };
+
+    setOrderDetails(invoice);
+    setShowCheckout(false);  
+    alert(`Payment Successful! Order ID: ${paymentInfo.transactionId}`);
   };
 
   return (
     <nav className="navbar">
       {/* Site Logo or Name */}
-      <div className="navbar-logo">ElectroHub</div>
+      <div className="navbar-logo">
+        <a href="/" className="logo-link">ElectroHub</a> {/* Navigates to the root path */}
+      </div>
 
       {/* Categories */}
       <ul className="navbar-links">
@@ -94,7 +119,7 @@ const NavBar = () => {
         {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={() => setShowSearch(true)}>
+            <button className="search-icon" onClick={toggleSearch}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}
@@ -114,23 +139,22 @@ const NavBar = () => {
             <>
               <span className="welcome-message">{role === "admin" ? "Admin" : username}</span>
               <button onClick={handleSignOut} className="auth-button">
-                {/* <img src="/Icons/user.png" alt="User Icon" className="user-icon" />  */}
                 Sign Out
               </button>
             </>
           ) : (
             <button onClick={() => toggleAuthModal("signIn")} className="auth-button">
-              <img src="/Icons/user.png" alt="User Icon" className="user-icon" /> {/* Icon only */}
+              <img src="/Icons/user.png" alt="User Icon" className="user-icon" />
             </button>
           )}
         </div>
 
         {/* Cart Icon with Checkout and Payment */}
         <div className="navbar-icons" onClick={handleCart}>
-          <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" /> <span>{cartItems}</span>
+          <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" />
+          <span>{cartItems.length}</span>
         </div>
       </div>
-
 
       {/* Show Auth Modal */}
       {showAuthModal && (
@@ -140,9 +164,44 @@ const NavBar = () => {
           onAuthChange={handleAuthChange}
         />
       )}
+
       {/* Display Search Results */}
       {showResults && (
         <SearchResults results={searchResults} onClose={closeSearchResults} />
+      )}
+
+      {/* Show Cart */}
+      {showCart && (
+        <Cart
+          cartItems={cartItems}
+          username={username}
+          onClose={() => setShowCart(false)}
+          onCheckout={() => setShowCheckout(true)}
+        />
+      )}
+
+      {/* Show Checkout */}
+      {showCheckout && (
+        <Checkout
+          cartItems={cartItems}
+          username={username}
+          handleCheckout={handleCheckout}
+        />
+      )}
+
+      {/* Show Order Invoice */}
+      {orderDetails && (
+        <div className="invoice">
+          <h2>Invoice</h2>
+          <p>Order ID: {orderDetails.transactionId}</p>
+          <ul>
+            {orderDetails.items.map((item, index) => (
+              <li key={index}>{item.name} - ${item.price}</li>
+            ))}
+          </ul>
+          <p>Total: ${orderDetails.totalAmount}</p>
+          <p>Billing Address: {orderDetails.billingInfo.address}, {orderDetails.billingInfo.city}, {orderDetails.billingInfo.country}</p>
+        </div>
       )}
     </nav>
   );
