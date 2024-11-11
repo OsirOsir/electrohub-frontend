@@ -5,7 +5,7 @@ item_special_categories = db.Table(
         db.Column('special_category_id', db.Integer, db.ForeignKey('special_categories.id'), primary_key=True)
     )
 
-class Item:
+class Item(db.Model):
     __tablename__ = 'items'
     
     id = db.Column(db.Integer, primary_key=True)
