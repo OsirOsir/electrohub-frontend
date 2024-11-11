@@ -5,10 +5,12 @@
 }
 
 .all-items h1{
+    color: black;
     padding-top: 20px;
 }
 
 .items-display{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: 50px;
 }

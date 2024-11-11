@@ -18,6 +18,16 @@
   justify-content: space-between; /* Space out the items evenly */
   gap: 10px; /* Optional: adds space between each item */
 }
+.logo-link {
+  text-decoration: none; /* Removes underline from link */
+  color: white; /* Sets text color */
+  font-weight: bold; /* Makes the text bold */
+  font-size: 2rem; /* Adjust the font size if needed */
+}
+.logo-link:hover {
+  text-decoration: none; /* Ensures no underline when hovering */
+  color: lightgray; /* Optional: Change the color on hover for better UX */
+}
 
 .navbar-logo {
   font-size: 2.0rem;

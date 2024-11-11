@@ -5,7 +5,7 @@ import './ItemsAll.css'
 function ItemsAll({ items }){
     return(
         <div className="all-items">
-            <h1>All Items</h1>
+            <h1>All Products</h1>
             <div className="items-display">
                 {items.map((item) => (
                     <ItemCard key={item.id} item={item} />
