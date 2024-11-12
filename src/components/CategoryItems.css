@@ -32,3 +32,15 @@
   border-radius: 8px;
   /* Rounded corners for the image */
 }
+.close-button {
+  background-color: blue !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.close-button:hover {
+  background-color: darkblue !important; /* Darker shade on hover */
+}

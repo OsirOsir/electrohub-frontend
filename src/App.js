@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -22,22 +22,28 @@ import CategoryItems from './components/CategoryItems';
 const App = () => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(''); // To track the search term
-  const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
+  // const [searchTerm, setSearchTerm] = useState(''); // To track the search term
   const [showSearchResults, setShowSearchResults] = useState(false); // To toggle between search results and default items
+  const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
   const [categoryItems, setCategoryItems] = useState([]); // Category-specific items
 
 
   useEffect(() => {
-    fetch("http://localhost:8001/items")
-      .then(response => response.json())
-      .then(data => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch("http://localhost:8001/items");
+        const data = await response.json();
         setItems(data);
         setFilteredItems(data); // Initially, show all items
-      });
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+
+    fetchItems();
   }, []);
 
-  
+
   const handleCategoryClick = async (category) => {
     try {
       // Fetch items by category
@@ -49,12 +55,12 @@ const App = () => {
     }
   };
 
-  const addToCart = (item) => {
-    setCart(prevCart => [...prevCart, item]);
+  const handleCategoryClose = () => {
+    setCategoryItems([]); // Clear the category items to hide the component
   };
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+  const addToCart = (item) => {
+    setCart(prevCart => [...prevCart, item]);
   };
 
   const handleSearchSubmit = async (searchTerm) => {
@@ -73,7 +79,6 @@ const App = () => {
 
   const handleSearchClose = () => {
     setShowSearchResults(false); // Hide search results
-    setSearchTerm(''); // Clear the search term
     setFilteredItems(items); // Reset to show all items
   };
 
@@ -82,13 +87,17 @@ const App = () => {
       <Navbar
         addToCart={addToCart}
         cartItems={cart.length}
-        searchTerm={searchTerm}
-        onSearchChange={handleSearchChange}
         onSearchSubmit={handleSearchSubmit}
         onCategoryClick={handleCategoryClick} // Pass function to NavBar
       />
+      {/* 2. Render SearchResults based on showSearchResults */}
+       {showSearchResults && (
+        <SearchResults results={filteredItems} onClose={handleSearchClose} />
+      )}
       {/* CategoryItems component to display fetched category-specific items */}
-      <CategoryItems items={categoryItems} addToCart={addToCart} />
+      {categoryItems.length > 0 && (
+        <CategoryItems items={categoryItems} onClose={handleCategoryClose} />
+      )}
       <CredibilitySection />
 
       {/* Main content */}
