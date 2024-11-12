@@ -1,10 +1,10 @@
 import React from 'react';
 import ItemCard from './ItemCard'; // Import the ItemCard component
+import './CategoryItems.css';
 
 const CategoryItems = ({ items }) => {
     return (
         <div className="category-items">
-            <h2>Items</h2>
             <div className="items-grid">
                 {items.map((item) => (
                     <ItemCard key={item.id} item={item} />

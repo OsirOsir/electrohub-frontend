@@ -1,24 +1,34 @@
 .category-items {
-  background-color: white; /* White background for the container */
-  padding: 20px; /* Padding around the items grid */
+  background-color: #E0E6F6;
+  margin: 200px 50px 20px 50px;
+  border-radius: 20px;
+
 }
 
 .items-grid {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Make the columns responsive */
-  gap: 20px; /* Add spacing between the items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  padding: 50px;
 }
 
 .item-card {
-  background-color: #f4f4f4; /* Background color for individual item cards */
-  padding: 20px; /* Padding for the card content */
-  border-radius: 8px; /* Rounded corners */
-  text-align: center; /* Center-align the content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  background-color: #f4f4f4;
+  /* Background color for individual item cards */
+  padding: 20px;
+  /* Padding for the card content */
+  border-radius: 8px;
+  /* Rounded corners */
+  text-align: center;
+  /* Center-align the content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow for depth */
 }
 
 .item-card img {
-  width: 100%; /* Make the image fill the card */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners for the image */
+  width: 100%;
+  /* Make the image fill the card */
+  height: auto;
+  /* Maintain aspect ratio */
+  border-radius: 8px;
+  /* Rounded corners for the image */
 }
