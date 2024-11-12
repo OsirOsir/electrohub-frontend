@@ -1,6 +1,6 @@
 .category-items {
   background-color: #E0E6F6;
-  margin: 200px 50px 20px 50px;
+  margin: 120px 50px 20px 50px;
   border-radius: 20px;
 
 }
@@ -8,7 +8,7 @@
 .items-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  padding: 50px;
+  padding: 20px;
 }
 
 .item-card {
