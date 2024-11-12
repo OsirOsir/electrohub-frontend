@@ -71,19 +71,24 @@ const App = () => {
     }
   
     try {
-      const response = await fetch(
-        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
-      );
-  
+      const response = await fetch(`http://localhost:8001/items`);
+      
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
   
       const data = await response.json();
-      setFilteredItems(data);
+  
+      // Filter items based on search term
+      const filtered = data.filter(item =>
+        item.item_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.item_category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+      setFilteredItems(filtered);
       setShowSearchResults(true);
     } catch (error) {
-      console.error('Error fetching search results:', error);
+      console.error('Error fetching items:', error);
       setFilteredItems([]); // Clear results on error
       setShowSearchResults(false); // Hide search results on error
     }
@@ -119,11 +124,7 @@ const App = () => {
           <Route path="/" element={
             <div>
               <OfferSection items={items} />
-              {!showSearchResults ? (
-                <ItemsAll items={filteredItems} addToCart={addToCart} />
-              ) : (
-                <SearchResults results={filteredItems} onClose={handleSearchClose} />
-              )}
+              <ItemsAll items={items} />
             </div>
           } />
 
