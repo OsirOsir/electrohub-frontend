@@ -64,16 +64,28 @@ const App = () => {
   };
 
   const handleSearchSubmit = async (searchTerm) => {
-    if (!searchTerm) return;
+    if (!searchTerm) {
+      setShowSearchResults(false);
+      setFilteredItems(items); // Reset to show all items if search term is empty
+      return;
+    }
+  
     try {
       const response = await fetch(
         `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
       );
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
       const data = await response.json();
       setFilteredItems(data);
-      setShowSearchResults(true); // Show the search results after fetching
+      setShowSearchResults(true);
     } catch (error) {
       console.error('Error fetching search results:', error);
+      setFilteredItems([]); // Clear results on error
+      setShowSearchResults(false); // Hide search results on error
     }
   };
 
