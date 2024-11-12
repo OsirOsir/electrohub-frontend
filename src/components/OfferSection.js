@@ -26,7 +26,7 @@ function OfferSection(){
 
     return (
         <div className="items-on-offer-container">
-            <h1>Items On Offer</h1>
+            {/* <h1>Items On Offer</h1> */}
             <div className="offer-items">
                 <div className="offers-links">
                     <ul>
