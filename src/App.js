@@ -16,6 +16,7 @@ import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
 import SearchResults from './components/SearchResults'; // Import the SearchResults component
+import CategoryItems from './components/CategoryItems';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -23,6 +24,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState(''); // To track the search term
   const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
   const [showSearchResults, setShowSearchResults] = useState(false); // To toggle between search results and default items
+  const [categoryItems, setCategoryItems] = useState([]); // Category-specific items
 
 
   useEffect(() => {
@@ -34,6 +36,18 @@ const App = () => {
       });
   }, []);
 
+  
+  const handleCategoryClick = async (category) => {
+    try {
+      // Fetch items by category
+      const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
+      const data = await response.json();
+      setCategoryItems(data); // Update the categoryItems state
+    } catch (error) {
+      console.error("Error fetching items by category:", error);
+    }
+  };
+
   const addToCart = (item) => {
     setCart(prevCart => [...prevCart, item]);
   };
@@ -42,13 +56,18 @@ const App = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    const filtered = items.filter(item =>
-      item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredItems(filtered);
-    setShowSearchResults(true); // Show search results when search is performed
+  const handleSearchSubmit = async (searchTerm) => {
+    if (!searchTerm) return;
+    try {
+      const response = await fetch(
+        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
+      );
+      const data = await response.json();
+      setFilteredItems(data);
+      setShowSearchResults(true); // Show the search results after fetching
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
   };
 
   const handleSearchClose = () => {
@@ -65,7 +84,10 @@ const App = () => {
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         onSearchSubmit={handleSearchSubmit}
+        onCategoryClick={handleCategoryClick} // Pass function to NavBar
       />
+      {/* CategoryItems component to display fetched category-specific items */}
+      <CategoryItems items={categoryItems} addToCart={addToCart} />
       <CredibilitySection />
 
       {/* Main content */}
