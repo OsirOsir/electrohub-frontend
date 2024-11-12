@@ -1177,6 +1177,90 @@
             "item_image_url": "images/Bose Soundbar 700.jpeg",
             "item_category": "Sound system",
             "items_instock": 7
+        },
+        {
+            "id": 51,
+            "item_name": "Google Pixel Fold",
+            "item_features": {
+                "feature1": "Google Tensor G2 processor",
+                "feature2": "120Hz display",
+                "feature3": "foldable design"
+            },
+            "item_price": 179900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Google Pixel Fold.jpeg",
+            "item_category": "Smartphone",
+            "items_instock": 7
+        },
+        {
+            "id": 52,
+            "item_name": "Microsoft Surface Laptop 5",
+            "item_features": {
+                "feature1": "12th Gen Intel Core processor",
+                "feature2": "PixelSense Flow display",
+                "feature3": "Dolby Atmos sound system"
+            },
+            "item_price": 119900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Microsoft Surface Laptop 5.png",
+            "item_category": "Laptop",
+            "items_instock": 7
+        },
+        {
+            "id": 53,
+            "item_name": "CyberPowerPC Gamer Xtreme VR",
+            "item_features": {
+                "feature1": "13th Gen Intel Core processor",
+                "feature2": "NVIDIA GeForce RTX 40 series graphics",
+                "feature3": "VR-ready"
+            },
+            "item_price": 189900,
+            "item_prev_price": 1,
+            "item_image_url": "images/CyberPowerPC Gamer Xtreme VR.jpg",
+            "item_category": "Desktop",
+            "items_instock": 7
+        },
+        {
+            "id": 54,
+            "item_name": "Shure SRH1540",
+            "item_features": {
+                "feature1": "Neodymium Drivers",
+                "feature2": "Closed-Back Design",
+                "feature3": "High Sensitivity"
+            },
+            "item_price": 49900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Shure SRH1540.jpg",
+            "item_category": "Headphones",
+            "items_instock": 7
+        },
+        {
+            "id": 55,
+            "item_name": "AKG N400BT",
+            "item_features": {
+                "feature1": "Bluetooth 5.0",
+                "feature2": "40mm Drivers",
+                "feature3": "Long Battery Life"
+            },
+            "item_price": 16900,
+            "item_prev_price": 1,
+            "item_image_url": "images/AKG N400BT.jpg",
+            "item_category": "Earbuds",
+            "items_instock": 7
+        },
+        {
+            "id": 56,
+            "item_name": "Philips OLED+937 TV",
+            "item_features": {
+                "feature1": "OLED Display",
+                "feature2": "P5 Perfect Picture Processor",
+                "feature3": "Ambilight"
+            },
+            "item_price": 289900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Philips OLED+937 TV.jpeg",
+            "item_category": "TV",
+            "items_instock": 7
         }
     ],
 
@@ -1306,6 +1390,62 @@
             "item_image_url": "images/Samsung Neo QLED 8K TV.jpeg",
             "item_category": "TV",
             "items_instock": 7
+        },
+        {
+            "id": 71,
+            "item_name": "OPPO Find X6 Pro",
+            "item_features": {
+                "feature1": "MariSilicon X imaging NPU",
+                "feature2": "50MP ultrawide camera",
+                "feature3": "Snapdragon 8 Gen 2 processor"
+            },
+            "item_price": 109900,
+            "item_prev_price": 1,
+            "item_image_url": "images/OPPO Find X6 Pro.jpg",
+            "item_category": "Smartphone",
+            "items_instock": 7
+        },
+        {
+            "id": 72,
+            "item_name": "Suunto 9 Peak Pro",
+            "item_features": {
+                "feature1": "GPS",
+                "feature2": "Barometer",
+                "feature3": "Altimeter"
+            },
+            "item_price": 54900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Suunto 9 Peak Pro.jpeg",
+            "item_category": "Smartwatch",
+            "items_instock": 7
+        },
+        {
+            "id": 73,
+            "item_name": "Samsung Galaxy Tab S8",
+            "item_features": {
+                "feature1": "Super AMOLED Display",
+                "feature2": "Snapdragon 8 Gen 1",
+                "feature3": "S Pen"
+            },
+            "item_price": 79900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Samsung Galaxy Tab S8.jpg",
+            "item_category": "Tablet",
+            "items_instock": 7
+        },
+        {
+            "id": 74,
+            "item_name": "Redmi Note 13 Pro Plus",
+            "item_features": {
+                "feature1": "Dimensity 9200 processor",
+                "feature2": "108MP main camera",
+                "feature3": "fast charging"
+            },
+            "item_price": 39900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Redmi Note 13 Pro Plus.jpg",
+            "item_category": "Smartphone",
+            "items_instock": 7
         }
     ],
 
@@ -1434,6 +1574,62 @@
             "item_prev_price": 1,
             "item_image_url": "images/Bose QuietComfort Earbuds II.jpg",
             "item_category": "Earbuds",
+            "items_instock": 7
+        },
+        {
+            "id": 67,
+            "item_name": "Xiaomi Pad 6",
+            "item_features": {
+                "feature1": "11-inch LCD Display",
+                "feature2": "Snapdragon 870",
+                "feature3": "Dolby Atmos"
+            },
+            "item_price": 39900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Xiaomi Pad 6.jpg",
+            "item_category": "Tablet",
+            "items_instock": 7
+        },
+        {
+            "id": 68,
+            "item_name": "Vivo X90 Pro+",
+            "item_features": {
+                "feature1": "1-inch sensor main camera",
+                "feature2": "Zeiss optics",
+                "feature3": "Snapdragon 8 Gen 2 processor"
+            },
+            "item_price": 99900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Vivo X90 Pro+.jpg",
+            "item_category": "Smartphone",
+            "items_instock": 7
+        },
+        {
+            "id": 69,
+            "item_name": "Polar Vantage V2",
+            "item_features": {
+                "feature1": "GPS",
+                "feature2": "Heart Rate and Power Tracking",
+                "feature3": "Recovery Insights"
+            },
+            "item_price": 49900,
+            "item_prev_price": 1,
+            "item_image_url": "images/Polar Vantage V2.jpg",
+            "item_category": "Smartwatch",
+            "items_instock": 7
+        },
+        {
+            "id": 70,
+            "item_name": "iPad Air (5th generation)",
+            "item_features": {
+                "feature1": "Liquid Retina Display",
+                "feature2": "M1 Chip",
+                "feature3": "Center Stage"
+            },
+            "item_price": 59900,
+            "item_prev_price": 1,
+            "item_image_url": "images/iPad Air (5th generation).jpg",
+            "item_category": "Tablet",
             "items_instock": 7
         }
     ],
