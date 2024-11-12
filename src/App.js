@@ -16,6 +16,7 @@ import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
 import SearchResults from './components/SearchResults'; // Import the SearchResults component
+import CategoryItems from './components/CategoryItems';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -23,6 +24,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState(''); // To track the search term
   const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
   const [showSearchResults, setShowSearchResults] = useState(false); // To toggle between search results and default items
+  const [categoryItems, setCategoryItems] = useState([]); // Category-specific items
 
 
   useEffect(() => {
@@ -33,6 +35,17 @@ const App = () => {
         setFilteredItems(data); // Initially, show all items
       });
   }, []);
+
+  const handleCategoryClick = async (category) => {
+    try {
+      // Fetch items by category
+      const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
+      const data = await response.json();
+      setCategoryItems(data); // Update the categoryItems state
+    } catch (error) {
+      console.error("Error fetching items by category:", error);
+    }
+  };
 
   const addToCart = (item) => {
     setCart(prevCart => [...prevCart, item]);
@@ -65,7 +78,10 @@ const App = () => {
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         onSearchSubmit={handleSearchSubmit}
+        onCategoryClick={handleCategoryClick} // Pass function to NavBar
       />
+      {/* CategoryItems component to display fetched category-specific items */}
+      <CategoryItems items={categoryItems} addToCart={addToCart} />
       <CredibilitySection />
 
       {/* Main content */}

@@ -3,9 +3,10 @@ import './Navbar.css';
 import AuthModal from './AuthModal';
 import Cart from './Cart';
 import Checkout from './Checkout';
-import SearchResults from './SearchResults';
+// import SearchResults from './SearchResults';
+// import CategoryItems from './CategoryItems';
 
-const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
+const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearchChange }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
   const [username, setUsername] = useState(""); // Store logged-in user's name
   const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
@@ -18,16 +19,17 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
   const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
   const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
   const [orderDetails, setOrderDetails] = useState(null); // Store order details
+  const [categoryItems, setCategoryItems] = useState([]); // State for items in selected category
 
   const handleSearch = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     const searchTerm = event.target.search.value.trim(); // Get and trim the search term
-    
+
     if (!searchTerm) {
       console.log("Please enter a search term");
       return;
     }
-  
+
     try {
       const response = await fetch(
         `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
@@ -38,16 +40,26 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
-  
+
     setShowSearch(false); // Hide the search input after submit
     if (onSearchSubmit) onSearchSubmit(searchTerm); // Trigger onSearchSubmit prop if passed
   };
-  
+
 
   // Update search term state on input change
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
     if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
+  };
+
+  const handleCategoryClick = async (category) => {
+    try {
+      const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
+      const data = await response.json();
+      setCategoryItems(data); // Store items of selected category
+    } catch (error) {
+      console.error("Error fetching items by category:", error);
+    }
   };
 
   const closeSearchResults = () => {
@@ -90,8 +102,8 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
     const paymentInfo = {
       ...billingInfo,
       paymentStatus: 'Success',
-      transactionId: Math.random().toString(36).substring(7), 
-      totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), 
+      transactionId: Math.random().toString(36).substring(7),
+      totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
     };
 
     const invoice = {
@@ -102,7 +114,7 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
     };
 
     setOrderDetails(invoice);
-    setShowCheckout(false);  
+    setShowCheckout(false);
     alert(`Payment Successful! Order ID: ${paymentInfo.transactionId}`);
   };
 
@@ -115,12 +127,12 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
 
       {/* Categories */}
       <ul className="navbar-links">
-        <li>Smartphones</li>
-        <li>PCs</li>
-        <li>Tablets</li>
-        <li>Smartwatches</li>
-        <li>TV & Sound</li>
-        <li>Audio</li>
+        <li onClick={() => onCategoryClick('Smartphones')}>Smartphones</li>
+        <li onClick={() => onCategoryClick('PCs')}>PCs</li>
+        <li onClick={() => onCategoryClick('Tablets')}>Tablets</li>
+        <li onClick={() => onCategoryClick('Smartwatches')}>Smartwatches</li>
+        <li onClick={() => onCategoryClick('TV & Sound')}>TV & Sound</li>
+        <li onClick={() => onCategoryClick('Audio')}>Audio</li>
       </ul>
 
       <div className="navbar-actions">
@@ -177,11 +189,6 @@ const NavBar = ({ addToCart, cartItems,onSearchSubmit, onSearchChange }) => {
           onClose={() => setShowAuthModal(false)}
           onAuthChange={handleAuthChange}
         />
-      )}
-
-      {/* Display Search Results */}
-      {showResults && (
-        <SearchResults results={searchResults} onClose={closeSearchResults} />
       )}
 
       {/* Show Cart */}
