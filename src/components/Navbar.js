@@ -14,8 +14,6 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
   const [role, setRole] = useState(""); // Store logged-in user's role
   const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
   const [searchTerm, setSearchTerm] = useState(''); // Controlled search term state
-  const [searchResults, setSearchResults] = useState([]); // State for search results
-  const [showResults, setShowResults] = useState(false); // Toggle visibility of search results
   const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
   const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
   const [orderDetails, setOrderDetails] = useState(null); // Store order details
@@ -25,9 +23,15 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
   // Update search term state on input change
   const handleSearchChange = (event) => {
     console.log(event); // Log the event to inspect its structure
-    setSearchTerm(event.target.value);
-    if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
-};
+    if (event && event.target) {
+      setSearchTerm(event.target.value);
+      if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
+    }
+  };
+  // const handleSearchSubmit = (event) => {
+  //   event.preventDefault();
+  //   onSearchSubmit(searchTerm);
+  // };
 
   // Handle Search Submit
   const handleSearch = (event) => {
@@ -40,7 +44,6 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     }
 
     if (onSearchSubmit) onSearchSubmit(term); // Trigger onSearchSubmit prop to fetch data in App.js
-    setShowSearch(false); // Hide the search input after submit
   };
 
   const handleCategoryClick = async (category) => {
@@ -53,10 +56,10 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     }
   };
 
-  const closeSearchResults = () => {
-    setShowResults(false);
-    setSearchResults([]); // Clear search results when closing
-  };
+  // const closeSearchResults = () => {
+  //   setShowResults(false);
+  //   setSearchResults([]); // Clear search results when closing
+  // };
 
   // Function to toggle the Auth Modal
   const toggleAuthModal = (mode) => {
@@ -130,7 +133,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
         {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={() => setShowSearch(true)}>
+            <button className="search-icon" onClick={toggleSearch}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}

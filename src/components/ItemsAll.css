@@ -1,7 +1,9 @@
 .all-items{
     background-color: #E0E6F6;
-    margin: 20px 50px 20px 50px;
+    margin: 100px 0px 20px 0; /* Reset margins */
     border-radius: 20px;
+    width: 1300px;
+    transform: translateX(339px); /* Move 100px to the right */
 }
 
 .all-items h1{
@@ -13,4 +15,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     padding: 50px;
+}
+.item-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    cursor: pointer;
 }
