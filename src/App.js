@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OfferSection from './components/OfferSection';
 import ItemsAll from './components/ItemsAll';
+import ItemDetails from './components/ItemDetails';
 import FAQsPage from './components/FAQsPage';
 import FeedbackPage from './components/FeedbackPage';
 import TermsAndConditions from './components/pages/TermsAndConditions';
