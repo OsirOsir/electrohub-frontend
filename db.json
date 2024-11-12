@@ -95,17 +95,40 @@
       "password": "12345"
     },
     {
-      "id": "bd3e",
-      "username": "Evans Cheruyiot ",
-      "email": "evans@gmail.com",
-      "password": "12345"
+      "id": "c01e",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi 123"
+    },
+    {
+      "id": "c27c",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
+    },
+    {
+      "id": "2094",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
+    },
+    {
+      "id": "2d1c",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
+    },
+    {
+      "id": "56f8",
+      "username": "messi",
+      "email": "messi@gmail.com",
+      "password": "messi123"
     }
   ],
   "items": [
     {
       "id": "1",
       "item_name": "Pixel 8 Pro",
-      "main_category": "Smartphones",
       "item_features": {
         "feature1": "50MP main camera",
         "feature2": "Google Tensor G2 processor",
@@ -120,7 +143,6 @@
     {
       "id": "2",
       "item_name": "MacBook Pro 14-inch",
-      "main_category": "PCs",
       "item_features": {
         "feature1": "M2 Pro/Max chip",
         "feature2": "Liquid Retina XDR display",
@@ -135,7 +157,6 @@
     {
       "id": "3",
       "item_name": "Apple iMac 27-inch",
-      "main_category": "PCs",
       "item_features": {
         "feature1": "5K Retina display",
         "feature2": "1080p FaceTime HD camera",
@@ -150,7 +171,6 @@
     {
       "id": "4",
       "item_name": "Sony WH-1000XM5",
-      "main_category": "Audio",
       "item_features": {
         "feature1": "Adaptive Sound Control",
         "feature2": "Speak-to-Chat",
@@ -165,7 +185,6 @@
     {
       "id": "5",
       "item_name": "Apple AirPods Pro (2nd Generation)",
-      "main_category": "Audio",
       "item_features": {
         "feature1": "Adaptive Transparency",
         "feature2": "Personalized Spatial Audio",
@@ -180,7 +199,6 @@
     {
       "id": "6",
       "item_name": "LG C3 Series OLED TV",
-      "main_category": "TV & Sound",
       "item_features": {
         "feature1": "Self-Lit OLED",
         "feature2": "α9 Gen6 Processor 4K",
@@ -195,7 +213,6 @@
     {
       "id": "7",
       "item_name": "Bose Soundbar 700",
-      "main_category": "TV & Sound",
       "item_features": {
         "feature1": "Dolby Atmos",
         "feature2": "Bose Voice Assistant",
@@ -210,7 +227,6 @@
     {
       "id": "8",
       "item_name": "KEF LS50 Meta",
-      "main_category": "Audio",
       "item_features": {
         "feature1": "Uni-Core Driver",
         "feature2": "Concentric Driver",
@@ -218,14 +234,13 @@
       },
       "item_price": 2999,
       "item_prev_price": 1,
-      "item_image_url": "images/KEF LS50 Meta.jpg",
+      "item_image_url": "images/KEF LS50 Meta.jpg_30ac01",
       "item_category": "Speakers",
       "items_instock": 7
     },
     {
       "id": "9",
       "item_name": "Apple Watch Series 9",
-      "main_category": "Smartwatches",
       "item_features": {
         "feature1": "Always-On Retina Display",
         "feature2": "Advanced Heart Rate Tracking",
@@ -240,7 +255,6 @@
     {
       "id": "10",
       "item_name": "Apple iPad Pro (12.9-inch)",
-      "main_category": "Tablets",
       "item_features": {
         "feature1": "Liquid Retina XDR Display",
         "feature2": "M2 Chip",
@@ -264,7 +278,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/iPhone 15 Pro Max.jpg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -279,7 +292,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Dell XPS 13 Plus.jpg",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -294,7 +306,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Dell XPS Desktop.jpg",
       "item_category": "Desktop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -309,7 +320,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Bose QuietComfort 45.jpg",
       "item_category": "Headphones",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -324,7 +334,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Sony WF-1000XM5.jpg",
       "item_category": "Earbuds",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -339,7 +348,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Samsung Neo QLED 8K TV.jpeg",
       "item_category": "TV",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -354,7 +362,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Klipsch Cinema 600.jpg",
       "item_category": "Sound system",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -367,9 +374,8 @@
       },
       "item_price": 12999,
       "item_prev_price": 1,
-      "item_image_url": "images/Focal Kanta No.2.jpg",
+      "item_image_url": "images/Focal Kanta No.2",
       "item_category": "Speakers",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -384,7 +390,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Samsung Galaxy Watch 6 Classic.jpg",
       "item_category": "Smartwatch",
-      "main_category": "Smartwatches",
       "items_instock": 7
     },
     {
@@ -399,7 +404,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Samsung Galaxy Tab S9 Ultra.jpg",
       "item_category": "Tablet",
-      "main_category": "Tablets",
       "items_instock": 7
     },
     {
@@ -414,7 +418,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Samsung Galaxy S24 Ultra.jpg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -429,7 +432,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/HP Spectre x360.png",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -444,7 +446,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Lenovo Legion Tower 7i.jpg",
       "item_category": "Desktop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -459,7 +460,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Apple AirPods Max.jpg",
       "item_category": "Headphones",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -474,7 +474,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Bose QuietComfort Earbuds II.jpg",
       "item_category": "Earbuds",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -489,7 +488,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Sony BRAVIA XR A95K OLED TV.jpg",
       "item_category": "TV",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -504,7 +502,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Sennheiser AMBEO Soundbar.jpg",
       "item_category": "Sound system",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -519,7 +516,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Klipsch RP-8000F1.jpeg",
       "item_category": "Speakers",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -534,7 +530,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Fitbit Sense 2.jpg",
       "item_category": "Smartwatch",
-      "main_category": "Smartwatches",
       "items_instock": 7
     },
     {
@@ -549,7 +544,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Microsoft Surface Pro 9.jpg",
       "item_category": "Tablet",
-      "main_category": "Tablets",
       "items_instock": 7
     },
     {
@@ -564,7 +558,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/OnePlus 12.jpg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -579,7 +572,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Acer Swift X.jpg",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -594,7 +586,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/HP Omen 45L.jpg",
       "item_category": "Desktop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -609,7 +600,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Hisense U8H ULED TV.jpg",
       "item_category": "TV",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -624,7 +614,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Sennheiser Momentum 4 Wireless.jpg",
       "item_category": "Headphones",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -639,7 +628,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Sennheiser Momentum True Wireless 3.jpg",
       "item_category": "Earbuds",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -654,7 +642,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/LG SN11RG.jpg",
       "item_category": "Sound system",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -669,7 +656,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Klipsch RP-8000F1.jpeg",
       "item_category": "Speakers",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -684,7 +670,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Garmin Venu 2 Plus.jpeg",
       "item_category": "Smartwatch",
-      "main_category": "Smartwatches",
       "items_instock": 7
     },
     {
@@ -699,7 +684,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Amazon Fire HD 10 Plus.jpg",
       "item_category": "Tablet",
-      "main_category": "Tablets",
       "items_instock": 7
     },
     {
@@ -714,7 +698,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Xiaomi 14 Pro.jpeg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -729,7 +712,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Asus Zenbook 14X OLED.png",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -744,7 +726,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/ASUS ROG Strix G35CX.jpg",
       "item_category": "Desktop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -759,7 +740,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/AKG N900NC M2.jpg",
       "item_category": "Headphones",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -774,7 +754,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Jabra Elite 85t.jpg",
       "item_category": "Earbuds",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -789,7 +768,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Panasonic JZ2000 OLED TV.jpeg",
       "item_category": "TV",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -804,7 +782,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/JBL Bar 500.jpg",
       "item_category": "Sound system",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -819,7 +796,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Elac Debut 2.0 F5.2",
       "item_category": "Speakers",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -834,7 +810,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Huawei Watch GT 3 Pro.jpg",
       "item_category": "Smartwatch",
-      "main_category": "Smartwatches",
       "items_instock": 7
     },
     {
@@ -849,7 +824,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Lenovo Tab P11 Pro (Gen 2).jpeg",
       "item_category": "Tablet",
-      "main_category": "Tablets",
       "items_instock": 7
     },
     {
@@ -864,7 +838,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Google Pixel Fold.jpeg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -879,7 +852,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Microsoft Surface Laptop 5.png",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -894,7 +866,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/CyberPowerPC Gamer Xtreme VR.jpg",
       "item_category": "Desktop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -909,7 +880,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Shure SRH1540.jpg",
       "item_category": "Headphones",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -924,7 +894,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/AKG N400BT.jpg",
       "item_category": "Earbuds",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -939,7 +908,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Philips OLED+937 TV.jpeg",
       "item_category": "TV",
-      "main_category": "TV & Sound",
       "items_instock": 7
     },
     {
@@ -954,7 +922,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Beyerdynamic DT 1990 Pro.jpg",
       "item_category": "Speakers",
-      "main_category": "Audio",
       "items_instock": 7
     },
     {
@@ -969,7 +936,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Xiaomi Watch S2 Pro.jpg",
       "item_category": "Smartwatch",
-      "main_category": "Smartwatches",
       "items_instock": 7
     },
     {
@@ -984,7 +950,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Huawei MatePad Pro 12.6.jpg",
       "item_category": "Tablet",
-      "main_category": "Tablets",
       "items_instock": 7
     },
     {
@@ -999,7 +964,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Motorola Edge 40 Pro.jpg",
       "item_category": "Smartphone",
-      "main_category": "Smartphones",
       "items_instock": 7
     },
     {
@@ -1014,7 +978,6 @@
       "item_prev_price": 1,
       "item_image_url": "images/Lenovo Legion Slim 7.jpg",
       "item_category": "Laptop",
-      "main_category": "PCs",
       "items_instock": 7
     },
     {
@@ -1029,8 +992,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/iBUYPOWER Slate MR.jpg",
       "item_category": "Desktop",
-      "items_instock": 7,
-      "main_category": "PCs"
+      "items_instock": 7
     },
     {
       "id": "63",
@@ -1044,8 +1006,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Philips Fidelio X2HR.jpg",
       "item_category": "Headphones",
-      "items_instock": 7,
-      "main_category": "Audio"
+      "items_instock": 7
     },
     {
       "id": "64",
@@ -1059,8 +1020,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Beyerdynamic Lagoon ANC.jpg",
       "item_category": "Earbuds",
-      "items_instock": 7,
-      "main_category": "Audio"
+      "items_instock": 7
     },
     {
       "id": "65",
@@ -1074,8 +1034,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/LG QNED Mini LED TV.jpg",
       "item_category": "TV",
-      "items_instock": 7,
-      "main_category": "TV & Sound"
+      "items_instock": 7
     },
     {
       "id": "66",
@@ -1089,8 +1048,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Amazfit GTR 4.jpg",
       "item_category": "Smartwatch",
-      "items_instock": 7,
-      "main_category": "Smartwatches"
+      "items_instock": 7
     },
     {
       "id": "67",
@@ -1104,8 +1062,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Xiaomi Pad 6.jpg",
       "item_category": "Tablet",
-      "items_instock": 7,
-      "main_category": "Tablets"
+      "items_instock": 7
     },
     {
       "id": "68",
@@ -1119,8 +1076,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Vivo X90 Pro+.jpg",
       "item_category": "Smartphone",
-      "items_instock": 7,
-      "main_category": "Smartphones"
+      "items_instock": 7
     },
     {
       "id": "69",
@@ -1134,8 +1090,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Polar Vantage V2.jpg",
       "item_category": "Smartwatch",
-      "items_instock": 7,
-      "main_category": "Smartwatches"
+      "items_instock": 7
     },
     {
       "id": "70",
@@ -1149,8 +1104,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/iPad Air (5th generation).jpg",
       "item_category": "Tablet",
-      "items_instock": 7,
-      "main_category": "Tablets"
+      "items_instock": 7
     },
     {
       "id": "71",
@@ -1164,8 +1118,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/OPPO Find X6 Pro.jpg",
       "item_category": "Smartphone",
-      "items_instock": 7,
-      "main_category": "Smartphones"
+      "items_instock": 7
     },
     {
       "id": "72",
@@ -1179,8 +1132,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Suunto 9 Peak Pro.jpeg",
       "item_category": "Smartwatch",
-      "items_instock": 7,
-      "main_category": "Smartwatches"
+      "items_instock": 7
     },
     {
       "id": "73",
@@ -1194,8 +1146,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Samsung Galaxy Tab S8.jpg",
       "item_category": "Tablet",
-      "items_instock": 7,
-      "main_category": "Tablets"
+      "items_instock": 7
     },
     {
       "id": "74",
@@ -1209,8 +1160,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Redmi Note 13 Pro Plus.jpg",
       "item_category": "Smartphone",
-      "items_instock": 7,
-      "main_category": "Smartphones"
+      "items_instock": 7
     },
     {
       "id": "75",
@@ -1224,8 +1174,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Withings ScanWatch.jpg",
       "item_category": "Smartwatch",
-      "items_instock": 7,
-      "main_category": "Smartwatches"
+      "items_instock": 7
     },
     {
       "id": "76",
@@ -1239,8 +1188,7 @@
       "item_prev_price": 1,
       "item_image_url": "images/Lenovo Yoga Tab 13.jpeg",
       "item_category": "Tablet",
-      "items_instock": 7,
-      "main_category": "Tablets"
+      "items_instock": 7
     }
   ],
   "hot&new": [
