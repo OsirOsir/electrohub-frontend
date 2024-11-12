@@ -21,35 +21,26 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
   const [orderDetails, setOrderDetails] = useState(null); // Store order details
   const [categoryItems, setCategoryItems] = useState([]); // State for items in selected category
 
-  const handleSearch = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-    const searchTerm = event.target.search.value.trim(); // Get and trim the search term
 
-    if (!searchTerm) {
+  // Update search term state on input change
+  const handleSearchChange = (event) => {
+    console.log(event); // Log the event to inspect its structure
+    setSearchTerm(event.target.value);
+    if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
+};
+
+  // Handle Search Submit
+  const handleSearch = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const term = searchTerm.trim();
+
+    if (!term) {
       console.log("Please enter a search term");
       return;
     }
 
-    try {
-      const response = await fetch(
-        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
-      );
-      const data = await response.json();
-      setSearchResults(data); // Store search results
-      setShowResults(true); // Show search results
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
-
+    if (onSearchSubmit) onSearchSubmit(term); // Trigger onSearchSubmit prop to fetch data in App.js
     setShowSearch(false); // Hide the search input after submit
-    if (onSearchSubmit) onSearchSubmit(searchTerm); // Trigger onSearchSubmit prop if passed
-  };
-
-
-  // Update search term state on input change
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-    if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
   };
 
   const handleCategoryClick = async (category) => {
@@ -139,7 +130,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
         {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={toggleSearch}>
+            <button className="search-icon" onClick={() => setShowSearch(true)}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}

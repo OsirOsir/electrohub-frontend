@@ -36,6 +36,7 @@ const App = () => {
       });
   }, []);
 
+  
   const handleCategoryClick = async (category) => {
     try {
       // Fetch items by category
@@ -55,13 +56,18 @@ const App = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    const filtered = items.filter(item =>
-      item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredItems(filtered);
-    setShowSearchResults(true); // Show search results when search is performed
+  const handleSearchSubmit = async (searchTerm) => {
+    if (!searchTerm) return;
+    try {
+      const response = await fetch(
+        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
+      );
+      const data = await response.json();
+      setFilteredItems(data);
+      setShowSearchResults(true); // Show the search results after fetching
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
   };
 
   const handleSearchClose = () => {
