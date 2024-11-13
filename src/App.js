@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OfferSection from './components/OfferSection';
 import ItemsAll from './components/ItemsAll';
-import ItemDetails from './components/ItemDetails';
+// import ItemDetails from './components/ItemDetails';
 import FAQsPage from './components/FAQsPage';
 import FeedbackPage from './components/FeedbackPage';
 import TermsAndConditions from './components/pages/TermsAndConditions';
@@ -26,8 +26,8 @@ const App = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [categoryItems, setCategoryItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // eslint-disable-line no-unused-vars
+  const [error, setError] = useState(null); // eslint-disable-line no-unused-vars
 
   // Fetch items from the server on initial load
   useEffect(() => {

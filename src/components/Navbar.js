@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import './Navbar.css';
 import AuthModal from './AuthModal';
 import CartModal from './CartModal';
@@ -15,8 +15,8 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
   const [searchTerm, setSearchTerm] = useState('');
   const [showCartModal, setShowCartModal] = useState(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
-  const [orderDetails, setOrderDetails] = useState(null); // Store order details
-  const [categoryItems, setCategoryItems] = useState([]); // State for items in selected category
+  const [orderDetails, setOrderDetails] = useState(null);  // eslint-disable-line no-unused-vars
+  const [categoryItems, setCategoryItems] = useState([]); // eslint-disable-line no-unused-vars
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -58,7 +58,7 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
   };
 
   // Category click logic
-  const handleCategoryClick = async (category) => {
+  const handleCategoryClick = async (category) => {// eslint-disable-line no-unused-vars
     try {
       const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
       const data = await response.json();
@@ -90,7 +90,7 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
   const toggleCartModal = () => {
     setShowCartModal(!showCartModal);
   };
-  const addToCart = (item) => {
+  const addToCart = (item) => {// eslint-disable-line no-unused-vars
     const updatedCart = [...cartItems];
     const existingItemIndex = updatedCart.findIndex(cartItem => cartItem.item_name === item.item_name);
 

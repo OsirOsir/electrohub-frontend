@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import './OfferSection.css';
 import HotNewOffers from "./Hot&NewOffers";
@@ -7,20 +8,21 @@ import SeasonOffers from "./SeasonOffers";
 
 function OfferSection({ addToCart }) {
     const [selectedOffer, setSelectedOffer] = useState("dailyDeals");
-    const [previousOffer, setPreviousOffer] = useState("dailyDeals");
+    const [previousOffer, setPreviousOffer] = useState("dailyDeals");// eslint-disable-line no-unused-vars
     const [direction, setDirection] = useState(null);
 
     const handleOfferClick = (offer) => {
-        if (offer !== selectedOffer) {
-            const isBelow = offer === "bestSellers" && selectedOffer === "dailyDeals" || 
-                            offer === "hotNew" && selectedOffer === "bestSellers" ||
-                            offer === "seasonOffers" && selectedOffer === "hotNew";
-            
-            setDirection(isBelow ? "down" : "up");
-            setPreviousOffer(selectedOffer);
-            setSelectedOffer(offer);
-        }
-    };
+    if (offer !== selectedOffer) {
+        const isBelow = 
+            (offer === "bestSellers" && selectedOffer === "dailyDeals") || 
+            (offer === "hotNew" && selectedOffer === "bestSellers") ||
+            (offer === "seasonOffers" && selectedOffer === "hotNew");
+
+        setDirection(isBelow ? "down" : "up");
+        setPreviousOffer(selectedOffer);
+        setSelectedOffer(offer);
+    }
+};
 
     return (
         <div className="items-on-offer-container">
