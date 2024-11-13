@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import AuthModal from './AuthModal';
 import CartModal from './CartModal';
@@ -109,18 +110,21 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
   // Proceed to checkout logic
   const proceedToCheckout = (updatedCartItems, totalAmount) => {
     console.log('Proceeding to checkout with:', updatedCartItems, totalAmount);
-    setShowCartModal(false); 
-    setShowCheckoutModal(true); 
+    setShowCartModal(false);
+    setShowCheckoutModal(true);
   };
 
   const closeCheckoutModal = () => {
     setShowCheckoutModal(false);
   };
+  const handleLogoClick = () => {
+    window.location.href = '/'; // Navigate to home and reload the page
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="/" className="logo-link">ElectroHub</a>
+        <a href="/" className="logo-link" onClick={handleLogoClick}>ElectroHub</a>
       </div>
 
       <ul className="navbar-links">
