@@ -1,15 +1,14 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
-function DailyDeals(){
-    const [dailyDeals , setDailyDeals] = useState([]);
+function DailyDeals({ addToCart }) {
+    const [dailyDeals, setDailyDeals] = useState([]);
     const [offset, setOffset] = useState(0);
 
-
     useEffect(() => {
-    fetch("http://localhost:8001/dailyDeals")
-    .then(response => response.json())
-    .then(data => setDailyDeals(data));
+        fetch("http://localhost:8001/dailyDeals")
+            .then(response => response.json())
+            .then(data => setDailyDeals(data));
     }, []);
 
     const handleSwipeLeft = () => {
@@ -20,26 +19,24 @@ function DailyDeals(){
         setOffset((prevOffset) => Math.max(prevOffset - 900, 0));
     };
 
-
-    return(
+    return (
         <div className="items-offers-deals">
             <h2>Daily Deals</h2>
             <div className="swipe-buttons">
                 <button onClick={handleSwipeRight}>{"<"}</button>
                 <button onClick={handleSwipeLeft}>{">"}</button>
             </div>
-            
             <div className="offer-items-cards"
-            style={{
-                transform: `translateX(-${offset}px)`,
-                transition: 'transform 0.5s ease',
-            }}>
+                style={{
+                    transform: `translateX(-${offset}px)`,
+                    transition: 'transform 0.5s ease',
+                }}>
                 {dailyDeals.map((item) => (
-                    <ItemCard key={item.id} item={item}/>
+                    <ItemCard key={item.id} item={item} addToCart={addToCart} />
                 ))}
             </div>
         </div>
-    )
+    );
 }
 
 export default DailyDeals;

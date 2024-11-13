@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
-function BestSellers() {
+function BestSellers({ addToCart }) {
     const [bestSellers, setBestSellers] = useState([]);
     const [offset, setOffset] = useState(0);
 
@@ -34,7 +34,7 @@ function BestSellers() {
                 }}
             >
                 {bestSellers.map((item) => (
-                    <ItemCard key={item.id} item={item} />
+                    <ItemCard key={item.id} item={item} addToCart={addToCart} />
                 ))}
             </div>
         </div>

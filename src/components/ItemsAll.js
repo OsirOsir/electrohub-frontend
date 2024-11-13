@@ -1,7 +1,6 @@
 import React from "react";
 import ItemCard from "./ItemCard";
 import './ItemsAll.css';
-import './ItemsAll.css';
 
 function ItemsAll({ items, addToCart }) {
     return (

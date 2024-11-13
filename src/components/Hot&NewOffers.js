@@ -1,17 +1,17 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
-function HotNewOffers(){
-    const [hotNew , setHotNew] = useState([]);
+function HotNewOffers({ addToCart }) {
+    const [hotNew, setHotNew] = useState([]);
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
         fetch("http://localhost:8001/hot&new")
-        .then(response => response.json())
-        .then(data => setHotNew(data));
-      }, []);
+            .then(response => response.json())
+            .then(data => setHotNew(data));
+    }, []);
 
-      const handleSwipeLeft = () => {
+    const handleSwipeLeft = () => {
         setOffset((prevOffset) => prevOffset + 900);
     };
 
@@ -19,27 +19,24 @@ function HotNewOffers(){
         setOffset((prevOffset) => Math.max(prevOffset - 900, 0));
     };
 
-
-    return(
+    return (
         <div className="items-offers-deals">
             <h2>Hot & New</h2>
             <div className="swipe-buttons">
                 <button onClick={handleSwipeRight}>{"<"}</button>
                 <button onClick={handleSwipeLeft}>{">"}</button>
             </div>
-            
             <div className="offer-items-cards"
-            style={{
-                transform: `translateX(-${offset}px)`,
-                transition: 'transform 0.5s ease',
-            }}>
-                {hotNew.map((item) => (
-                    <ItemCard key={item.id} item={item}/>
+                style={{
+                    transform: `translateX(-${offset}px)`,
+                    transition: 'transform 0.5s ease',
+                }}>
+                {hotNew.map ((item) => (
+                    <ItemCard key={item.id} item={item} addToCart={addToCart} />
                 ))}
             </div>
-
         </div>
-    )
+    );
 }
 
 export default HotNewOffers;

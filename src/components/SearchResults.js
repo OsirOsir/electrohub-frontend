@@ -2,7 +2,7 @@ import React from 'react';
 import ItemCard from './ItemCard';
 import './SearchResults.css';
 
-const SearchResults = ({ results, onClose }) => {
+const SearchResults = ({ results, onClose, addToCart }) => { // Accept addToCart as a prop
   return (
     <div className="search-results">
       <button className="close-button" onClick={onClose}>Close</button>
@@ -12,6 +12,7 @@ const SearchResults = ({ results, onClose }) => {
             <ItemCard
               key={item.id}
               item={item} // Pass each item to ItemCard as a prop
+              addToCart={addToCart} // Pass addToCart to ItemCard
             />
           ))}
         </div>

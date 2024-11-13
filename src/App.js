@@ -64,6 +64,7 @@ const App = () => {
   };
 
   // Add item to cart and ensure quantity is valid
+  // Add item to cart and ensure quantity is valid
   const addToCart = (item) => {
     setCart(prevCart => {
       const existingItemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
@@ -129,15 +130,16 @@ const App = () => {
         addToCart={addToCart}
         cartItems={cart}
         onSearchSubmit={handleSearchSubmit}  //Pass function to Navbar
+        onCategoryClick={handleCategoryClick} // Pass the handleCategoryClick function
       />
       {/* Render SearchResults based on showSearchResults */}
       {showSearchResults && (
-        <SearchResults results={filteredItems} onClose={handleSearchClose} />
+        <SearchResults results={filteredItems} onClose={handleSearchClose} addToCart={addToCart}/>
       )}
 
       {/* CategoryItems component to display fetched category-specific items */}
       {categoryItems.length > 0 && (
-        <CategoryItems items={categoryItems} onClose={handleCategoryClose} />
+        <CategoryItems items={categoryItems} onClose={handleCategoryClose} addToCart={addToCart}/>
       )}
 
       <CredibilitySection />
@@ -146,8 +148,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={
             <div>
-              <OfferSection items={items} />
-              <ItemsAll items={items} />
+              <OfferSection items={items} addToCart={addToCart}/>
+              <ItemsAll items={items} addToCart={addToCart} /> {/* Pass addToCart here */}
             </div>
           } />
           {/* Customer Support Pages */}
