@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -12,16 +13,24 @@ import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import Contact from './components/pages/Contact';
 import AboutUs from './components/pages/AboutUs';
-import Support from './components/Support'; // import Support as the customer support card
+import Support from './components/Support';
 import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
-import SearchResults from './components/SearchResults'; // Import the SearchResults component
+import SearchResults from './components/SearchResults';
 import CategoryItems from './components/CategoryItems';
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [categoryItems, setCategoryItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Fetch items from server on initial load
   // const [searchTerm, setSearchTerm] = useState(''); // To track the search term
   const [showSearchResults, setShowSearchResults] = useState(false); // To toggle between search results and default items
   const [filteredItems, setFilteredItems] = useState([]); // To store the filtered items based on search
@@ -30,10 +39,22 @@ const App = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("http://localhost:8001/items");
+        const data = await response.json();
+    const fetchItems = async () => {
       try {
         const response = await fetch("http://localhost:8001/items");
         const data = await response.json();
         setItems(data);
+        setFilteredItems(data); // Show all items initially
+      } catch (error) {
+        setError("Failed to fetch items.");
+      } finally {
+        setLoading(false);
+      }
+    };
         setFilteredItems(data); // Initially, show all items
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -59,10 +80,32 @@ const App = () => {
     setCategoryItems([]); // Clear the category items to hide the component
   };
 
+    fetchItems();
+  }, []);
+
+  // Add item to cart and ensure quantity is valid
   const addToCart = (item) => {
-    setCart(prevCart => [...prevCart, item]);
+    setCart(prevCart => {
+      const existingItemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
+      
+      if (existingItemIndex >= 0) {
+        // Item already in cart, update quantity
+        const updatedCart = [...prevCart];
+        updatedCart[existingItemIndex].quantity = updatedCart[existingItemIndex].quantity + 1;
+        return updatedCart;
+      } else {
+        // Add item to cart with quantity of 1
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
   };
 
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Handle search submission to filter items
   const handleSearchSubmit = async (searchTerm) => {
     if (!searchTerm) {
       setShowSearchResults(false);
@@ -78,6 +121,8 @@ const App = () => {
       }
   
       const data = await response.json();
+      setFilteredItems(data);
+      setShowSearchResults(true); // Show search results
   
       // Filter items based on search term
       const filtered = data.filter(item =>
@@ -94,7 +139,10 @@ const App = () => {
     }
   };
 
+  // Reset search results and show all items
   const handleSearchClose = () => {
+    setShowSearchResults(false);
+    setSearchTerm('');
     setShowSearchResults(false); // Hide search results
     setFilteredItems(items); // Reset to show all items
   };
@@ -103,10 +151,13 @@ const App = () => {
     <div className="App">
       <Navbar
         addToCart={addToCart}
+        cartItems={cart}
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
         cartItems={cart.length}
         onSearchSubmit={handleSearchSubmit}
-        onCategoryClick={handleCategoryClick} // Pass function to NavBar
       />
+      <CategoryItems items={categoryItems} addToCart={addToCart} />
       {/* 2. Render SearchResults based on showSearchResults */}
        {showSearchResults && (
         <SearchResults results={filteredItems} onClose={handleSearchClose} />
@@ -117,35 +168,27 @@ const App = () => {
       )}
       <CredibilitySection />
 
-      {/* Main content */}
       <main className="main-content">
         <Routes>
-          {/* Shopping Pages (Route for homepage) */}
           <Route path="/" element={
             <div>
               <OfferSection items={items} />
               <ItemsAll items={items} />
             </div>
           } />
-
-          {/* Customer Support Pages */}
           <Route path="/FAQs" element={<FAQsPage />} />
           <Route path="/Customer-Feedback" element={<FeedbackPage />} />
-          <Route path="/support" element={<Support />} /> {/* keep this route for standalone access */}
+          <Route path="/support" element={<Support />} />
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/order-support" element={<OrderSupport />} />
-
-          {/* Other Pages */}
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<AboutUs />} />
-
-          {/* Default Route */}
+          <Route path="/item-details/:id" element={<ItemDetails items={items} />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
-        {/* Customer Support Card */}
         <Support />
       </main>
 
