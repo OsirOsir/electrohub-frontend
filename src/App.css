@@ -59,9 +59,9 @@
 
 /* Flex container for support links */
 .support-links {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 40px; */
 }
 
 /* Support item link styling */
