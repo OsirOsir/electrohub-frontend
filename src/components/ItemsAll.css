@@ -12,3 +12,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
+
+.all-items-header{
+    display: flex;
+}
+
+.all-items-header button{
+    height: 20px;
+}

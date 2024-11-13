@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import './ItemDetails.css'
+import './ItemDetails.css';
 
 function ItemDetails({ items }) {
     const [item, setItem] = useState(null);
@@ -88,6 +88,10 @@ function ItemDetails({ items }) {
                         <div className="crud-btns">
                             <button className="item-update-btn">Update Item</button>
                             <button className="item-delete-btn">Delete Item</button>
+                        </div>
+                        <div className="special-category-btn">
+                            <button className="add-to-special-category-btn">Add to special category</button>
+                            <button className="remove-from-special-category-btn">Remove from special category</button>
                         </div>
                     </div>
                 </div>
