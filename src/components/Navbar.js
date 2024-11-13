@@ -7,13 +7,15 @@ import CheckoutModal from './CheckoutModal';
 const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
+  const [role, setRole] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState("signIn");
-  const [role, setRole] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showCartModal, setShowCartModal] = useState(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null); // Store order details
+  const [categoryItems, setCategoryItems] = useState([]); // State for items in selected category
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -33,42 +35,18 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
     }
   }, [isAuthenticated, username, role]);
 
-const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearchChange }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  const [username, setUsername] = useState(""); // Store logged-in user's name
-  const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
-  const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
-  const [role, setRole] = useState(""); // Store logged-in user's role
-  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
-  const [searchTerm, setSearchTerm] = useState(''); // Controlled search term state
-  const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
-  const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
-  const [orderDetails, setOrderDetails] = useState(null); // Store order details
-  const [categoryItems, setCategoryItems] = useState([]); // State for items in selected category
-
-
-  // Update search term state on input change
+  // Search-related logic
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-    if (onSearchChange) onSearchChange(event.target.value);
-  };
     console.log(event); // Log the event to inspect its structure
     if (event && event.target) {
       setSearchTerm(event.target.value);
       if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
     }
   };
-  // const handleSearchSubmit = (event) => {
-  //   event.preventDefault();
-  //   onSearchSubmit(searchTerm);
-  // };
 
   const handleSearch = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission behavior
     const term = searchTerm.trim();
-    if (!term) return;
-    if (onSearchSubmit) onSearchSubmit(term);
-    setShowSearch(false);
 
     if (!term) {
       console.log("Please enter a search term");
@@ -78,6 +56,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     if (onSearchSubmit) onSearchSubmit(term); // Trigger onSearchSubmit prop to fetch data in App.js
   };
 
+  // Category click logic
   const handleCategoryClick = async (category) => {
     try {
       const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
@@ -88,12 +67,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     }
   };
 
-  // const closeSearchResults = () => {
-  //   setShowResults(false);
-  //   setSearchResults([]); // Clear search results when closing
-  // };
-
-  // Function to toggle the Auth Modal
+  // Auth modal toggle logic
   const toggleAuthModal = (mode) => {
     setAuthMode(mode);
     setShowAuthModal(true);
@@ -111,10 +85,10 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     setRole(role);
   };
 
+  // Cart modal toggle logic
   const toggleCartModal = () => {
     setShowCartModal(!showCartModal);
   };
-
   const addToCart = (item) => {
     const updatedCart = [...cartItems];
     const existingItemIndex = updatedCart.findIndex(cartItem => cartItem.item_name === item.item_name);
@@ -132,6 +106,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
     console.log('Updated Cart:', updatedCart);
   };
 
+  // Proceed to checkout logic
   const proceedToCheckout = (updatedCartItems, totalAmount) => {
     console.log('Proceeding to checkout with:', updatedCartItems, totalAmount);
     setShowCartModal(false); 
@@ -158,9 +133,10 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
       </ul>
 
       <div className="navbar-actions">
+        {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={toggleSearch}>
+            <button className="search-icon" onClick={() => setShowSearch(true)}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}
@@ -180,6 +156,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
           )}
         </div>
 
+        {/* Auth Buttons */}
         <div className="auth-buttons">
           {isAuthenticated ? (
             <>
@@ -194,7 +171,7 @@ const NavBar = ({ onCategoryClick, addToCart, cartItems, onSearchSubmit, onSearc
             </button>
           )}
         </div>
-
+        {/* Cart Icon with Checkout and Payment */}
         <div className="navbar-icons" onClick={toggleCartModal}>
           <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" />
           <span>{cartItems.length}</span>
