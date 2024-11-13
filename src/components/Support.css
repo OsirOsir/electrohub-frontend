@@ -54,8 +54,8 @@ body {
 /* Support Item Styles */
 .support-item {
   text-align: center;
-  /* padding: 20px; */
-  /* flex: 1 1 200px; */
+  padding: 10px; /* Re-add padding for spacing within each item */
+  flex: 0 1 220px; /* Adjust width of each item; change 220px as needed */
   text-decoration: none;
   color: #333;
   transition: transform 0.2s, box-shadow 0.2s;
