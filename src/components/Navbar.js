@@ -188,6 +188,7 @@ const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) 
           onClose={toggleCartModal}
           username={username}
           proceedToCheckout={proceedToCheckout}
+
         />
       )}
 
