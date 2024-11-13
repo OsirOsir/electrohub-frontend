@@ -105,6 +105,13 @@
       "username": "Rose Angel",
       "email": "roseangel@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "f0cd",
+      "username": "Alice Atieno",
+      "email": "otieno@gmail.com",
+      "password": "12345",
+      "role": "admin"
     }
   ],
   "items": [
