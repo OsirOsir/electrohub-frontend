@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import './OfferSection.css';
 import HotNewOffers from "./Hot&NewOffers";
@@ -5,28 +6,26 @@ import DailyDeals from "./DailyDeals";
 import BestSellers from "./BestSellers";
 import SeasonOffers from "./SeasonOffers";
 
-function OfferSection(){
-
+function OfferSection({ addToCart }) {
     const [selectedOffer, setSelectedOffer] = useState("dailyDeals");
-    const [previousOffer, setPreviousOffer] = useState("dailyDeals");
+    const [previousOffer, setPreviousOffer] = useState("dailyDeals");// eslint-disable-line no-unused-vars
     const [direction, setDirection] = useState(null);
 
     const handleOfferClick = (offer) => {
-        if (offer !== selectedOffer) {
-            // Determine the direction of the swipe
-            const isBelow = offer === "bestSellers" && selectedOffer === "dailyDeals" || 
-                            offer === "hotNew" && selectedOffer === "bestSellers" ||
-                            offer === "seasonOffers" && selectedOffer === "hotNew";
-            
-            setDirection(isBelow ? "down" : "up");  // Set swipe direction
-            setPreviousOffer(selectedOffer);  // Save previous offer
-            setSelectedOffer(offer);  // Update current offer
-        }
-    };
+    if (offer !== selectedOffer) {
+        const isBelow = 
+            (offer === "bestSellers" && selectedOffer === "dailyDeals") || 
+            (offer === "hotNew" && selectedOffer === "bestSellers") ||
+            (offer === "seasonOffers" && selectedOffer === "hotNew");
+
+        setDirection(isBelow ? "down" : "up");
+        setPreviousOffer(selectedOffer);
+        setSelectedOffer(offer);
+    }
+};
 
     return (
         <div className="items-on-offer-container">
-            {/* <h1>Items On Offer</h1> */}
             <div className="offer-items">
                 <div className="offers-links">
                     <ul>
@@ -67,16 +66,16 @@ function OfferSection(){
 
                 <div className="offers-display">
                     <div className={`offer-item ${direction} ${selectedOffer === "dailyDeals" ? "show" : ""}`}>
-                        <DailyDeals />
+                        <DailyDeals addToCart={addToCart} />
                     </div>
                     <div className={`offer-item ${direction} ${selectedOffer === "bestSellers" ? "show" : ""}`}>
-                        <BestSellers />
+                        <BestSellers addToCart={addToCart} />
                     </div>
                     <div className={`offer-item ${direction} ${selectedOffer === "hotNew" ? "show" : ""}`}>
-                        <HotNewOffers />
+                        <HotNewOffers addToCart={addToCart} />
                     </div>
                     <div className={`offer-item ${direction} ${selectedOffer === "seasonOffers" ? "show" : ""}`}>
-                        <SeasonOffers />
+                        <SeasonOffers addToCart={addToCart} />
                     </div>
                 </div>
             </div>

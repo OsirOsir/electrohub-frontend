@@ -1,0 +1,161 @@
+.navbar {
+  position: fixed; /* Fixes navbar at the top */
+  top: 0; /* Positions it at the top */
+  left: 0;
+  width: 100%; /* Full-width to span the screen */
+  z-index: 1000; /* Ensures it stays on top of other content */
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  color: white;
+  padding: 1rem 2rem;
+  font-family: Arial, sans-serif;
+  justify-content: space-around;
+}
+.navbar-actions {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: space-between; /* Space out the items evenly */
+  gap: 10px; /* Optional: adds space between each item */
+}
+.logo-link {
+  text-decoration: none; /* Removes underline from link */
+  color: white; /* Sets text color */
+  font-weight: bold; /* Makes the text bold */
+  font-size: 2rem; /* Adjust the font size if needed */
+}
+.logo-link:hover {
+  text-decoration: none; /* Ensures no underline when hovering */
+  color: lightgray; /* Optional: Change the color on hover for better UX */
+}
+
+.navbar-logo {
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.navbar-links li {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Light background */
+  backdrop-filter: blur(10px);
+  /* Glass effect */
+  border: none;
+  /* Subtle border */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition for hover */
+  cursor: pointer;
+  display: grid;   
+  place-items: center;
+}
+
+.navbar-links li:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Slightly darker on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow on hover */
+}
+
+.search-bar-container {
+  position: relative;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+}
+.search-icon-img {
+  width: 34px; /* Adjust size */
+  height: 34px; /* Adjust size */
+  object-fit: contain; /* Ensures the image scales correctly */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  /* Space between icon and input */
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  width: 200px;
+  /* Adjust the width as desired */
+  transition: width 0.3s ease;
+  /* Smooth transition for width change */
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+  margin-left: 5px;
+}
+.auth-buttons {
+ color: rgba(0, 0, 0, 0.4);
+}
+
+.auth-buttons,
+.navbar-icons {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.welcome-message {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1f6ed4; /* Optional: Change to match the brand color */
+}
+
+.auth-button {
+  background: none;
+  border: none;
+  padding-left: 10px;
+  color: #1f6ed4;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.auth-button .user-icon {
+  width: 34px;
+  /* Adjust as needed */
+  height: 34px;
+  /* Adjust as needed */
+  margin-right: 0.5rem;
+  /* Space between icon and text */
+  vertical-align: middle;
+  /* Aligns the icon with the text */
+}
+
+.navbar-icons span {
+  font-weight: bold;
+}
+
+.cart-icon {
+  width: 42px;
+  height: 42px;
+  margin-top: 0;
+  margin-right: -10px;
+  vertical-align: middle;
+}

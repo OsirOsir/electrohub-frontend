@@ -4,6 +4,10 @@
     text-decoration: none;
 }
 
+.item-card:hover, .item-card-info:hover{
+    text-decoration: none;
+}
+
 .item-card-info{
     background-color: white;
     width: 300px;

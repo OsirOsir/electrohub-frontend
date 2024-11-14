@@ -1,12 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
-function SeasonOffers(){
-    const [seasonOffers , setSeasonOffers] = useState([]);
+function SeasonOffers({ addToCart }) {
+    const [seasonOffers, setSeasonOffers] = useState([]);
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-    fetch("http://127.0.0.1:5555/api/items/daily_deals")
+    fetch("http://127.0.0.1:5555/api/items/season_offers")
     .then(response => response.json())
     .then(data => setSeasonOffers(data));
     }, []);
@@ -19,8 +19,7 @@ function SeasonOffers(){
         setOffset((prevOffset) => Math.max(prevOffset - 900, 0));
     };
 
-
-    return(
+    return (
         <div className="items-offers-deals">
             <h2>Season Offers</h2>
             <div className="swipe-buttons">
@@ -28,17 +27,16 @@ function SeasonOffers(){
                 <button onClick={handleSwipeLeft}>{">"}</button>
             </div>
             <div className="offer-items-cards"
-            style={{
-                transform: `translateX(-${offset}px)`,
-                transition: 'transform 0.5s ease',
-            }}>
+                style={{
+                    transform: `translateX(-${offset}px)`,
+                    transition: 'transform 0.5s ease',
+                }}>
                 {seasonOffers.map((item) => (
-                    <ItemCard key={item.id} item={item}/>
+                    <ItemCard key={item.id} item={item} addToCart={addToCart} />
                 ))}
             </div>
-            
         </div>
-    )
+    );
 }
 
 export default SeasonOffers;

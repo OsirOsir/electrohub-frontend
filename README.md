@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Email Support: Send us an email at support@electrohub.com.
+Phone: Call us at 0746 890 567 .
+Whatsapp: Reach us on 0724 856 856 or 0726 144 344.
