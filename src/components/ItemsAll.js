@@ -1,11 +1,16 @@
 import React from "react";
 import ItemCard from "./ItemCard";
-import './ItemsAll.css'
+import './ItemsAll.css';
+
 
 function ItemsAll({ items }){
     return(
         <div className="all-items">
-            <h1>All Products</h1>
+            <div className="all-items-header">
+                <h1>All Items</h1>
+                <button className="">Create Item</button>
+            </div>
+            
             <div className="items-display">
                 {items.map((item) => (
                     <ItemCard key={item.id} item={item} />
