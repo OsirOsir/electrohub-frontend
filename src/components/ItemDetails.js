@@ -5,21 +5,35 @@ import './ItemDetails.css';
 function ItemDetails() {
     const [item, setItem] = useState({});
     const [reviews, setReviews] = useState([]);
-    const [averageRating, setAverageRating] = useState(0);
+    const [averageRating, setAverageRating] = useState(null);
     const [newReview, setNewReview] = useState({ rating: 0, message: ''});
     const [hoveredRating, setHoveredRating] = useState(0);
     const params = useParams();
     const itemId = params.id;
 
+
     useEffect(() => {
         fetch(`http://127.0.0.1:5555/api/item_details/item_id/${itemId}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 setItem(data);
             })
             .catch(error => console.error("Error fetching item details:", error));
     }, [itemId]);
+
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:5555/api/item_id/${itemId}/reviews`)
+            .then(response => response.json())
+            .then(data => setReviews(data))
+            .catch(error => console.error("Error fetching reviews:", error));
+
+        fetch(`http://127.0.0.1:5555/api/item/item_id/${itemId}/average_rating`)
+            .then(response => response.json())
+            .then(data => setAverageRating(data.average_rating))
+            .catch(error => console.error("Error fetching average rating:", error));
+
+    }, [itemId])
 
     if (!item) {
         return <p>Loading item details...</p>;
@@ -33,11 +47,44 @@ function ItemDetails() {
         })
         .then(response => response.json())
         .then(data => {
-            setReviews([...reviews, data.review]);
-            setAverageRating(data.newAverageRating);
+            setReviews([...reviews, data]);
             setNewReview({ rating: 0, message: ''});
-        });
+            fetchAverageRating();
+        })
+        .catch(error => console.error("Error submitting review: ", error));
     };
+
+    const handleUpdateReview = (reviewId, updatedReview) => {
+        fetch(`http://127.0.0.1:5555/api/items/reviews/${reviewId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedReview)
+        })
+        .then(response => response.json())
+        .then(data => {
+            setReviews(reviews.map(review => review.id === reviewId ? data : review));
+            fetchAverageRating();
+        })
+        .catch(error => console.error("Error updating review:", error));
+    };
+
+    const handleDeleteReview = (reviewId) => {
+        fetch(`http://127.0.0.1:5555/api/items/reviews/${reviewId}`, {
+            method: 'DELETE'
+        })
+        .then(() => {
+            setReviews(reviews.filter(review => review.id !== reviewId));
+            fetchAverageRating();
+        })
+        .catch(error => console.error("Error deleting review:", error));
+    }
+
+    const fetchAverageRating = () => {
+        fetch(`http://127.0.0.1:5555/api/item/item_id/${itemId}/average_rating`)
+            .then(response => response.json())
+            .then(data => setAverageRating(data.average_rating))
+            .catch(error => console.error("Error fetching average rating: ", error))
+    }
 
     const handleStarClick = (rating) => {
         setNewReview({...newReview, rating });
@@ -86,14 +133,14 @@ function ItemDetails() {
                 </div>
                 
                 <div className="item-reviews">
-                    <p>{item.item_name} Reviews</p>
+                    <h2>{item.item_name} Reviews</h2>
                     <div className="ratings">
-                        <div className="ratings-snapshot">
+                        {/* <div className="ratings-snapshot">
                             <p>Ratings Snapshot</p>
-                        </div>
+                        </div> */}
                         <div className="overall-rating">
                             <p>Overall Rating</p>
-                            <p><span>{averageRating.toFixed(1)}</span></p>
+                            <p><span>{averageRating ? averageRating.toFixed(1) : ""}</span></p>
                         </div>
                         <div className="review-product">
                             <p>Review this Product</p>
@@ -111,8 +158,8 @@ function ItemDetails() {
                             <div className="review-message">
                                 <textarea 
                                     placeholder="Write your review..."
-                                    value={newReview.message}
-                                    onChange={(e) => setNewReview({...newReview, message: e.target.value })}
+                                    value={newReview.review_message}
+                                    onChange={(e) => setNewReview({...newReview, review_message: e.target.value })}
                                 />
                                 <button onClick={handleReviewSubmit}>Submit Review</button>
                                 <p>*Adding a review will need a valid email for verification</p>
@@ -120,16 +167,16 @@ function ItemDetails() {
                         </div>
                     </div>
                     <div className="reviews">
-                        {reviews.length > 0 ? (
-                            reviews.map((review, index) => (
-                            <div key={index} className="review-card">
-                                <h6>{review.username}</h6>
-                                <p>{review.message}</p> {/* Add conditional rendering to the whole review if the review_message is an empty string */}
+                        {reviews.length > 0 ? reviews.map(review => (
+                            <div key={review.id} className="review-card">
+                                <h4>{review.user.username}</h4>
+                                <p>{review.review_message}</p>
                                 <p>Rating: {review.rating}</p>
-                                <p>{review.created_at}</p>
-                                {/* <p>{new Date(review.date).toLocaleString()}</p> */}
+                                <p><span>{review.created_at}</span></p>
+                                <button onClick={() => handleUpdateReview(review.id, { ...review, review_message: 'Updated message' })}>Update</button>
+                                <button onClick={() => handleDeleteReview(review.id)}>Delete</button>
                             </div>
-                        ))) : (<p>No reviews yet</p>)}
+                        )) : <p>No reviews yet</p>}
                     </div>
                 </div>
                 
@@ -139,3 +186,4 @@ function ItemDetails() {
 }
 
 export default ItemDetails;
+
