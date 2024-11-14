@@ -6,7 +6,7 @@ function BestSellers() {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:8001/bestSellers")
+        fetch("http://127.0.0.1:5555/api/items/best_sellers")
             .then(response => response.json())
             .then(data => setBestSellers(data));
     }, []);

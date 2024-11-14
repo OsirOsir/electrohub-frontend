@@ -10,7 +10,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8001/items")
+    fetch("http://127.0.0.1:5555/api/items")
     .then(response => response.json())
     .then(data => setItems(data));
   }, []);
@@ -20,7 +20,7 @@ function App() {
       <OfferSection items={items} />
       <ItemsAll items={items} />
       <Routes>
-        <Route path="/item-details/:id" element={<ItemDetails items={items} />} />
+        <Route path="/item-details/:id" element={<ItemDetails />} />
       </Routes>
     </div>
   );

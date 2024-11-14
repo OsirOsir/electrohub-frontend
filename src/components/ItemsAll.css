@@ -4,8 +4,14 @@
     border-radius: 20px;
 }
 
-.all-items h1{
-    padding-top: 20px;
+.all-items-header{
+    align-items: center;
+    text-align: center;
+    margin-left: 300px;
+}
+
+.create-item-btn{
+    margin-left: 100px;
 }
 
 .items-display{

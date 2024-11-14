@@ -6,7 +6,7 @@ function SeasonOffers(){
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-    fetch("http://localhost:8001/seasonOffers")
+    fetch("http://127.0.0.1:5555/api/items/daily_deals")
     .then(response => response.json())
     .then(data => setSeasonOffers(data));
     }, []);

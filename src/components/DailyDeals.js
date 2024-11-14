@@ -7,7 +7,7 @@ function DailyDeals(){
 
 
     useEffect(() => {
-    fetch("http://localhost:8001/dailyDeals")
+    fetch("http://127.0.0.1:5555/api/items/daily_deals")
     .then(response => response.json())
     .then(data => setDailyDeals(data));
     }, []);

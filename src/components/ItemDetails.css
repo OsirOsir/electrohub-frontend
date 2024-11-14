@@ -1,6 +1,7 @@
 .item-details-info{
     background-color: white;
     width: 100%;
+    margin-top: 50px;
 }
 
 .item-details-content{
@@ -16,12 +17,17 @@
 
 .item-details-text{
     text-align: left;
-    margin-left: 30px;
+    margin-left: 150px;
+}
+
+.item-details-text h3{
+    font-size: 35px;
 }
 
 .item-details-features li{
     border-bottom: 1px rgb(195, 208, 213) solid;
     padding: 20px 0px;
+    font-size: 20px;
 }
 
 .item-details-features li:last-child{
@@ -32,10 +38,16 @@
     display: flex;
 }
 
+.item-details-price p{
+    font-size: 30px;
+    font-weight: 600;
+}
+
 .item-details-price span{
     color: rgb(146, 146, 146);
     text-decoration: line-through;
     margin-left: 40px;
+    font-size: 25px;
 }
 
 .details-add-to-cart-btn {

@@ -6,7 +6,7 @@ function HotNewOffers(){
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:8001/hot&new")
+        fetch("http://127.0.0.1:5555/api/items/hot_&_new")
         .then(response => response.json())
         .then(data => setHotNew(data));
       }, []);

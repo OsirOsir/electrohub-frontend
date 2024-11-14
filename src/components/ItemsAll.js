@@ -7,7 +7,7 @@ function ItemsAll({ items }){
         <div className="all-items">
             <div className="all-items-header">
                 <h1>All Items</h1>
-                <button className="">Create Item</button>
+                <button className="create-item-btn">Create Item</button>
             </div>
             
             <div className="items-display">
