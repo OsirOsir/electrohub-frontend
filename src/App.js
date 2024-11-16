@@ -67,7 +67,6 @@ const App = () => {
   };
 
   // Add item to cart and ensure quantity is valid
-  // Add item to cart and ensure quantity is valid
   const addToCart = (item) => {
     setCart(prevCart => {
       const existingItemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
