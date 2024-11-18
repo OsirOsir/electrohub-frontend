@@ -4,7 +4,11 @@
     text-decoration: none;
 }
 
-.item-card:hover, .item-card-info:hover{
+.item-card a {
+    text-decoration: none;
+}
+
+.item-card a:hover, .item-card a:focus, .item-card a:active {
     text-decoration: none;
 }
 
@@ -30,7 +34,8 @@
 }
 
 .item-features p{
-    margin-bottom: -10px;
+    margin-bottom: -5px;
+    font-size: 15px;
 }
 
 .item-price{
@@ -49,7 +54,7 @@
     justify-content: space-between;
     position: absolute;
     background-color: white;
-    bottom: 20px;
+    bottom: 10px;
     /* left: 20px;
     right: 20px; */
     opacity: 0; /* Initially hidden */
@@ -58,6 +63,7 @@
   
   .item-card:hover .item-buttons {
     opacity: 1; 
+    text-decoration: none;
   }
 
 .learn-more-btn, .add-to-cart-btn {

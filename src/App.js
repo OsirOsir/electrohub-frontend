@@ -18,6 +18,7 @@ import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
 import SearchResults from './components/SearchResults';
 import CategoryItems from './components/CategoryItems';
+import ShowModals from './components/Modals';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -152,7 +153,11 @@ const App = () => {
         <ItemsAll items={items} addToCart={addToCart} />
         <Routes>
           <Route path="/item-details/:id" element={<ItemDetails />} />
+          <Route path="/modify-items-modals" element={<ShowModals />} />
         </Routes>
+        {/* <Routes>
+          <Route path="/modify-items-modals" element={<ShowModals />} />
+        </Routes> */}
           <Routes>
           {/* <Route path="/" element={
             <div>

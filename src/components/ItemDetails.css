@@ -87,33 +87,6 @@
     top: 0;
 }
 
-.crud-btns{
-    display: flex;
-    margin-top: 30px;
-}
-
-.item-update-btn{
-    padding: 10px 30px;
-    border-radius: 15px;
-    border: 1px rgb(23, 99, 129) solid;
-    margin-right: 50px;
-    font-size: 15px;
-
-}
-.item-delete-btn{
-    padding: 10px 30px;
-    color: white;
-    background-color: rgb(181, 51, 51);
-    border-radius: 15px;
-    font-size: 15px;
-    border: none;
-}
-
-.item-update-btn:hover, .item-delete-btn:hover{
-    font-size: 17px;
-    transition: 0.8s ease;
-}
-
 .item-reviews{
     margin: 30px 100px;
 }

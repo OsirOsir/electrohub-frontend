@@ -12,11 +12,11 @@ function BestSellers({ addToCart }) {
     }, []);
 
     const handleSwipeLeft = () => {
-        setOffset((prevOffset) => prevOffset + 900);
+        setOffset((prevOffset) => prevOffset + 1000);
     };
 
     const handleSwipeRight = () => {
-        setOffset((prevOffset) => Math.max(prevOffset - 900, 0));
+        setOffset((prevOffset) => Math.max(prevOffset - 1000, 0));
     };
 
     return (

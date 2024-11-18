@@ -121,14 +121,6 @@ function ItemDetails() {
                             <p><span>kes {item.item_prev_price}</span></p>
                         </div>
                         <button className="details-add-to-cart-btn">Add to Cart</button>
-                        <div className="crud-btns">
-                            <button className="item-update-btn">Update Item</button>
-                            <button className="item-delete-btn">Delete Item</button>
-                        </div>
-                        <div className="special-category-btn">
-                            <button className="add-to-special-category-btn">Add to special category</button>
-                            <button className="remove-from-special-category-btn">Remove from special category</button>
-                        </div>
                     </div>
                 </div>
                 

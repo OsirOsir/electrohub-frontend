@@ -1,21 +1,16 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ItemDetails from "./ItemDetails";
 
 import './ItemCard.css';
 
 function ItemCard({ item }){
     const navigate = useNavigate();
 
-    // const handleCardClick = () => {
-    //     navigate(`/item-details/${item.id}`)
-    // };
-
     const handleLearnMoreClick = (e) => {
         e.stopPropagation();
         navigate(`/item-details/${item.id}`)
     };
-    // onClick={handleCardClick}
+    
     return(
         <Link to={`/item-details/${item.id}`}>
             <div className="item-card" >

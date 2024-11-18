@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ItemDetails from './components/ItemDetails';
+import ShowModals from './components/Modals';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/item-details/:id",
     element: <ItemDetails />
+  },
+  {
+    path: "/modify-items-modals",
+    element: <ShowModals />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

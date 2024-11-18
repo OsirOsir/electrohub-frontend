@@ -8,6 +8,7 @@
 
 .all-items-header{
     align-items: center;
+    justify-content: center;
     text-align: center;
     margin-left: 300px;
 }
@@ -16,8 +17,18 @@
     color: black;
 }
 
-.create-item-btn{
+.modify-item-btn{
     margin-left: 100px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: 1px black solid;
+}
+
+.modify-item-btn:hover{
+    font-size: 16px;
+    transition: 0.9s ease;
+    background-color: #a7b2e3;
+    border-color: #a7b2e3;
 }
 
 .items-display{
@@ -27,8 +38,4 @@
 
 .all-items-header{
     display: flex;
-}
-
-.all-items-header button{
-    height: 20px;
 }
