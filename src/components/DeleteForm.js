@@ -28,6 +28,7 @@ const DeleteItemForm = ({ onDeleteItemClose }) => {
 
       const result = await response.json();
       if (response.ok) {
+        setItemName(result.item_name);
         setResponseMessage(result.message || `Item "${itemName}" with ID ${itemId} has been deleted successfully.`);
         setItemId('');
         setItemName('');
@@ -65,15 +66,15 @@ const DeleteItemForm = ({ onDeleteItemClose }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="item_name">Item Name:</label>
-                <input
-                  type="text"
-                  id="item_name"
-                  value={itemName}
-                  onChange={(e) => setItemName(e.target.value)}
-                  required
-                />
-              </div>
+              <label htmlFor="item_name">Item Name:</label>
+              <input
+                type="text"
+                id="item_name"
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+                required
+              />
+            </div>
 
               <button type="submit" className="submit-button">Delete Item</button>
             </form>

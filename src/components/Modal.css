@@ -8,8 +8,9 @@
     margin: 50px 100px;
     padding: 20px;
     border-radius: 20px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     height: 100%; 
 }
 
@@ -22,11 +23,13 @@
 }
 
 .modal-component-btns{
-    margin: 50px 100px;
+    margin: 50px 280px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .modal-component-btns button{
-    margin-left: 100px;
     padding: 20px 30px;
     border-radius: 20px;
     font-size: 17px;
@@ -36,11 +39,12 @@
 .create-item-btn{
     background-color: #5ebfac;
     border: 1px black solid;
+    margin-right: 150px;
 }
 
 .update-item-btn{
     border: 1px rgb(23, 99, 129) solid;
-    margin-right: 50px;
+    margin-right: 150px;
     font-size: 15px;
 }
 
@@ -51,17 +55,25 @@
     border: none;
 }
 
+.items-in-stock-btn{
+  background-color: #b18fec;
+  font-size: 15px;
+  border: 1px black solid;
+  margin: 50px 0px 0px 200px;
+}
+
 .item-to-special-category-btn{
     background-color: #eccd8f;
     border: 1px black solid;
+    margin: 50px 200px 0px 150px;
 }
 
-.create-item-btn:hover, .update-item-btn:hover, .delete-item-btn:hover, .item-to-special-category-btn:hover{
+.create-item-btn:hover, .update-item-btn:hover, .delete-item-btn:hover, .items-in-stock-btn:hover, .item-to-special-category-btn:hover{
     font-size: 18px;
     transition: 0.8s ease;
 }
 
-.create-item-btn:hover, .item-to-special-category-btn:hover{
+.create-item-btn:hover, .item-to-special-category-btn:hover, .items-in-stock-btn:hover{
     font-size: 18px;
     transition: 0.8s ease;
     border: 2px rgb(23, 56, 59) solid;
@@ -110,7 +122,7 @@
 .form-header h2{
     color: rgb(15, 26, 71);
     width: 100%;
-    margin: 0px 100px 0px 220px;
+    margin: 0px 100px 0px 200px;
 }
   
   /* Form Fields */
@@ -159,4 +171,8 @@
   .error-message{
     font-size: 15px;
     line-height: 25px;
+  }
+
+  .response-message{
+    color: #342e7c;
   }
