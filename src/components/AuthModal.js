@@ -15,58 +15,56 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
   };
 
   // Sign Up function
-  const signUp = async (userData) => {
+  const signUp = async () => {
     try {
-      const response = await fetch('http://localhost:8001/users', {
+      const response = await fetch('http://127.0.0.1:5555/api/users', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          role: formData.role,
+        }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log("User signed up:", data);
-        setSuccessMessage(`Successfully signed up ${userData.username}`);
-        onAuthChange(true, userData.username, userData.role); // Set as authenticated (// Assuming the user is a normal user)
-        setTimeout(() => {
-          onClose(); // Close the modal
-        }, 2000); // 2-second delay 
+        setSuccessMessage(`Successfully signed up as ${data.username}`);
+        onAuthChange(true, data.username, data.role); // Update authentication state
+        setTimeout(() => onClose(), 2000); // Close modal after 2 seconds
       } else {
-        setErrorMessage("Failed to sign up. User may already exist.");
+        const error = await response.json();
+        setErrorMessage(error.error || "Sign-up failed. Try again.");
       }
     } catch (error) {
-      console.error("Error signing up:", error);
       setErrorMessage("An error occurred while signing up. Please try again.");
     }
   };
 
   // Sign In function
-  const signIn = async (email, password) => {
+  const signIn = async () => {
     try {
-      const response = await fetch(`http://localhost:8001/users?email=${email}`);
-      const data = await response.json();
+      const response = await fetch('http://127.0.0.1:5555/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
 
-      if (data.length > 0) {
-        const user = data[0];
-        if (user.password === password) {
-          console.log("User signed in:", user);
-          setSuccessMessage(`Successfully logged in ${user.username}`);
-          onAuthChange(true, user.username, user.role); // Set as authenticated, // Return the role with username
-
-          setTimeout(() => {
-            onClose(); // Close the modal
-          }, 2000); // 2-second delay 
-        } else {
-          setErrorMessage("Incorrect password. Please try again.");
-        }
+      if (response.ok) {
+        const data = await response.json();
+        setSuccessMessage(`Welcome back, ${data.user.username}`);
+        onAuthChange(true, data.user.username, data.user.role); // Update parent component
+        setTimeout(() => onClose(), 2000); // Close modal after 2 seconds
       } else {
-        setErrorMessage("User does not exist.");
+        const error = await response.json();
+        setErrorMessage(error.error || "Login failed. Check your credentials.");
       }
     } catch (error) {
-      console.error("Error signing in:", error);
-      setErrorMessage("An error occurred while signing in. Please try again.");
+      setErrorMessage("An error occurred while logging in. Please try again.");
     }
   };
 
