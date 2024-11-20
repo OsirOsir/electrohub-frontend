@@ -55,7 +55,7 @@ const App = () => {
   // Handle category selection
   const handleCategoryClick = async (category) => {
     try {
-      const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
+      const response = await fetch(`https://api-categories-43n8.onrender.com/items?main_category=${category}`);
       const data = await response.json();
       setCategoryItems(data); // Update the categoryItems state
     } catch (error) {
@@ -99,7 +99,7 @@ const App = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8001/items`);
+      const response = await fetch('https://api-categories-43n8.onrender.com/items');
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
