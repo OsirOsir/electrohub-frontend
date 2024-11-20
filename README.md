@@ -18,7 +18,8 @@ src/
 ## Installation Guide
 
 1. Clone the Repository
-git clone https://github.com/your-repo-name.git  
+git clone https:https://github.com/OsirOsir/electrohub-frontend.git
+  
 cd your-repo-name 
 
 2. Install Dependancies
