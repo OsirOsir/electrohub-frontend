@@ -1,74 +1,177 @@
-/* Modal Overlay */
+.modals-component{
+    justify-content: center;
+    align-items: center;
+}
+
+.modals-component-content{
+    background-color: #E0E6F6;
+    margin: 50px 100px;
+    padding: 20px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%; 
+}
+
+.modals-component h1{
+    color: black;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-component-btns{
+    margin: 50px 280px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-component-btns button{
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.create-item-btn{
+    background-color: #5ebfac;
+    border: 1px black solid;
+    margin-right: 150px;
+}
+
+.update-item-btn{
+    border: 1px rgb(23, 99, 129) solid;
+    margin-right: 150px;
+    font-size: 15px;
+}
+
+.delete-item-btn{
+    color: white;
+    background-color: rgb(186, 73, 73);
+    font-size: 15px;
+    border: none;
+}
+
+.items-in-stock-btn{
+  background-color: #b18fec;
+  font-size: 15px;
+  border: 1px black solid;
+  margin: 50px 0px 0px 200px;
+}
+
+.item-to-special-category-btn{
+    background-color: #eccd8f;
+    border: 1px black solid;
+    margin: 50px 200px 0px 150px;
+}
+
+.create-item-btn:hover, .update-item-btn:hover, .delete-item-btn:hover, .items-in-stock-btn:hover, .item-to-special-category-btn:hover{
+    font-size: 18px;
+    transition: 0.8s ease;
+}
+
+.create-item-btn:hover, .item-to-special-category-btn:hover, .items-in-stock-btn:hover{
+    font-size: 18px;
+    transition: 0.8s ease;
+    border: 2px rgb(23, 56, 59) solid;
+}
+
+
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000; /* Increased z-index for visibility */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  
+  .crud-modal-content {
+    background-color: #b5c6d4;
+    padding: 40px;
+    border-radius: 15px;
+    width: 600px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    color: #1f1f1f;
+  }
+  
+  .crud-form-close-button {
+    background: rgb(179, 60, 60);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #f4f4f4;
+    height: 45px;
+    padding: 10px;
+  }
+  
+.form-header{
+    display: flex;
+    flex-direction: row;
 }
 
-/* Modal Content */
-.modal-content {
-  background-color: #f0f8ff; /* Light blue background */
-  padding: 20px;
-  border-radius: 8px;
-  width: 500px;
-  max-width: 90%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-  color: #333;
+.form-header h2{
+    color: rgb(15, 26, 71);
+    width: 100%;
+    margin: 0px 100px 0px 200px;
 }
+  
+  /* Form Fields */
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    flex: 1;
+    padding-left: 20px;
+    margin-right: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  
+  .form-group input, .form-group select {
+    flex: 2;
+    background-color: rgb(245, 245, 245);
+    padding: 8px;
+    border: 1px solid #838383;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 45px;
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    width: 50%;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #4c74af;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 180px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #4b45a0;
+  }
 
-/* Close Button */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #333;
-}
+  .error-message{
+    font-size: 15px;
+    line-height: 25px;
+  }
 
-/* Form Fields */
-.form-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-label {
-  flex: 1;
-  margin-right: 10px;
-  text-align: right;
-  font-weight: bold;
-}
-
-input, select {
-  flex: 2;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Submit Button */
-button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #4c74af;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #4b45a0;
-}
+  .response-message{
+    color: #342e7c;
+  }

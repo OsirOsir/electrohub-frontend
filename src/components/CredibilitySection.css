@@ -4,11 +4,14 @@
     align-items: center;
     background-color: #e6f0f3; 
     padding: 55px 0px ;
-    border-radius: 8px;
-    width:60%; /* Reduced width */
+    border-radius: 20px;
+    /* width:60%; Reduced width */
     margin-top: 150px !important;
     margin-bottom : 50px !important;
     margin: 0 auto; 
+    margin: 100px 0px 20px 0;
+    width: 1300px;
+    transform: translateX(339px); /* Move 100px to the right */
   }
   
   .feature {

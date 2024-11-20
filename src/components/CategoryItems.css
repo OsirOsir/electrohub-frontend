@@ -1,0 +1,56 @@
+.category-items {
+  background-color: #E0E6F6;
+  margin: 120px 50px 20px 50px;
+  border-radius: 20px;
+  padding-top: 20px; /* Add padding for spacing */
+}
+
+.close-button-container {
+  text-align: right; /* Align the close button to the right */
+  margin: 10px 20px; /* Add some spacing around the close button */
+}
+
+.close-button {
+  background-color: transparent !important;
+  color: black !important;
+  margin-left: 100px !important;
+  padding: 10px 30px !important;
+  border-radius: 20px !important;
+  border: 1px black solid !important;
+  cursor: pointer !important;
+}
+
+.close-button:hover {
+  font-size: 16px !important; /* Slightly enlarge the button */
+  background-color: #a7b2e3 !important; /* Set hover background color */
+  border-color: #a7b2e3 !important; /* Set hover border color */
+  transition: 0.9s ease !important; /* Longer transition duration */
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  padding: 20px;
+}
+
+.item-card {
+  background-color: #f4f4f4;
+  /* Background color for individual item cards */
+  padding: 20px;
+  /* Padding for the card content */
+  border-radius: 8px;
+  /* Rounded corners */
+  text-align: center;
+  /* Center-align the content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow for depth */
+}
+
+.item-card img {
+  width: 100%;
+  /* Make the image fill the card */
+  height: auto;
+  /* Maintain aspect ratio */
+  border-radius: 8px;
+  /* Rounded corners for the image */
+}

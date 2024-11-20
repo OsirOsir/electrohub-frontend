@@ -18,7 +18,8 @@ src/
 ## Installation Guide
 
 1. Clone the Repository
-git clone https://github.com/your-repo-name.git  
+git clone https:https://github.com/OsirOsir/electrohub-frontend.git
+  
 cd your-repo-name 
 
 2. Install Dependancies
@@ -95,6 +96,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Troubleshooting
+If you encounter issues during setup or usage:
+
+Ensure Node.js and npm are installed: Download Node.js
+Verify Python and Flask installations for backend compatibility.
+Clear browser cache and cookies if the app behaves unexpectedly.
+
+## Learn More
+To dive deeper into the tools and frameworks used:
+
+Create React App Documentation
+React Documentation
+Flask Documentation
+SQL Documentation
+
+
+## support
+For assistance or inquiries:
+
+Email Support:support@electrohub.com.
 ## Troubleshooting
 If you encounter issues during setup or usage:
 

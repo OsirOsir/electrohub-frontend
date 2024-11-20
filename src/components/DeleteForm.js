@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './Modal.css';
 
-const DeleteItemForm = () => {
+const DeleteItemForm = ({ onDeleteItemClose }) => {
   const [itemId, setItemId] = useState('');
   const [itemName, setItemName] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -29,6 +28,7 @@ const DeleteItemForm = () => {
 
       const result = await response.json();
       if (response.ok) {
+        setItemName(result.item_name);
         setResponseMessage(result.message || `Item "${itemName}" with ID ${itemId} has been deleted successfully.`);
         setItemId('');
         setItemName('');
@@ -43,16 +43,13 @@ const DeleteItemForm = () => {
 
   return (
     <div>
-      <button onClick={() => setIsModalOpen(true)}>Open Delete Item Modal</button>
-
-      {isModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            {/* Close button */}
-            <button className="close-button" onClick={() => setIsModalOpen(false)}>
-              &times;
-            </button>
-            <h2>Delete Item</h2>
+          <div className="crud-modal-content">
+            <div className='form-header'>
+                <h2>Delete Item</h2>
+                <button className="crud-form-close-button" onClick={onDeleteItemClose}>&times;</button>
+            </div>
+            
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {responseMessage && <p className="success-message">{responseMessage}</p>}
 
@@ -65,24 +62,24 @@ const DeleteItemForm = () => {
                   value={itemId}
                   onChange={(e) => setItemId(e.target.value)}
                   required
+                  min="1"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="item_name">Item Name:</label>
-                <input
-                  type="text"
-                  id="item_name"
-                  value={itemName}
-                  onChange={(e) => setItemName(e.target.value)}
-                  required
-                />
-              </div>
+              <label htmlFor="item_name">Item Name:</label>
+              <input
+                type="text"
+                id="item_name"
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+                required
+              />
+            </div>
 
               <button type="submit" className="submit-button">Delete Item</button>
             </form>
           </div>
         </div>
-      )}
     </div>
   );
 };

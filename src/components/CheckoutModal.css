@@ -1,0 +1,136 @@
+/* General Modal Styles */
+.checkout-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+/* Close Button */
+.close-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Invoice Section */
+.invoice-section {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.invoice-section h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.invoice-section p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.invoice-section h4 {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Payment Method Section */
+label {
+  display: block;
+  margin: 8px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: calc(100% - 16px);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+/* Form Section */
+form {
+  margin-top: 20px;
+}
+
+/* Payment Option Styles */
+.payment-option {
+  margin-bottom: 20px;
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 8px;
+}
+
+.payment-method-section {
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .checkout-modal {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .submit-button,
+  .close-button {
+    width: 100%;
+  }
+}

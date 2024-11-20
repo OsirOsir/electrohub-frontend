@@ -1,131 +1,158 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import './Navbar.css';
 import AuthModal from './AuthModal';
-import Cart from './Cart';
-import Checkout from './Checkout';
-import SearchResults from './SearchResults';
+import CartModal from './CartModal';
+import CheckoutModal from './CheckoutModal';
 
-const NavBar = ({ addToCart, cartItems }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
-  const [username, setUsername] = useState(""); // Store logged-in user's name
-  const [showAuthModal, setShowAuthModal] = useState(false); // Show/hide auth modal
-  const [authMode, setAuthMode] = useState("signIn"); // Toggle between 'signIn' and 'signUp'
-  const [role, setRole] = useState(""); // Store logged-in user's role
-  const [showSearch, setShowSearch] = useState(false); // State to toggle search input visibility
-  const [searchResults, setSearchResults] = useState([]); // State for search results
-  const [showResults, setShowResults] = useState(false); // Toggle visibility of search results
-  const [showCart, setShowCart] = useState(false); // Toggle visibility of cart
-  const [showCheckout, setShowCheckout] = useState(false); // Toggle visibility of checkout
-  const [orderDetails, setOrderDetails] = useState(null); // Store order details
+const NavBar = ({ onCategoryClick, cartItems, onSearchSubmit, onSearchChange }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
+  const [role, setRole] = useState("");
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState("signIn");
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showCartModal, setShowCartModal] = useState(false);
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);  // eslint-disable-line no-unused-vars
+  const [categoryItems, setCategoryItems] = useState([]); // eslint-disable-line no-unused-vars
 
-  // Handle Search
-  const handleSearch = async (event) => {
-    event.preventDefault();
-    const searchTerm = event.target.search.value.trim(); // Get and trim the search term
-    
-    if (!searchTerm) {
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setIsAuthenticated(true);
+      setUsername(storedUser.username);
+      setRole(storedUser.role);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const userData = { username, role };
+      localStorage.setItem('user', JSON.stringify(userData));
+    } else {
+      localStorage.removeItem('user');
+    }
+  }, [isAuthenticated, username, role]);
+
+  // Search-related logic
+  const handleSearchChange = (event) => {
+    console.log(event); // Log the event to inspect its structure
+    if (event && event.target) {
+      setSearchTerm(event.target.value);
+      if (onSearchChange) onSearchChange(event.target.value); // Trigger onSearchChange prop if passed
+    }
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const term = searchTerm.trim();
+
+    if (!term) {
       console.log("Please enter a search term");
       return;
     }
 
+    if (onSearchSubmit) onSearchSubmit(term); // Trigger onSearchSubmit prop to fetch data in App.js
+  };
+
+  // Category click logic
+  const handleCategoryClick = async (category) => {// eslint-disable-line no-unused-vars
     try {
-      const response = await fetch(
-        `http://localhost:8001/items?item_name_like=${searchTerm}&item_category_like=${searchTerm}`
-      );
+      const response = await fetch(`http://localhost:8001/items?main_category=${category}`);
       const data = await response.json();
-      setSearchResults(data); // Store search results
-      setShowResults(true); // Show search results
+      setCategoryItems(data); // Store items of selected category
     } catch (error) {
-      console.error("Error fetching search results:", error);
+      console.error("Error fetching items by category:", error);
     }
-
-    setShowSearch(false); // Hide the search input after submit
   };
 
-  const closeSearchResults = () => {
-    setShowResults(false);
-    setSearchResults([]); // Clear search results when closing
-  };
-
-  // Function to toggle the Auth Modal
+  // Auth modal toggle logic
   const toggleAuthModal = (mode) => {
     setAuthMode(mode);
     setShowAuthModal(true);
   };
 
-  // Function to handle Sign Out
   const handleSignOut = () => {
     setIsAuthenticated(false);
     setUsername("");
     setRole("");
-    console.log("User signed out");
   };
 
-  // Function to handle successful authentication
   const handleAuthChange = (status, username, role) => {
     setIsAuthenticated(status);
     setUsername(username);
     setRole(role);
   };
 
-  // Toggle visibility of search bar
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
+  // Cart modal toggle logic
+  const toggleCartModal = () => {
+    setShowCartModal(!showCartModal);
+  };
+  const addToCart = (item) => {// eslint-disable-line no-unused-vars
+    const updatedCart = [...cartItems];
+    const existingItemIndex = updatedCart.findIndex(cartItem => cartItem.item_name === item.item_name);
+
+    if (existingItemIndex !== -1) {
+      updatedCart[existingItemIndex].quantity += 1;
+    } else {
+      updatedCart.push({ ...item, quantity: 1 });
+    }
+
+    updateCart(updatedCart);
   };
 
-  // Handle Cart and Checkout
-  const handleCart = () => {
-    setShowCart(!showCart);
+  const updateCart = (updatedCart) => {
+    console.log('Updated Cart:', updatedCart);
   };
 
-  const handleCheckout = (billingInfo) => {
-    const paymentInfo = {
-      ...billingInfo,
-      paymentStatus: 'Success',
-      transactionId: Math.random().toString(36).substring(7), 
-      totalAmount: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0), 
-    };
+  // Proceed to checkout logic
+  const proceedToCheckout = (updatedCartItems, totalAmount) => {
+    console.log('Proceeding to checkout with:', updatedCartItems, totalAmount);
+    setShowCartModal(false);
+    setShowCheckoutModal(true);
+  };
 
-    const invoice = {
-      transactionId: paymentInfo.transactionId,
-      items: cartItems,
-      totalAmount: paymentInfo.totalAmount,
-      billingInfo,
-    };
-
-    setOrderDetails(invoice);
-    setShowCheckout(false);  
-    alert(`Payment Successful! Order ID: ${paymentInfo.transactionId}`);
+  const closeCheckoutModal = () => {
+    setShowCheckoutModal(false);
+  };
+  const handleLogoClick = () => {
+    window.location.href = '/'; // Navigate to home and reload the page
   };
 
   return (
     <nav className="navbar">
-      {/* Site Logo or Name */}
       <div className="navbar-logo">
-        <a href="/" className="logo-link">ElectroHub</a> {/* Navigates to the root path */}
+        <a href="/" className="logo-link" onClick={handleLogoClick}>ElectroHub</a>
       </div>
 
-      {/* Categories */}
       <ul className="navbar-links">
-        <li>Smartphones</li>
-        <li>PCs</li>
-        <li>Tablets</li>
-        <li>Smartwatches</li>
-        <li>TV & Sound</li>
-        <li>Audio</li>
+        <li onClick={() => onCategoryClick('Smartphones')}>Smartphones</li>
+        <li onClick={() => onCategoryClick('PCs')}>PCs</li>
+        <li onClick={() => onCategoryClick('Tablets')}>Tablets</li>
+        <li onClick={() => onCategoryClick('Smartwatches')}>Smartwatches</li>
+        <li onClick={() => onCategoryClick('TV & Sound')}>TV & Sound</li>
+        <li onClick={() => onCategoryClick('Audio')}>Audio</li>
       </ul>
 
       <div className="navbar-actions">
         {/* Search Bar */}
         <div className="search-bar-container">
           {!showSearch && (
-            <button className="search-icon" onClick={toggleSearch}>
+            <button className="search-icon" onClick={() => setShowSearch(true)}>
               <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
             </button>
           )}
           {showSearch && (
             <form className="search-bar" onSubmit={handleSearch}>
-              <input type="text" name="search" placeholder="Search Items..." />
+              <input
+                type="text"
+                name="search"
+                placeholder="Search Items..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
               <button type="submit">
                 <img src="/Icons/search.png" alt="Search Icon" className="search-icon-img" />
               </button>
@@ -148,15 +175,23 @@ const NavBar = ({ addToCart, cartItems }) => {
             </button>
           )}
         </div>
-
         {/* Cart Icon with Checkout and Payment */}
-        <div className="navbar-icons" onClick={handleCart}>
+        <div className="navbar-icons" onClick={toggleCartModal}>
           <img src="/Icons/shopping-bag.png" alt="Cart Icon" className="cart-icon" />
           <span>{cartItems.length}</span>
         </div>
       </div>
 
-      {/* Show Auth Modal */}
+      {showCartModal && (
+        <CartModal
+          cartItems={cartItems}
+          onClose={toggleCartModal}
+          username={username}
+          proceedToCheckout={proceedToCheckout}
+
+        />
+      )}
+
       {showAuthModal && (
         <AuthModal
           mode={authMode}
@@ -165,43 +200,10 @@ const NavBar = ({ addToCart, cartItems }) => {
         />
       )}
 
-      {/* Display Search Results */}
-      {showResults && (
-        <SearchResults results={searchResults} onClose={closeSearchResults} />
-      )}
-
-      {/* Show Cart */}
-      {showCart && (
-        <Cart
-          cartItems={cartItems}
-          username={username}
-          onClose={() => setShowCart(false)}
-          onCheckout={() => setShowCheckout(true)}
+      {showCheckoutModal && (
+        <CheckoutModal
+          onClose={closeCheckoutModal}
         />
-      )}
-
-      {/* Show Checkout */}
-      {showCheckout && (
-        <Checkout
-          cartItems={cartItems}
-          username={username}
-          handleCheckout={handleCheckout}
-        />
-      )}
-
-      {/* Show Order Invoice */}
-      {orderDetails && (
-        <div className="invoice">
-          <h2>Invoice</h2>
-          <p>Order ID: {orderDetails.transactionId}</p>
-          <ul>
-            {orderDetails.items.map((item, index) => (
-              <li key={index}>{item.name} - ${item.price}</li>
-            ))}
-          </ul>
-          <p>Total: ${orderDetails.totalAmount}</p>
-          <p>Billing Address: {orderDetails.billingInfo.address}, {orderDetails.billingInfo.city}, {orderDetails.billingInfo.country}</p>
-        </div>
       )}
     </nav>
   );

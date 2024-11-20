@@ -47,32 +47,32 @@ body {
 /* Support Links */
 .support-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
+  gap: 10px; /* Adjust the spacing between items */
+  justify-content: center; /* Aligns items towards the center */
 }
 
 /* Support Item Styles */
 .support-item {
   text-align: center;
-  padding: 20px;
-  flex: 1 1 200px;
+  padding: 10px; /* Re-add padding for spacing within each item */
+  flex: 0 1 220px; /* Adjust width of each item; change 220px as needed */
   text-decoration: none;
   color: #333;
-  border: 1px solid #ddd;
-  border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .support-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
-
+/* 
 .support-item h2:hover {
   color: red;
+} */
+.support-item h2{
+  color: black;
 }
-
 /* Icon Styles */
 .support-icon,
 .faq-icon-img {

@@ -1,14 +1,25 @@
 .item-card{
     margin: 10px;
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+
+.item-card a {
+    text-decoration: none;
+}
+
+.item-card a:hover, .item-card a:focus, .item-card a:active {
+    text-decoration: none;
 }
 
 .item-card-info{
     background-color: white;
     width: 300px;
-    height: 480px;
+    height: 450px;
     border-radius: 10px;
     text-align: left;
     padding: 10px;
+    position: relative;
 }
 
 .item-card-info img{
@@ -23,7 +34,8 @@
 }
 
 .item-features p{
-    margin-bottom: -10px;
+    margin-bottom: -5px;
+    font-size: 15px;
 }
 
 .item-price{
@@ -36,6 +48,23 @@
     text-decoration: line-through;
     margin-left: 40px;
 }
+
+.item-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    background-color: white;
+    bottom: 10px;
+    /* left: 20px;
+    right: 20px; */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.9s ease; 
+  }
+  
+  .item-card:hover .item-buttons {
+    opacity: 1; 
+    text-decoration: none;
+  }
 
 /* Style for the item card */
 .item-card {
