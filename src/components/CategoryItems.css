@@ -2,7 +2,29 @@
   background-color: #E0E6F6;
   margin: 120px 50px 20px 50px;
   border-radius: 20px;
+  padding-top: 20px; /* Add padding for spacing */
+}
 
+.close-button-container {
+  text-align: right; /* Align the close button to the right */
+  margin: 10px 20px; /* Add some spacing around the close button */
+}
+
+.close-button {
+  background-color: transparent !important;
+  color: black !important;
+  margin-left: 100px !important;
+  padding: 10px 30px !important;
+  border-radius: 20px !important;
+  border: 1px black solid !important;
+  cursor: pointer !important;
+}
+
+.close-button:hover {
+  font-size: 16px !important; /* Slightly enlarge the button */
+  background-color: #a7b2e3 !important; /* Set hover background color */
+  border-color: #a7b2e3 !important; /* Set hover border color */
+  transition: 0.9s ease !important; /* Longer transition duration */
 }
 
 .items-grid {
@@ -31,16 +53,4 @@
   /* Maintain aspect ratio */
   border-radius: 8px;
   /* Rounded corners for the image */
-}
-.close-button {
-  background-color: blue !important;
-  color: white !important;
-  border: none !important;
-  padding: 8px 12px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-}
-
-.close-button:hover {
-  background-color: darkblue !important; /* Darker shade on hover */
 }

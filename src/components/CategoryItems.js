@@ -5,7 +5,10 @@ import './CategoryItems.css';
 const CategoryItems = ({ items, onClose, addToCart }) => {
     return (
         <div className="category-items">
-            <button className="close-button" onClick={onClose}>Close</button>            
+            {/* Close button at the top */}
+            <div className="close-button-container">
+                <button className="close-button" onClick={onClose}>Close</button>
+            </div>
             <div className="items-grid">
                 {items.map((item) => (
                     <ItemCard key={item.id} item={item} addToCart={addToCart} />
