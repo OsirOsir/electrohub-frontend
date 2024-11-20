@@ -136,21 +136,35 @@ const App = () => {
         onSearchSubmit={handleSearchSubmit}  //Pass function to Navbar
         onCategoryClick={handleCategoryClick} // Pass the handleCategoryClick function
       />
-      {/* Render SearchResults based on showSearchResults */}
+
+        {/* Render SearchResults based on showSearchResults */}
       {showSearchResults && (
-        <SearchResults results={filteredItems} onClose={handleSearchClose} addToCart={addToCart}/>
+        <SearchResults
+          results={filteredItems}
+          onClose={handleSearchClose}
+          addToCart={addToCart}
+        />
       )}
 
-      {/* CategoryItems component to display fetched category-specific items */}
-      {categoryItems.length > 0 && (
-        <CategoryItems items={categoryItems} onClose={handleCategoryClose} addToCart={addToCart}/>
-      )}
-
+      {/* Render CategoryItems if categoryItems are present */}
+    {categoryItems.length > 0 && (
+      <CategoryItems
+        items={categoryItems}
+        onClose={() => setCategoryItems([])}
+        addToCart={addToCart}
+      />
+    )}
+    
       <CredibilitySection />
 
       <main className="main-content">
-        <OfferSection items={items} addToCart={addToCart} />
-        <ItemsAll items={items} addToCart={addToCart} />
+       {/* Only render OfferSection and ItemsAll when neither SearchResults nor CategoryItems is active */}
+      {categoryItems.length === 0 && !showSearchResults && (
+        <>
+            <OfferSection items={items} addToCart={addToCart} />
+            <ItemsAll items={items} addToCart={addToCart} />
+          </>
+        )}
         <Routes>
           <Route path="/item-details/:id" element={<ItemDetails />} />
           <Route path="/modify-items-modals" element={<ShowModals />} />
