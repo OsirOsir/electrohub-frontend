@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OfferSection from './components/OfferSection';
 import ItemsAll from './components/ItemsAll';
+import ItemDetails from './components/ItemDetails';
 import FAQsPage from './components/FAQsPage';
 import FeedbackPage from './components/FeedbackPage';
 import TermsAndConditions from './components/pages/TermsAndConditions';
@@ -15,63 +16,173 @@ import Support from './components/Support';
 import Warranty from './components/Warranty';
 import OrderSupport from './components/OrderSupport';
 import CredibilitySection from './components/CredibilitySection';
-import ItemDetails from './components/ItemDetails';
-import SpecialCategoryForm from './components/SpecialCategoryForm';
-import AddItemForm from './components/AddItemForm'; 
-import UpdateItemForm from './components/UpdateItemForm'; 
+import SearchResults from './components/SearchResults';
+import CategoryItems from './components/CategoryItems';
+import ShowModals from './components/Modals';
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  // const [searchTerm, setSearchTerm] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [categoryItems, setCategoryItems] = useState([]);
+  const [loading, setLoading] = useState(false); // eslint-disable-line no-unused-vars
+  const [error, setError] = useState(null); // eslint-disable-line no-unused-vars
 
+  // Fetch items from the server on initial load
   useEffect(() => {
-    fetch("http://localhost:8001/items")
-      .then(response => response.json())
-      .then(data => setItems(data));
+    // const fetchItems = async () => {
+    //   setLoading(true);
+    //   try {
+    //     const response = await fetch("http://localhost:8001/items");
+    //     const data = await response.json();
+    //     setItems(data);
+    //     setFilteredItems(data); // Show all items initially
+    //   } catch (error) {
+    //     setError("Failed to fetch items.");
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+
+    // fetchItems();
+    fetch("http://127.0.0.1:5555/api/items")
+    .then(response => response.json())
+    .then(data => setItems(data));
   }, []);
 
-  const addToCart = (item) => {
-    setCart(prevCart => [...prevCart, item]);
+  // Handle category selection
+  const handleCategoryClick = async (category) => {
+    try {
+      const response = await fetch(`https://api-categories-43n8.onrender.com/items?main_category=${category}`);
+      const data = await response.json();
+      setCategoryItems(data); // Update the categoryItems state
+    } catch (error) {
+      console.error("Error fetching items by category:", error);
+    }
   };
 
-  const handleNewItem = (newItem) => {
-    setItems(prevItems => [...prevItems, newItem]);
+  const handleCategoryClose = () => {
+    setCategoryItems([]); // Clear the category items to hide the component
+  };
+
+  // Add item to cart and ensure quantity is valid
+  // Add item to cart and ensure quantity is valid
+  const addToCart = (item) => {
+    setCart(prevCart => {
+      const existingItemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
+
+      if (existingItemIndex >= 0) {
+        // Item already in cart, update quantity
+        const updatedCart = [...prevCart];
+        updatedCart[existingItemIndex].quantity += 1;
+        return updatedCart;
+      } else {
+        // Add item to cart with quantity of 1
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
+  };
+
+  // Handle search input change
+  // const handleSearchChange = (event) => {
+  //   setSearchTerm(event.target.value);
+  // };
+
+  // Handle search submission to filter items
+  const handleSearchSubmit = async (searchTerm) => {
+    if (!searchTerm) {
+      setShowSearchResults(false);
+      setFilteredItems(items); // Reset to show all items if search term is empty
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api-categories-43n8.onrender.com/items');
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      // Filter items based on search term
+      const filtered = data.filter(item =>
+        item.item_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.item_category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      setFilteredItems(filtered);
+      setShowSearchResults(true);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+      setFilteredItems([]); // Clear results on error
+      setShowSearchResults(false); // Hide search results on error
+    }
+  };
+
+  // Reset search results and show all items
+  const handleSearchClose = () => {
+    setShowSearchResults(false);
+    setFilteredItems(items); // Reset to show all items
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to ElectroHub</h1>
-      </header>
+      <Navbar
+        addToCart={addToCart}
+        cartItems={cart}
+        onSearchSubmit={handleSearchSubmit}  //Pass function to Navbar
+        onCategoryClick={handleCategoryClick} // Pass the handleCategoryClick function
+      />
 
-      {/* Include AddItemForm, UpdateItemForm, and SpecialCategoryForm */}
-      <div className="form-container">
-        <AddItemForm onAddItem={handleNewItem} />
-        <SpecialCategoryForm itemId={1} /> 
-        <UpdateItemForm /> 
-      </div>
+        {/* Render SearchResults based on showSearchResults */}
+      {showSearchResults && (
+        <SearchResults
+          results={filteredItems}
+          onClose={handleSearchClose}
+          addToCart={addToCart}
+        />
+      )}
 
-      <Navbar addToCart={addToCart} cartItems={cart.length} />
+      {/* Render CategoryItems if categoryItems are present */}
+    {categoryItems.length > 0 && (
+      <CategoryItems
+        items={categoryItems}
+        onClose={() => setCategoryItems([])}
+        addToCart={addToCart}
+      />
+    )}
+    
       <CredibilitySection />
 
-      {/* Main content */}
       <main className="main-content">
+       {/* Only render OfferSection and ItemsAll when neither SearchResults nor CategoryItems is active */}
+      {categoryItems.length === 0 && !showSearchResults && (
+        <>
+            <OfferSection items={items} addToCart={addToCart} />
+            <ItemsAll items={items} addToCart={addToCart} />
+          </>
+        )}
         <Routes>
-          {/* Shopping Pages (Route for homepage) */}
-          <Route path="/" element={
+          <Route path="/item-details/:id" element={<ItemDetails />} />
+          <Route path="/modify-items-modals" element={<ShowModals />} />
+        </Routes>
+        {/* <Routes>
+          <Route path="/modify-items-modals" element={<ShowModals />} />
+        </Routes> */}
+          <Routes>
+          {/* <Route path="/" element={
             <div>
-              <OfferSection items={items} />
+              <OfferSection items={items} addToCart={addToCart}/>
               <ItemsAll items={items} addToCart={addToCart} />
             </div>
-          } />
-
-          {/* Item Details Route */}
-          <Route path="/item-details/:id" element={<ItemDetails items={items} />} />
-
+          } /> */}
           {/* Customer Support Pages */}
           <Route path="/FAQs" element={<FAQsPage />} />
           <Route path="/Customer-Feedback" element={<FeedbackPage />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/support" element={<Support />} /> {/* keep this route for standalone access */}
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/order-support" element={<OrderSupport />} />
 
@@ -84,121 +195,14 @@ const App = () => {
           {/* Default Route */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-
         {/* Customer Support Card */}
         <Support />
       </main>
 
       <Footer />
+      
     </div>
   );
 };
 
 export default App;
-
-
-// import React, { useState, useEffect } from 'react';
-// import { Routes, Route, Navigate } from 'react-router-dom';
-// import './App.css';
-// import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
-// import OfferSection from './components/OfferSection';
-// import ItemsAll from './components/ItemsAll';
-// import FAQsPage from './components/FAQsPage';
-// import FeedbackPage from './components/FeedbackPage';
-// import TermsAndConditions from './components/pages/TermsAndConditions';
-// import PrivacyPolicy from './components/pages/PrivacyPolicy';
-// import Contact from './components/pages/Contact';
-// import AboutUs from './components/pages/AboutUs';
-// import Support from './components/Support';
-// import Warranty from './components/Warranty';
-// import OrderSupport from './components/OrderSupport';
-// import CredibilitySection from './components/CredibilitySection';
-// import ItemDetails from './components/ItemDetails';
-// import SpecialCategoryForm from './components/SpecialCategoryForm';
-// import AddItemForm from './components/AddItemForm';
-// import ItemForm from './components/UpdateItemForm';
-// import ItemsInStock from './components/ItemsInStock'; // Import ItemsInStock component
-
-// const App = () => {
-//   const [items, setItems] = useState([]);
-//   const [cart, setCart] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   // Fetch all items when the component is mounted
-//   useEffect(() => {
-//     fetch("http://127.0.0.1:5555/items") // Ensure the correct backend URL
-//       .then(response => {
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         return response.json();
-//       })
-//       .then(data => {
-//         setItems(data);
-//         setLoading(false);
-//       })
-//       .catch(error => {
-//         setError(error.message);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   const addToCart = (item) => {
-//     setCart(prevCart => [...prevCart, item]);
-//   };
-
-//   const handleNewItem = (newItem) => {
-//     setItems(prevItems => [...prevItems, newItem]);
-//   };
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <h1>Welcome to ElectroHub</h1>
-//       </header>
-
-//       <div className="form-container">
-//         <AddItemForm onAddItem={handleNewItem} />
-//         <SpecialCategoryForm itemId={1} />
-//         <ItemForm />
-//         {/* Display ItemsInStock dynamically by passing itemId */}
-//         {loading ? <p>Loading items...</p> : <ItemsInStock itemId={1} />}
-//       </div>
-
-//       <Navbar addToCart={addToCart} cartItems={cart.length} />
-//       <CredibilitySection />
-
-//       <main className="main-content">
-//         <Routes>
-//           <Route path="/" element={
-//             <div>
-//               {loading ? <p>Loading items...</p> : <OfferSection items={items} />}
-//               <ItemsAll items={items} addToCart={addToCart} />
-//             </div>
-//           } />
-
-//           <Route path="/item-details/:id" element={<ItemDetails items={items} />} />
-
-//           <Route path="/FAQs" element={<FAQsPage />} />
-//           <Route path="/Customer-Feedback" element={<FeedbackPage />} />
-//           <Route path="/support" element={<Support />} />
-//           <Route path="/warranty" element={<Warranty />} />
-//           <Route path="/order-support" element={<OrderSupport />} />
-//           <Route path="/terms" element={<TermsAndConditions />} />
-//           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-//           <Route path="/contact" element={<Contact />} />
-//           <Route path="/about" element={<AboutUs />} />
-//           <Route path="*" element={<Navigate to="/" />} />
-//         </Routes>
-
-//         <Support />
-//       </main>
-
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default App;
