@@ -86,9 +86,10 @@
 
 .close-button {
   background: transparent !important;
-  border: none;
+  border: none !important;
   color: #d5d5d6 !important;
-  cursor: pointer;
-  margin-top: 1rem;
-  font-size: 0.9rem;
+  cursor: pointer !important;
+  margin-top: 1rem !important;
+  font-size: 0.9rem !important;
+  margin-left: 0px !important;
 }
