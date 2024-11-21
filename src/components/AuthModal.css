@@ -45,7 +45,7 @@
   border: none;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.2); /* Lightly tinted input background */
-  color: #0000FF; /* Default blue color for text */
+  color: #1b1b41; /* Default blue color for text */
 }
 .modal-content form select {
   appearance: none; /* Remove default dropdown styling for custom appearance */
