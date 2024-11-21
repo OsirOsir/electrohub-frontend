@@ -252,6 +252,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
           <p>Time: {invoice.time}</p>
           <p>Status: {invoice.status}</p>
           <p>Payment Method: {invoice.paymentMethod}</p>
+          <p>Thank you for shopping at ShopSphere!</p>
         </div>
       )}
 
