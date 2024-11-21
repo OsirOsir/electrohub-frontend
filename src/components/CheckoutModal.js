@@ -5,143 +5,109 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
   const [paymentMethod, setPaymentMethod] = useState('Credit Card');
   const [invoice, setInvoice] = useState(null);
   const [isInvoiceVisible, setIsInvoiceVisible] = useState(false);
-
-  // Invoice details state
+  const [isPaymentSubmitted, setIsPaymentSubmitted] = useState(false);
   const [billingDetails, setBillingDetails] = useState({
     name: '',
     address: '',
     phone: '',
   });
-
-  // Payment details state
   const [creditCardInfo, setCreditCardInfo] = useState({
     cardNumber: '',
     expirationDate: '',
-    cvv: ''
+    cvv: '',
   });
   const [paypalEmail, setPaypalEmail] = useState('');
   const [bankAccount, setBankAccount] = useState('');
   const [mpesaNumber, setMpesaNumber] = useState('');
   const [errors, setErrors] = useState([]);
+  const [orderStatus, setOrderStatus] = useState('Packing');  // Default status
 
-  // Luhn algorithm to validate card number
-  const validateCardNumber = (cardNumber) => {
-    let sum = 0;
-    let shouldDouble = false;
-    for (let i = cardNumber.length - 1; i >= 0; i--) {
-      let digit = parseInt(cardNumber.charAt(i));
-      if (shouldDouble) {
-        digit *= 2;
-        if (digit > 9) digit -= 9;
-      }
-      sum += digit;
-      shouldDouble = !shouldDouble;
-    }
-    return sum % 10 === 0;
-  };
-
-  // Validate expiration date (MM/YY)
-  const validateExpirationDate = (date) => {
-    const [month, year] = date.split('/').map((part) => parseInt(part, 10));
+  // Helper functions for validation
+  const validateCardNumber = (cardNumber) => /^\d{16}$/.test(cardNumber);
+  const validateExpirationDate = (expirationDate) => {
+    const regex = /^(0[1-9]|1[0-2])\/\d{2}$/; // MM/YY format
+    if (!regex.test(expirationDate)) return false;
+    const [month, year] = expirationDate.split('/').map(num => parseInt(num, 10));
     const currentDate = new Date();
-    const currentYear = currentDate.getFullYear() % 100; // Only the last two digits
     const currentMonth = currentDate.getMonth() + 1;
+    const currentYear = currentDate.getFullYear() % 100;
     return year > currentYear || (year === currentYear && month >= currentMonth);
   };
 
-  // Check for errors in the inputs
   const validateForm = () => {
     const newErrors = [];
 
-    if (paymentMethod === 'Credit Card') {
-      if (!creditCardInfo.cardNumber || !validateCardNumber(creditCardInfo.cardNumber)) {
-        newErrors.push('Invalid credit card number');
-      }
-      if (!creditCardInfo.expirationDate || !validateExpirationDate(creditCardInfo.expirationDate)) {
-        newErrors.push('Invalid expiration date');
-      }
-      if (!creditCardInfo.cvv || creditCardInfo.cvv.length !== 3) {
-        newErrors.push('CVV must be 3 digits');
-      }
+    // Validate based on payment method
+    switch (paymentMethod) {
+      case 'Credit Card':
+        if (!creditCardInfo.cardNumber || !validateCardNumber(creditCardInfo.cardNumber)) {
+          newErrors.push('Invalid credit card number');
+        }
+        if (!creditCardInfo.expirationDate || !validateExpirationDate(creditCardInfo.expirationDate)) {
+          newErrors.push('Invalid expiration date');
+        }
+        if (!creditCardInfo.cvv || creditCardInfo.cvv.length !== 3) {
+          newErrors.push('CVV must be 3 digits');
+        }
+        break;
+      case 'PayPal':
+        if (!paypalEmail) newErrors.push('Invalid PayPal email');
+        break;
+      case 'Bank Transfer':
+        if (!bankAccount || bankAccount.length < 10) newErrors.push('Invalid bank account number');
+        break;
+      case 'M-Pesa':
+        if (!mpesaNumber || !/^(\+254|254|0)[7-9]\d{8}$/.test(mpesaNumber)) {
+          newErrors.push('Invalid M-Pesa number');
+        }
+        break;
+      default:
+        newErrors.push('Invalid payment method selected');
     }
 
-    if (paymentMethod === 'PayPal') {
-      if (!paypalEmail || !/\S+@\S+\.\S+/.test(paypalEmail)) {
-        newErrors.push('Invalid PayPal email');
-      }
+    // Validate billing details
+    if (!billingDetails.name || billingDetails.name.split(' ').length < 2) {
+      newErrors.push('Billing name must contain at least a first and last name');
     }
-
-    if (paymentMethod === 'Bank Transfer') {
-      if (!bankAccount || bankAccount.length < 10) {
-        newErrors.push('Invalid bank account number');
-      }
+    if (!billingDetails.address || billingDetails.address.length < 5) {
+      newErrors.push('Billing address is incomplete');
     }
-
-    if (paymentMethod === 'M-Pesa') {
-      if (!mpesaNumber || !/^(\+254|254|0)[7-9]\d{8}$/.test(mpesaNumber)) {
-        newErrors.push('Invalid M-Pesa number');
-      }
-    }
-
-    if (!billingDetails.name || !billingDetails.address || !billingDetails.phone) {
-      newErrors.push('Billing details are incomplete');
+    if (!billingDetails.phone || billingDetails.phone.length !== 10 || !/^\d{10}$/.test(billingDetails.phone)) {
+      newErrors.push('Phone number must be exactly 10 digits');
     }
 
     setErrors(newErrors);
     return newErrors.length === 0;
   };
 
-  const generateBillingInfo = () => {
-    const addresses = [
-      "123 Elm Street, Nairobi",
-      "456 Oak Avenue, Mombasa",
-      "789 Pine Lane, Kisumu"
-    ];
-    return {
-      name: "John Doe",
-      address: addresses[Math.floor(Math.random() * addresses.length)],
-      phone: `+2547${Math.floor(100000000 + Math.random() * 900000000)}`
-    };
-  };
-
-  // Create the invoice
   const createInvoice = () => {
-    const billing = generateBillingInfo();
-
     const newInvoice = {
       invoiceNumber: `INV-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
-      totalAmount: orderDetails?.totalAmount || "0.00",
+      totalAmount: orderDetails?.totalAmount || '0.00',
       items: orderDetails?.items || [],
-      billing,
-      paymentMethod,  // Include the payment method in the invoice
+      billing: billingDetails,
+      paymentMethod,
+      status: orderStatus,
     };
-
     setInvoice(newInvoice);
-    setIsInvoiceVisible(true);  // Make invoice visible after creation
-  };
-  const handlePaymentChange = (event) => {
-    setPaymentMethod(event.target.value);
+    setIsInvoiceVisible(true);
   };
 
-  const handleBillingChange = (e) => {
-    setBillingDetails({ ...billingDetails, [e.target.name]: e.target.value });
-  };
+  const handlePaymentChange = (e) => setPaymentMethod(e.target.value);
+  const handleBillingChange = (e) => setBillingDetails({ ...billingDetails, [e.target.name]: e.target.value });
 
-  const handlePaymentSubmit = (event) => {
-    event.preventDefault();
+  const handlePaymentSubmit = (e) => {
+    e.preventDefault();
 
-    // Validate the form inputs
     if (!validateForm()) return;
 
-    // Generate invoice before payment confirmation
     createInvoice();
+    setIsPaymentSubmitted(true);
 
-    // Simulate payment process based on payment method
     let paymentMessage = '';
-    let paymentStatus = '';
-    let invoiceDetails = '';
+    let paymentStatus = 'Payment Failed';
 
     switch (paymentMethod) {
       case 'Credit Card':
@@ -162,36 +128,19 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
         break;
       default:
         paymentMessage = 'Payment method not selected';
-        paymentStatus = 'Payment Failed';
     }
 
-    // Prepare invoice details to display after payment
-    if (invoice) {
-      invoiceDetails = `
-        Payment made to: ${invoice.billing.name}
-        Address: ${invoice.billing.address}
-        Phone: ${invoice.billing.phone}
-        Invoice Number: ${invoice.invoiceNumber}
-        Date: ${invoice.date}
-        Total Amount: ${invoice.totalAmount}
-        Payment Method: ${invoice.paymentMethod}
-      `;
-    }
+    alert(`${paymentMessage}\n\nInvoice Number: ${invoice?.invoiceNumber}\nTotal: Ksh ${invoice?.totalAmount}\nPayment Status: ${paymentStatus}`);
 
-     // Show payment message and invoice details
-     alert(`${paymentMessage}\n\n${invoiceDetails}`);
-
-    // Show payment status after confirmation
-    alert(`Payment Status: ${paymentStatus}`);
-
-    // Don't close modal immediately, wait for the user to view the invoice
-};
+    setTimeout(() => {
+      onClose();
+    }, 3000);
+  };
 
   return (
     <div className="checkout-modal">
       <h2>Checkout</h2>
 
-      {/* Billing Details Form */}
       <div className="billing-details">
         <label>Billing Name</label>
         <input
@@ -199,7 +148,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
           name="name"
           value={billingDetails.name}
           onChange={handleBillingChange}
-          required
+          className={errors.includes('Billing name must contain at least a first and last name') ? 'error' : ''}
         />
         <label>Billing Address</label>
         <input
@@ -207,7 +156,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
           name="address"
           value={billingDetails.address}
           onChange={handleBillingChange}
-          required
+          className={errors.includes('Billing address is incomplete') ? 'error' : ''}
         />
         <label>Phone Number</label>
         <input
@@ -215,111 +164,98 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
           name="phone"
           value={billingDetails.phone}
           onChange={handleBillingChange}
-          required
+          className={errors.includes('Phone number must be exactly 10 digits') ? 'error' : ''}
         />
       </div>
 
-      {/* Payment Form */}
-      <form onSubmit={handlePaymentSubmit}>
-        <label>Choose a payment method:</label>
-        <select value={paymentMethod} onChange={handlePaymentChange}>
-          <option value="Credit Card">Credit Card</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Bank Transfer">Bank Transfer</option>
-          <option value="M-Pesa">M-Pesa</option>
-        </select>
+      {!isPaymentSubmitted && (
+        <form onSubmit={handlePaymentSubmit}>
+          <label>Choose a payment method:</label>
+          <select value={paymentMethod} onChange={handlePaymentChange}>
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="M-Pesa">M-Pesa</option>
+          </select>
 
-        {/* Payment method details */}
-        {paymentMethod === 'Credit Card' && (
-          <div>
-            <label>Card Number</label>
-            <input
-              type="text"
-              value={creditCardInfo.cardNumber}
-              onChange={(e) => setCreditCardInfo({ ...creditCardInfo, cardNumber: e.target.value })}
-              required
-            />
-            <label>Expiration Date (MM/YY)</label>
-            <input
-              type="text"
-              value={creditCardInfo.expirationDate}
-              onChange={(e) => setCreditCardInfo({ ...creditCardInfo, expirationDate: e.target.value })}
-              required
-            />
-            <label>CVV</label>
-            <input
-              type="text"
-              value={creditCardInfo.cvv}
-              onChange={(e) => setCreditCardInfo({ ...creditCardInfo, cvv: e.target.value })}
-              required
-            />
-          </div>
-        )}
+          {paymentMethod === 'Credit Card' && (
+            <div className="payment-method-fields">
+              <label>Card Number</label>
+              <input
+                type="text"
+                value={creditCardInfo.cardNumber}
+                onChange={(e) => setCreditCardInfo({ ...creditCardInfo, cardNumber: e.target.value })}
+                className={errors.includes('Invalid credit card number') ? 'error' : ''}
+              />
+              <label>Expiration Date (MM/YY)</label>
+              <input
+                type="text"
+                value={creditCardInfo.expirationDate}
+                onChange={(e) => setCreditCardInfo({ ...creditCardInfo, expirationDate: e.target.value })}
+                className={errors.includes('Invalid expiration date') ? 'error' : ''}
+              />
+              <label>CVV</label>
+              <input
+                type="text"
+                value={creditCardInfo.cvv}
+                onChange={(e) => setCreditCardInfo({ ...creditCardInfo, cvv: e.target.value })}
+                className={errors.includes('CVV must be 3 digits') ? 'error' : ''}
+              />
+            </div>
+          )}
 
-        {paymentMethod === 'PayPal' && (
-          <div>
-            <label>PayPal Email</label>
-            <input
-              type="email"
-              value={paypalEmail}
-              onChange={(e) => setPaypalEmail(e.target.value)}
-              required
-            />
-          </div>
-        )}
+          {paymentMethod === 'PayPal' && (
+            <div className="payment-method-fields">
+              <label>PayPal Email</label>
+              <input
+                type="email"
+                value={paypalEmail}
+                onChange={(e) => setPaypalEmail(e.target.value)}
+                className={errors.includes('Invalid PayPal email') ? 'error' : ''}
+              />
+            </div>
+          )}
 
-        {paymentMethod === 'Bank Transfer' && (
-          <div>
-            <label>Bank Account Number</label>
-            <input
-              type="text"
-              value={bankAccount}
-              onChange={(e) => setBankAccount(e.target.value)}
-              required
-            />
-          </div>
-        )}
+          {paymentMethod === 'Bank Transfer' && (
+            <div className="payment-method-fields">
+              <label>Bank Account Number</label>
+              <input
+                type="text"
+                value={bankAccount}
+                onChange={(e) => setBankAccount(e.target.value)}
+                className={errors.includes('Invalid bank account number') ? 'error' : ''}
+              />
+            </div>
+          )}
 
-        {paymentMethod === 'M-Pesa' && (
-          <div>
-            <label>M-Pesa Number</label>
-            <input
-              type="text"
-              value={mpesaNumber}
-              onChange={(e) => setMpesaNumber(e.target.value)}
-              required
-            />
-          </div>
-        )}
+          {paymentMethod === 'M-Pesa' && (
+            <div className="payment-method-fields">
+              <label>M-Pesa Number</label>
+              <input
+                type="text"
+                value={mpesaNumber}
+                onChange={(e) => setMpesaNumber(e.target.value)}
+                className={errors.includes('Invalid M-Pesa number') ? 'error' : ''}
+              />
+            </div>
+          )}
 
-        <div className="errors">
-          {errors.map((error, index) => (
-            <p key={index} style={{ color: 'red' }}>
-              {error}
-            </p>
-          ))}
-        </div>
+          <button type="submit">Submit Payment</button>
+        </form>
+      )}
 
-        <button type="submit">Submit Payment</button>
-      </form>
-
-      <button className="close" onClick={onClose}>Close</button>
-
-      {/* Conditionally render invoice if available */}
       {isInvoiceVisible && invoice && (
         <div className="invoice">
           <h3>Invoice</h3>
           <p>Invoice Number: {invoice.invoiceNumber}</p>
           <p>Date: {invoice.date}</p>
-          <p>Total Amount: {invoice.totalAmount}</p>
+          <p>Time: {invoice.time}</p>
+          <p>Status: {invoice.status}</p>
           <p>Payment Method: {invoice.paymentMethod}</p>
-          <p>Billing Details:</p>
-          <p>Name: {invoice.billing.name}</p>
-          <p>Address: {invoice.billing.address}</p>
-          <p>Phone: {invoice.billing.phone}</p>
-          <button onClick={() => onClose()}>Close</button>
         </div>
       )}
+
+      <button className="close-modal" onClick={onClose}>Close</button>
     </div>
   );
 };

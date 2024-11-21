@@ -45,7 +45,10 @@ const CartModal = ({ cartItems, onClose, username, proceedToCheckout }) => {
         <div className="cart-actions">
           <button className="close-button" onClick={onClose}>Close</button>
           {updatedCartItems.length > 0 && (
-            <button className="checkout-button" onClick={() => proceedToCheckout(updatedCartItems, totalAmount)}>
+            <button 
+              className="checkout-button" 
+              onClick={() => proceedToCheckout(updatedCartItems, totalAmount)} // Pass totalAmount here
+            >
               Proceed to Checkout
             </button>
           )}
