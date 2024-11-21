@@ -63,9 +63,10 @@ const App = () => {
     }
   };
 
-  const handleCategoryClose = () => { // eslint-disable-next-line no-unused-vars
-    setCategoryItems([]); // Clear the category items to hide the component
-  };
+  // eslint-disable-next-line no-unused-vars
+  // const handleCategoryClose = () => { 
+  //   setCategoryItems([]); // Clear the category items to hide the component
+  // };
 
   // Add item to cart and ensure quantity is valid
   // Add item to cart and ensure quantity is valid
