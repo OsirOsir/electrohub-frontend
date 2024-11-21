@@ -151,6 +151,11 @@
 
 .navbar-icons span {
   font-weight: bold !important;
+  margin-left: 5px;
+  color: white;
+  background-color: red;
+  padding: 2px 3px;
+  border-radius: 50%;
 }
 
 .cart-icon {
