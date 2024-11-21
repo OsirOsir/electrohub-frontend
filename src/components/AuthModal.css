@@ -1,109 +1,94 @@
-.modal, .modal-overlay {
+.auth-modal {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.7); 
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
+.success-message {
+  color: rgb(18, 95, 18);
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
 
 .modal-content {
-  background-color: #f0f8ff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 500px; 
-  max-width: 90%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-  color: #333; 
+  background: rgba(173, 216, 230, 0.15); /* Light blue, semi-transparent */
+  backdrop-filter: blur(10px); /* Blur effect for glass-like appearance */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 320px;
+  text-align: center;
+  color: #fff; /* White text for better contrast on a light blue background */
+}
+
+.modal-content h2 {
+  color: #e0f7fa; /* Light blue color for the heading */
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.modal-content form input,
+.modal-content form select  {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2); /* Lightly tinted input background */
+  color: #0000FF; /* Default blue color for text */
+}
+.modal-content form select {
+  appearance: none; /* Remove default dropdown styling for custom appearance */
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content form input::placeholder,
+.modal-content form select option {
+  color: #aed3e9; /* Light placeholder color */
+  font-weight: bolder;
+}
+
+.modal-content form select {
+  appearance: none; /* Remove default dropdown styling for custom appearance */
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background-color: #000015;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease; /* Smooth color and shadow transition */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Initial shadow */
+}
+
+.modal-content button:hover {
+  background-color: #000035; /* Darker blue on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Increased shadow on hover */
 }
 
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
+  background: transparent !important;
   border: none;
-  font-size: 1.5rem;
+  color: #d5d5d6 !important;
   cursor: pointer;
-  color: #333; 
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
-
-.error {
-  color: red;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.7); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: #f0f8ff; 
-    padding: 20px;
-    border-radius: 8px;
-    width: 500px;
-    max-width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-    color: #333;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-  }
-  
-  .form-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  label {
-    flex: 1;
-    margin-right: 10px;
-    text-align: right;
-    font-weight: bold;
-  }
-  
-  input, select {
-    flex: 2;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
