@@ -92,7 +92,8 @@ select:focus {
   margin: 0.5rem 0;
   border: none;
   border-radius: 6px;
-  color: #282869; 
+  color: #000000; 
+  font-weight: bolder;
   border-color: black;
   background: rgba(26, 20, 20, 0.2) !important;
   outline: none;
