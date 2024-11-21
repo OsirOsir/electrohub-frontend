@@ -1,13 +1,13 @@
 .category-items {
-  background-color: #E0E6F6;
-  margin: 120px 50px 20px 50px;
-  border-radius: 20px;
-  padding-top: 20px; /* Add padding for spacing */
+  background-color: #E0E6F6 !important;
+  margin: 120px 50px 20px 50px !important;
+  border-radius: 20px !important;
+  padding-top: 20px !important; /* Add padding for spacing */
 }
 
 .close-button-container {
-  text-align: right; /* Align the close button to the right */
-  margin: 10px 20px; /* Add some spacing around the close button */
+  text-align: right !important; /* Align the close button to the right */
+  margin: 10px 20px !important; /* Add some spacing around the close button */
 }
 
 .close-button {
@@ -28,29 +28,29 @@
 }
 
 .items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  padding: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  padding: 20px !important;
 }
 
 .item-card {
-  background-color: #f4f4f4;
+  background-color: #f4f4f4 !important;
   /* Background color for individual item cards */
-  padding: 20px;
+  padding: 20px !important;
   /* Padding for the card content */
-  border-radius: 8px;
+  border-radius: 8px !important;
   /* Rounded corners */
-  text-align: center;
+  text-align: center !important;
   /* Center-align the content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   /* Add shadow for depth */
 }
 
 .item-card img {
-  width: 100%;
+  width: 100% !important;
   /* Make the image fill the card */
-  height: auto;
+  height: auto !important;
   /* Maintain aspect ratio */
-  border-radius: 8px;
+  border-radius: 8px !important;
   /* Rounded corners for the image */
 }
