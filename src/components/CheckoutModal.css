@@ -1,6 +1,6 @@
 /* General Modal Styles */
 .checkout-modal {
-position: fixed;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -17,12 +17,14 @@ position: fixed;
   text-align: center;
   color: #fff;
 }
+
 /* Modal Title */
 .checkout-modal h2 {
   text-align: center;
-  color: #030303; /* Light blue color for the heading */
+  color: #030303; /* Dark color for heading */
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
+  font-weight: bold;
 }
 
 /* Close Button */
@@ -49,6 +51,7 @@ position: fixed;
   background-color: #f9f9f9;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
+  color: #1b1b41;
 }
 
 .invoice-section h3 {
@@ -87,12 +90,11 @@ input {
 input[type="text"]:focus,
 input[type="email"]:focus,
 select:focus {
-  width: 100%;
   padding: 0.6rem;
   margin: 0.5rem 0;
   border: none;
   border-radius: 6px;
-  color: #000000; 
+  color: #000000;
   font-weight: bolder;
   border-color: black;
   background: rgba(26, 20, 20, 0.2) !important;
@@ -131,6 +133,7 @@ select:focus {
 .error {
   margin: 5px 0;
   font-size: 14px;
+  color: red; /* Ensure error text is red */
 }
 
 /* Form Section */

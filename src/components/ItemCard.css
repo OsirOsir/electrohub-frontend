@@ -2,6 +2,7 @@
   margin: 10px !important;
   transition: all 0.5s ease !important;
   text-decoration: none !important;
+  background-color: white !important;
 }
 
 .item-card a {
@@ -51,7 +52,7 @@
   margin-left: 40px !important;
 }
 
-.item-buttons {
+.item-card-buttons {
   display: flex !important;
   justify-content: space-between !important;
   position: absolute !important;
@@ -62,7 +63,7 @@
   transition: opacity 0.9s ease !important;
 }
 
-.item-card:hover .item-buttons {
+.item-card:hover .item-card-buttons {
   opacity: 1 !important;
   text-decoration: none !important;
 }

@@ -11,20 +11,34 @@ const SpecialCategoryForm = ({ onItemSpecialCategoryClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!itemId || isNaN(itemId)) {
       setErrorMessage('Please provide a valid Item ID.');
       return;
     }
-
+  
+    const categoryMapping = {
+      'Daily deals': 'daily_deals',
+      'Best Sellers': 'best_sellers',
+      'Hot & New': 'hot_&_new',
+      'Season Offers': 'season_offers',
+    };
+  
+    const mappedCategoryName = categoryMapping[categoryName];
+  
+    if (!mappedCategoryName) {
+      setErrorMessage('Invalid special category name.');
+      return;
+    }
+  
     const url = action === 'add'
       ? `http://localhost:5555/api/item/${itemId}/add_special_category`
       : `http://localhost:5555/api/item/${itemId}/remove_special_category`;
-
+  
     const requestBody = {
-      special_category_name: categoryName,
+      special_category_name: mappedCategoryName,
     };
-
+  
     fetch(url, {
       method: action === 'add' ? 'POST' : 'DELETE',
       headers: {
@@ -47,7 +61,7 @@ const SpecialCategoryForm = ({ onItemSpecialCategoryClose }) => {
         setErrorMessage('Error occurred while processing the request.');
       });
   };
-
+  
   return (
     <>
       <div className="modal-overlay">
@@ -92,10 +106,10 @@ const SpecialCategoryForm = ({ onItemSpecialCategoryClose }) => {
                 onChange={(e) => setCategoryName(e.target.value)}
                 required
               >
-                <option value="Daily deals">Daily deals</option>
-                <option value="Best Sellers">Best Sellers</option>
-                <option value="Hot & New">Hot & New</option>
-                <option value="Season Offers">Season Offers</option>
+                <option value="daily_deals">Daily deals</option>
+                <option value="best_sellers">Best Sellers</option>
+                <option value="hot_&_new">Hot & New</option>
+                <option value="season_offers">Season Offers</option>
               </select>
             </div>
 

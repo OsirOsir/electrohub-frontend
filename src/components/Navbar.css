@@ -124,14 +124,14 @@
 .welcome-message {
   font-size: 1rem !important;
   font-weight: bold !important;
-  color: #1f6ed4 !important; /* Optional: Change to match the brand color */
+  color: #b2d4ff !important; /* Optional: Change to match the brand color */
 }
 
 .auth-button {
   background: none !important;
   border: none !important;
   padding-left: 10px !important;
-  color: #1f6ed4 !important;
+  color: #b2d4ff !important;
   font-size: 1rem !important;
   display: flex !important;
   align-items: center !important;
