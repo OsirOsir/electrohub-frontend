@@ -4,6 +4,14 @@ import './CheckoutModal.css';
 const CheckoutModal = ({ onClose, orderDetails }) => {
   const [paymentMethod, setPaymentMethod] = useState('Credit Card');
   const [invoice, setInvoice] = useState(null);
+  const [isInvoiceVisible, setIsInvoiceVisible] = useState(false);
+
+  // Invoice details state
+  const [billingDetails, setBillingDetails] = useState({
+    name: '',
+    address: '',
+    phone: '',
+  });
 
   // Payment details state
   const [creditCardInfo, setCreditCardInfo] = useState({
@@ -44,7 +52,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
   // Check for errors in the inputs
   const validateForm = () => {
     const newErrors = [];
-    
+
     if (paymentMethod === 'Credit Card') {
       if (!creditCardInfo.cardNumber || !validateCardNumber(creditCardInfo.cardNumber)) {
         newErrors.push('Invalid credit card number');
@@ -75,11 +83,14 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
       }
     }
 
+    if (!billingDetails.name || !billingDetails.address || !billingDetails.phone) {
+      newErrors.push('Billing details are incomplete');
+    }
+
     setErrors(newErrors);
     return newErrors.length === 0;
   };
 
-  // Generate random billing info
   const generateBillingInfo = () => {
     const addresses = [
       "123 Elm Street, Nairobi",
@@ -96,7 +107,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
   // Create the invoice
   const createInvoice = () => {
     const billing = generateBillingInfo();
-    
+
     const newInvoice = {
       invoiceNumber: `INV-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toLocaleDateString(),
@@ -108,10 +119,14 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
     };
 
     setInvoice(newInvoice);
+    setIsInvoiceVisible(true);  // Make invoice visible after creation
   };
-
   const handlePaymentChange = (event) => {
     setPaymentMethod(event.target.value);
+  };
+
+  const handleBillingChange = (e) => {
+    setBillingDetails({ ...billingDetails, [e.target.name]: e.target.value });
   };
 
   const handlePaymentSubmit = (event) => {
@@ -126,6 +141,8 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
     // Simulate payment process based on payment method
     let paymentMessage = '';
     let paymentStatus = '';
+    let invoiceDetails = '';
+
     switch (paymentMethod) {
       case 'Credit Card':
         paymentMessage = `Payment made with Credit Card ending in ${creditCardInfo.cardNumber.slice(-4)}`;
@@ -137,27 +154,70 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
         break;
       case 'Bank Transfer':
         paymentMessage = `Bank transfer initiated from account ${bankAccount}`;
-        paymentStatus = 'Payment Pending';
+        paymentStatus = 'Payment Successful';
         break;
       case 'M-Pesa':
         paymentMessage = `M-Pesa payment initiated for ${mpesaNumber}. Awaiting confirmation...`;
-        paymentStatus = 'Payment Pending';
+        paymentStatus = 'Payment Successful';
         break;
       default:
         paymentMessage = 'Payment method not selected';
         paymentStatus = 'Payment Failed';
     }
-    alert(paymentMessage);
 
-    // Simulate actual payment success
+    // Prepare invoice details to display after payment
+    if (invoice) {
+      invoiceDetails = `
+        Payment made to: ${invoice.billing.name}
+        Address: ${invoice.billing.address}
+        Phone: ${invoice.billing.phone}
+        Invoice Number: ${invoice.invoiceNumber}
+        Date: ${invoice.date}
+        Total Amount: ${invoice.totalAmount}
+        Payment Method: ${invoice.paymentMethod}
+      `;
+    }
+
+     // Show payment message and invoice details
+     alert(`${paymentMessage}\n\n${invoiceDetails}`);
+
+    // Show payment status after confirmation
     alert(`Payment Status: ${paymentStatus}`);
 
-    onClose(); // Close modal after payment
-  };
+    // Don't close modal immediately, wait for the user to view the invoice
+};
 
   return (
     <div className="checkout-modal">
       <h2>Checkout</h2>
+
+      {/* Billing Details Form */}
+      <div className="billing-details">
+        <label>Billing Name</label>
+        <input
+          type="text"
+          name="name"
+          value={billingDetails.name}
+          onChange={handleBillingChange}
+          required
+        />
+        <label>Billing Address</label>
+        <input
+          type="text"
+          name="address"
+          value={billingDetails.address}
+          onChange={handleBillingChange}
+          required
+        />
+        <label>Phone Number</label>
+        <input
+          type="text"
+          name="phone"
+          value={billingDetails.phone}
+          onChange={handleBillingChange}
+          required
+        />
+      </div>
 
       {/* Payment Form */}
       <form onSubmit={handlePaymentSubmit}>
@@ -222,7 +282,7 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
 
         {paymentMethod === 'M-Pesa' && (
           <div>
-            <label>M-Pesa Mobile Number</label>
+            <label>M-Pesa Number</label>
             <input
               type="text"
               value={mpesaNumber}
@@ -232,33 +292,32 @@ const CheckoutModal = ({ onClose, orderDetails }) => {
           </div>
         )}
 
-        {errors.length > 0 && (
-          <div className="error-messages">
-            {errors.map((error, index) => (
-              <p key={index} className="error">{error}</p>
-            ))}
-          </div>
-        )}
+        <div className="errors">
+          {errors.map((error, index) => (
+            <p key={index} style={{ color: 'red' }}>
+              {error}
+            </p>
+          ))}
+        </div>
 
-        <button type="submit" className="submit-button">Submit Payment</button>
-        <button type="button" onClick={onClose} className="close-button">
-          Cancel
-        </button>
+        <button type="submit">Submit Payment</button>
       </form>
 
-      {/* Invoice Modal - Display after payment */}
-      {invoice && (
+      <button className="close" onClick={onClose}>Close</button>
+
+      {/* Conditionally render invoice if available */}
+      {isInvoiceVisible && invoice && (
         <div className="invoice">
           <h3>Invoice</h3>
           <p>Invoice Number: {invoice.invoiceNumber}</p>
           <p>Date: {invoice.date}</p>
-          <p>Time: {invoice.time}</p>
-          <p>Total Amount: ${invoice.totalAmount}</p>
+          <p>Total Amount: {invoice.totalAmount}</p>
           <p>Payment Method: {invoice.paymentMethod}</p>
-          <p>Billing Address: {invoice.billing.address}</p>
-          <p>Billing Name: {invoice.billing.name}</p>
+          <p>Billing Details:</p>
+          <p>Name: {invoice.billing.name}</p>
+          <p>Address: {invoice.billing.address}</p>
           <p>Phone: {invoice.billing.phone}</p>
-          <button onClick={onClose}>Close</button>
+          <button onClick={() => onClose()}>Close</button>
         </div>
       )}
     </div>
