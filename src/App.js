@@ -63,7 +63,7 @@ const App = () => {
     }
   };
 
-  const handleCategoryClose = () => {
+  const handleCategoryClose = () => { // eslint-disable-next-line no-unused-vars
     setCategoryItems([]); // Clear the category items to hide the component
   };
 
