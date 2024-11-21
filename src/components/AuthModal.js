@@ -32,7 +32,10 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         const data = await response.json();
         setSuccessMessage(`Successfully signed up as ${data.username}`);
         onAuthChange(true, data.username, data.role); // Update authentication state
-        setTimeout(() => onClose(), 2000); // Close modal after 2 seconds
+        setTimeout(() => {
+          onClose();
+          window.location.reload(); // Refresh the page after closing the modal
+        }, 2000);
       } else {
         const error = await response.json();
         setErrorMessage(error.error || "Sign-up failed. Try again.");
@@ -58,8 +61,11 @@ const AuthModal = ({ mode, onClose, onAuthChange }) => {
         const data = await response.json();
         setSuccessMessage(`Welcome back, ${data.user.username}`);
         onAuthChange(true, data.user.username, data.user.role); // Update parent component
-        setTimeout(() => onClose(), 2000); // Close modal after 2 seconds
-      } else {
+        setTimeout(() => {
+          onClose();
+          window.location.reload(); // Refresh the page after closing the modal
+        }, 2000);
+      }  else {
         const error = await response.json();
         setErrorMessage(error.error || "Login failed. Check your credentials.");
       }
