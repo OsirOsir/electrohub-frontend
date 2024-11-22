@@ -67,7 +67,7 @@ const UpdateItemForm = ({ onUpdateItemClose }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5555/api/items/item_id/${formData.item_id}`, {
+      const response = await fetch(`https://electrohub-backend.onrender.com/api/items/item_id/${formData.item_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

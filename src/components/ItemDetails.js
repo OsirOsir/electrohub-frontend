@@ -117,7 +117,7 @@ function ItemDetails() {
             <div className="item-details-info">
                 <div className="item-details-content">
                     <div className="item-details-image">
-                        <img src={`http://127.0.0.1:5555/static/${item.item_image_url}`} alt={item.item_name} />
+                        <img src={`https://electrohub-backend.onrender.com/static/${item.item_image_url}`} alt={item.item_name} />
                     </div>
                     <div className="item-details-text">
                         <h3>{item.item_name}</h3>

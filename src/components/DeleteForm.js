@@ -22,7 +22,7 @@ const DeleteItemForm = ({ onDeleteItemClose }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5555/api/items/item_id/${itemId}`, {
+      const response = await fetch(`https://electrohub-backend.onrender.com/api/items/item_id/${itemId}`, {
         method: 'DELETE',
       });
 

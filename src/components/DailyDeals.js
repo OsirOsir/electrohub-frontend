@@ -6,7 +6,7 @@ function DailyDeals({ addToCart }) {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
-    fetch("http://127.0.0.1:5555/api/items/daily_deals")
+    fetch("https://electrohub-backend.onrender.com/api/items/daily_deals")
     .then(response => response.json())
     .then(data => setDailyDeals(data));
     }, []);

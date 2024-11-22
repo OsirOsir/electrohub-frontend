@@ -32,19 +32,6 @@ const App = () => {
 
   // Fetch items from the server on initial load
   useEffect(() => {
-    // const fetchItems = async () => {
-    //   setLoading(true);
-    //   try {
-    //     const response = await fetch("http://localhost:8001/items");
-    //     const data = await response.json();
-    //     setItems(data);
-    //     setFilteredItems(data); // Show all items initially
-    //   } catch (error) {
-    //     setError("Failed to fetch items.");
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
 
     // fetchItems();
     fetch("https://electrohub-backend.onrender.com/api/items")
@@ -64,11 +51,7 @@ const App = () => {
   };
 
   // eslint-disable-next-line no-unused-vars
-  // const handleCategoryClose = () => { 
-  //   setCategoryItems([]); // Clear the category items to hide the component
-  // };
-
-  // Add item to cart and ensure quantity is valid
+ 
   // Add item to cart and ensure quantity is valid
   const addToCart = (item) => {
     setCart(prevCart => {

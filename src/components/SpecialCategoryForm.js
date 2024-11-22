@@ -18,8 +18,8 @@ const SpecialCategoryForm = ({ onItemSpecialCategoryClose }) => {
     }
 
     const url = action === 'add'
-      ? `http://localhost:5555/api/item/${itemId}/add_special_category`
-      : `http://localhost:5555/api/item/${itemId}/remove_special_category`;
+      ? `https://electrohub-backend.onrender.com/api/item/${itemId}/add_special_category`
+      : `https://electrohub-backend.onrender.com/api/item/${itemId}/remove_special_category`;
 
     const requestBody = {
       special_category_name: categoryName,
