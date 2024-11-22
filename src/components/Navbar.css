@@ -89,6 +89,7 @@
   display: flex !important;
   align-items: center !important;
   margin-left: 10px !important;
+  color: white;
   /* Space between icon and input */
 }
 
@@ -97,9 +98,18 @@
   border-radius: 4px !important;
   border: none !important;
   width: 200px !important;
-  /* Adjust the width as desired */
-  transition: width 0.3s ease !important;
+  transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease !important;
+  color: white !important; /* Default text color */
+  background-color: transparent !important; /* Default background color */
   /* Smooth transition for width change */
+}
+.search-bar input:focus {
+  background-color: white !important; /* Background changes to white on focus */
+  color: blue !important; /* Text color changes to blue on focus */
+  outline: none !important; /* Remove default browser focus outline */
+}
+.search-bar input::placeholder {
+  color: rgba(0, 0, 255, 0.5) !important; /* Optional: Blue-ish placeholder when typing */
 }
 
 .search-bar button {
