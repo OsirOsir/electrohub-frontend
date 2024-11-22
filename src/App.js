@@ -47,7 +47,7 @@ const App = () => {
     // };
 
     // fetchItems();
-    fetch("http://127.0.0.1:5555/api/items")
+    fetch("https://electrohub-backend.onrender.com/api/items")
     .then(response => response.json())
     .then(data => setItems(data));
   }, []);
